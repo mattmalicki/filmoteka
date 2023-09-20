@@ -1,0 +1,43 @@
+@use 'sass:math';
+
+@mixin font($fs: 14px, $fw: null, $lh: 24px, $ls: 0.03em) {
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: round($lh, $fs, 2);
+  letter-spacing: $ls;
+}
+
+@function round($lh, $fs, $commaDecimals: 1) {
+  $value: math.div($lh, $fs);
+  $power: math.pow(10, $commaDecimals);
+  @return math.div(math.round($power * $value), $power);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$phone-end: 767.99px;
+$tablet-start: 768px;
+$tablet-end: 1279.99px;
+$desktop-start: 1280px;
+
+@mixin phone {
+  @media screen and (max-width: #{$phone-end}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: #{$tablet-start}) and (max-width: #{$tablet-end}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$desktop-start}) {
+    @content;
+  }
+}
