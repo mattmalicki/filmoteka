@@ -10,10 +10,13 @@ const options = {
   },
 };
 
-export async function featchFilms({ requestType = 'trending/all/day', requestParams = '' }) {
+export async function fetchFilms({ requestType = 'trending/all/day', requestParams = {} }) {
   try {
     const params = new URLSearchParams({ ...requestParams });
     const response = await fetch(`${API_URL}${requestType}?${params}`, options);
+    if (!response.ok) {
+      throw new Error(`Error status: ${response.status}`);
+    }
     const films = await response.json();
     return films;
   } catch (err) {
