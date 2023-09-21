@@ -1,9 +1,11 @@
 <header class="header">
   <div class="container header_wrapper">
-    <a class="header_logo" href="">
-      <svg class="header_logo--svg">
-        <use href=""></use>
+    
+    <a class="header_logo">
+      <svg class="header_logo--svg" width="24px" height="24px">
+        <use href="./images/icons.svg#icon-film"></use>
       </svg>
+    <span class="header_logo--title">Filmoteka</span>
     </a>
     <nav class="header_nav">
       <ul class="header_nav--list">
@@ -13,22 +15,20 @@
        <li>
         <a class="header_nav--list-item">MY LIBRARY</a>
        </li> 
-       <li>
-        <form class="header_search-form" id="search-form">
-          <input
+      </ul>
+    </nav>
+    <form class="header_search-form" id="search-form">
+      <input
             type="text"
             name="searchQuery"
             autocomplete="off"
-            placeholder="Search images ..."
-          />
-          <button class="header_search-button" type="submit">
-            <svg class="icons" width="10px" height="10px">
-              <use href="./images/icons.svg#icon-search"></use>
-            </svg>
-          </button>
-        </form>
-       </li> 
-      </ul>
-    </nav>
+            placeholder="Movie search"
+      />
+      <button class="header_search-button" type="submit">
+        <svg class="header_search-icon" width="12px" height="12px">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
   </div>
 </header>
