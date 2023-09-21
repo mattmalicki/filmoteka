@@ -4,4 +4,13 @@
  */
 
 // Style dla pliku z przykładem HTML fragmentu
-@import './example';
+@import './utils/vars';
+@import './utils/mixins';
+@import './base/common';
+@import './partials/film-card';
+@import './partials/films';
+@import './partials/footer';
+@import './partials/header';
+@import './partials/modal-film';
+@import './partials/modal-team';
+@import './partials/loader';
