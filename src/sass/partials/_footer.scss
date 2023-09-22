@@ -1,3 +1,36 @@
 // NIE UZYWAJ WATCH SASS! Pracuj TYLKO na pliku na ktorym masz pracowac! Jesli potrzebujesz zmienic
 //   cos w innym pliku skontaktuj sie z osoba odpowiedzialna za dany plik albo Team Leaderem lub Scrum
 //   Masterem.
+
+.footer {
+  background-color: #f7f7f7;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include flex-center;
+
+  &__container {
+   display: flex;
+   padding: 30px 0;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    & p {
+      padding-right: 5px;
+      color: #545454;
+      @include font;
+      font-weight: 400;
+    }
+
+    & p:not(:last-child) {
+      border-right: 1px solid black;
+    }
+
+    &--modal {
+      &:is(:hover, :focus) {
+        font-weight: bold;
+      }
+    }
+  }
+}
