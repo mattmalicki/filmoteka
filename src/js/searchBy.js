@@ -1,12 +1,13 @@
 import { fetchFromApi } from './fetchFromApi';
 
-export async function searchMoviesBy(query, page) {
+export async function searchMoviesBy(query, page, ...rest) {
   try {
     const request = {
       requestPath: 'search/movie',
       requestParams: {
         query,
         page,
+        ...rest,
       },
     };
     const movies = await fetchFromApi(request);
@@ -16,13 +17,14 @@ export async function searchMoviesBy(query, page) {
   }
 }
 
-export async function searchSeriesBy(query, page) {
+export async function searchSeriesBy(query, page, ...rest) {
   try {
     const request = {
       requestPath: 'search/tv',
       requestParams: {
         query,
         page,
+        ...rest,
       },
     };
     const series = await fetchFromApi(request);
@@ -32,7 +34,7 @@ export async function searchSeriesBy(query, page) {
   }
 }
 
-export async function searchAllBy(query, page) {
+export async function searchAllBy(query, page, ...rest) {
   try {
     const requestMovie = {
       requestPath: 'search/movie',
@@ -46,6 +48,7 @@ export async function searchAllBy(query, page) {
       requestParams: {
         query,
         page,
+        ...rest,
       },
     };
     const series = await fetchFromApi(requestTv);
