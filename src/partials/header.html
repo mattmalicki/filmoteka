@@ -1,5 +1,36 @@
-<div>
-  NIE UZYWAJ WATCH SASS! Pracuj TYLKO na pliku na ktorym masz pracowac! Jesli potrzebujesz zmienic
-  cos w innym pliku skontaktuj sie z osoba odpowiedzialna za dany plik albo Team Leaderem lub Scrum
-  Masterem.
-</div>
+<header class="header">
+  <div class="header_wrapper">
+    
+    <a class="header_logo">
+      <svg class="header_logo--svg" width="24px" height="24px">
+        <use href="./images/icons.svg#icon-film"></use>
+      </svg>
+    <p class="header_logo--title">Filmoteka</p>
+    </a>
+    <!-- <nav class="header_nav"> -->
+      <ul class="header_nav--list">
+       <li>
+        <a class="header_nav--list-item header_is-on" href="./index.html">HOME</a>
+       </li> 
+       <li">
+        <a class="header_nav--list-item">MY LIBRARY</a>
+       </li> 
+      </ul>
+  </div>
+    <!-- </nav> -->
+    <div class="header_search">
+    <form class="header_search-form" id="search-form">
+      <input
+            type="text"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Movie search"
+      >
+      <button class="header_search-button" type="submit">
+        <svg class="header_search-icon" width="12px" height="12px">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+    </div>
+</header>
