@@ -1,8 +1,9 @@
-import { fetchFilms } from './js/fetchFilms';
+import { fetchFilms } from './fetchFilms';
 
-export async function fetchAll() {
+export async function fetchAll(params = {}) {
   try {
-    const films = await fetchFilms({});
+    const requestParams = { ...params };
+    const films = await fetchFilms({ requestParams });
     console.log(films);
     return films;
   } catch (err) {
