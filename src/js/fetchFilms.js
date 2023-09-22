@@ -11,10 +11,10 @@ const options = {
   },
 };
 
-export async function fetchFilms({ requestType = 'trending/all/day', requestParams = {} }) {
+export async function fetchFilms({ requestPath = 'trending/all/day', requestParams = {} }) {
   try {
     const params = new URLSearchParams({ ...DEFAULT_PAGE, ...requestParams });
-    const response = await fetch(`${API_URL}${requestType}?${params}`, options);
+    const response = await fetch(`${API_URL}${requestPath}?${params}`, options);
     if (!response.ok) {
       throw new Error(`Error status: ${response.status}`);
     }
