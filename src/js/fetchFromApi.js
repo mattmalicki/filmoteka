@@ -11,7 +11,7 @@ const options = {
   },
 };
 
-export async function fetchFilms({ requestPath = 'trending/all/day', requestParams = {} }) {
+export async function fetchFromApi({ requestPath = 'trending/all/day', requestParams = {} }) {
   try {
     const params = new URLSearchParams({ ...DEFAULT_PAGE, ...requestParams });
     const response = await fetch(`${API_URL}${requestPath}?${params}`, options);

@@ -1,8 +1,8 @@
-import { fetchFilms } from './fetchFilms';
+import { fetchFromApi } from './fetchFromApi';
 
 export async function getTVGenres() {
   try {
-    const response = await fetchFilms({
+    const response = await fetchFromApi({
       requestPath: 'genre/tv/list',
     });
     const tvGenres = response.genres;
@@ -14,7 +14,7 @@ export async function getTVGenres() {
 
 export async function getMoviesGenres() {
   try {
-    const response = await fetchFilms({
+    const response = await fetchFromApi({
       requestPath: 'genre/movie/list',
     });
     const movieGenres = response.genres;
