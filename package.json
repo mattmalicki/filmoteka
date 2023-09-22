@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://mattmalicki.github.io/filmoteka/",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /filmoteka/"
   },
   "repository": {
