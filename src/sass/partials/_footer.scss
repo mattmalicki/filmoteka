@@ -11,16 +11,33 @@
   @include flex-center;
 
   &__container {
-   display: flex;
-   padding: 30px 0;
+    display: flex;
+    padding: 29px 0;
     flex-wrap: wrap;
     gap: 5px;
+    justify-content: center;
+
+    @include tablet {
+      padding: 30px 0;
+    }
+
+    @include desktop {
+      padding: 29px 0;
+    }
 
     & p {
       padding-right: 5px;
       color: #545454;
-      @include font;
+      font-size: 14px;
       font-weight: 400;
+
+      @include tablet {
+        font-size: 16px;
+      }
+
+      @include desktop {
+        font-size: 16px;
+      }
     }
 
     & p:not(:last-child) {
