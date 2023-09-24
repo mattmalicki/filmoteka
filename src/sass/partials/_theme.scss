@@ -1,0 +1,73 @@
+body {
+  background-color: #000;
+}
+.btn {
+  background-color: #a8a9b1;
+  width: 200px;
+  height: 4em;
+  border-radius: 10em;
+  padding: 0 0.8em;
+
+  box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1), inset 0 8px 8px rgba(0, 0, 0, 0.1),
+    inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+.btn__indicator {
+  background-color: #fff;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+
+  position: absolute;
+
+  box-shadow: inset 0 8px 40px rgba(0, 0, 0, 0.2);
+
+  transform: transform 0.3s ease;
+}
+.btn__icon-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn__icon {
+  color: yellow;
+  font-size: 2rem;
+}
+body.darkmode {
+  background-color: #05000000;
+}
+.darkmode .btn {
+  box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.3), inset 8px 0 8px rgba(0, 0, 0, 0.3),
+    inset 0 -4px 4px rgba(0, 0, 0, 0.3);
+}
+.darkmode {
+  background-color: #05000000;
+}
+
+.darkmode .btn__indicator {
+  transform: translateX(7em);
+  background-color: #05020200;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+.darkmode .btn__icon {
+  background-color: #0d0b0b00;
+}
+
+.btn__icon .animated {
+  animation: spin 0.5s;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
