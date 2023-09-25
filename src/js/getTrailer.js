@@ -8,7 +8,7 @@ export async function getTrailer(type, id) {
     if (!trailers.id || !trailers.results) {
       return;
     }
-    for (trailer of trailers.results) {
+    for (let trailer of trailers.results) {
       if (trailer.site === 'YouTube') {
         return `https://www.youtube.com/watch?v=${trailer.key}`;
       }
