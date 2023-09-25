@@ -11,12 +11,13 @@
   @include flex-center;
   max-height: 100px;
   overflow: hidden;
-  opacity: 0; 
+  opacity: 0;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
   &.active {
-  max-height: 100px;
-  opacity: 1;}
+    max-height: 100px;
+    opacity: 1;
+  }
 
   @include tablet {
     height: 79px;
@@ -74,7 +75,7 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, bottom 0.3s ease-in-out;
   padding: 15px;
   position: absolute;
   bottom: 15px;

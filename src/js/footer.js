@@ -3,7 +3,7 @@ const toggleButton = document.getElementById('toggle-footer');
 const iconUp = toggleButton.querySelector('.icon-circle-up');
 const iconDown = toggleButton.querySelector('.icon-circle-down');
 
-toggleButton.addEventListener('click', function () {
+function toggleFooter() {
   footer.classList.toggle('active');
 
   // Przełącz widoczność ikon w zależności od stanu footera
@@ -15,4 +15,6 @@ toggleButton.addEventListener('click', function () {
   } else {
     toggleButton.style.bottom = '15px'; // Domyślna pozycja przycisku
   }
-});
+}
+
+toggleButton.addEventListener('click', toggleFooter);
