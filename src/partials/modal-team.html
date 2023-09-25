@@ -1,56 +1,114 @@
-<section>
-  <div class="backdrop">
-    <div id="modal" class="modal">
-      <span class="close">&times;</span>
-      <div class="modal-content">
-        <!-- <h2>Nasz TEAM</h2> -->
-        <ul class="modal__team-management">
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Mateusz Malicki <span class="deco"></span></p>
+<div class="backdrop">
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+
+    <!-- zawartość modala kontener-->
+    <div class="modal__container">
+      <!-- lista "management" -->
+      <ul class="modal__team-list">
+        <!-- member -->
+        <li class="modal__team-item">
+          <img src="images/red_curtain.jpg" alt="" width="270" />
+        </li>
+
+        <!-- kontener na sociale  -->
+        <div class="socials">
+          <p>Mateusz Malicki <span class="deco">Team Leader</span></p>
+          <ul class="socials__list">
+            <li>
+              <a class="socials__link" href="#">
+                <svg class="socials__icon" width="20" height="20">
+                  <use href="./images/icons.svg#icon-facebook"></use>
+                </svg>
+              </a>
+            </li>
+
+            <li>
+              <a class="socials__link" href="#"
+                ><svg class="socials__icon" width="20" height="20">
+                  <use href="./images/icons.svg#icon-twitter"></use>
+                </svg>
+              </a>
+            </li>
+
+            <li>
+              <a class="socials__link" href="#"
+                ><svg class="socials__icon" width="20" height="20">
+                  <use href="./images/icons.svg#icon-linkedin"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <li class="modal__team-item">
+          <img src="images/red_curtain.jpg" alt="" width="270" height="270" />
+          <p>Mateusz Malicki <span class="deco"></span></p>
+        </li>
+
+        <!-- kontener na sociale  -->
+        <!-- <div> -->
+        <ul class="socials">
+          <li>
+            <a class="socials__link" href="#">
+              <svg>
+                class="socials__icon"
+                <use href="./images/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
           </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Krzysztof Kryczka <span class="deco"></span></p>
+
+          <li>
+            <a class="socials__link" href="#"
+              ><svg class="socials__icon">
+                <use href="./images/icons.svg#icon-twitter"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="socials__item">
+            <a href="#"
+              ><svg>
+                <use href="./images/icons.svg#icon-linkedin"></use>
+              </svg>
+            </a>
           </li>
         </ul>
+        <!-- </div> -->
 
         <ul class="modal__team-list">
           <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
+            <img src="images/red_curtain.jpg" alt="" width="270" height="270" />
             <p>Anna Sosik</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Arleta Janysz</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Dagmara Szadkowska</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Dariusz Cedro</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Joanna Matwiej</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Karolina Kaczorowska</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Małgorzata Kuszewska</p>
-          </li>
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="80" height="80" />
-            <p>Marta Ka</p>
+            <!-- <div> -->
+            <ul class="socials">
+              <li class="socials__item">
+                <a href="#">
+                  <svg>
+                    <use href="./images/icons.svg#icon-facebook"></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li class="socials__item">
+                <a href="#"
+                  ><svg>
+                    <use href="./images/icons.svg#icon-twitter"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="socials__item">
+                <a href="#"
+                  ><svg>
+                    <use href="./images/icons.svg#icon-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+            <!-- </div> -->
           </li>
         </ul>
-      </div>
+      </ul>
     </div>
   </div>
-  <script type="module" src="./js/modal-team.js" defer></script>
-</section>
+</div>
