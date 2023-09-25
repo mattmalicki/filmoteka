@@ -4,7 +4,6 @@ export async function getTrailer(type, id) {
   const requestPath = `${type}/${id}/videos`;
   try {
     const trailers = await fetchFromApi({ requestPath });
-    console.log(trailers);
     if (!trailers.id || !trailers.results) {
       return;
     }
