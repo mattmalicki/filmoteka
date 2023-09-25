@@ -4,15 +4,15 @@ const iconUp = toggleButton.querySelector('.icon-circle-up');
 const iconDown = toggleButton.querySelector('.icon-circle-down');
 
 toggleButton.addEventListener('click', function () {
-  footer.classList.toggle('hidden');
+  footer.classList.toggle('active');
 
   // Przełącz widoczność ikon w zależności od stanu footera
-  iconUp.classList.toggle('hidden', !footer.classList.contains('hidden'));
-  iconDown.classList.toggle('hidden', footer.classList.contains('hidden'));
+  iconUp.classList.toggle('hidden', footer.classList.contains('active'));
+  iconDown.classList.toggle('hidden', !footer.classList.contains('active'));
 
-   if (!footer.classList.contains('hidden')) {
-     toggleButton.style.bottom = '45px';
-   } else {
-     toggleButton.style.bottom = '15px'; // Domyślna pozycja przycisku
-   }
+  if (footer.classList.contains('active')) {
+    toggleButton.style.bottom = '45px';
+  } else {
+    toggleButton.style.bottom = '15px'; // Domyślna pozycja przycisku
+  }
 });
