@@ -3,5 +3,5 @@
 const backdrop = document.querySelector('#backdrop');
 
 export function loaderToggle() {
-    backdrop.toggle("hidden");
+  backdrop.toggle('hidden');
 }
