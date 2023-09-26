@@ -1,0 +1,1 @@
+{"mappings":"AAEiBA,SAASC,cAAc","sources":["src/js/loader.js"],"sourcesContent":["//FT-21 Podłączyć/utworzyć Loader (spinner) dla żądań asynchronicznych\n\nconst backdrop = document.querySelector('#backdrop');\n\nexport function loaderToggle() {\n  backdrop.toggle('hidden');\n}\n"],"names":["document","querySelector"],"version":3,"file":"index.208d8ed6.js.map"}
