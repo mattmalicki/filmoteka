@@ -1,113 +1,331 @@
 <div class="backdrop">
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
+  <div id="modal" class="modal" data-modal>
+    <button type="button" class="modal__close-btn" data-modal-close>
+      <svg>
+        <use href="./images/ikony.svg#icon-cross"></use>
+      </svg>
+    </button>
 
-    <!-- zawartość modala kontener-->
-    <div class="modal__container">
-      <!-- lista "management" -->
-      <ul class="modal__team-list">
-        <!-- member -->
-        <li class="modal__team-item">
-          <img src="images/red_curtain.jpg" alt="" width="270" />
-        </li>
+    <div class="container">
+      <h2>Nasz zespół</h2>
+      <ul class="member__list">
+        <div class="member__osier">
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Mateusz Malicki</span>
+              <span class="member__title">Team Leader</span>
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
 
-        <!-- kontener na sociale  -->
-        <div class="socials">
-          <p>Mateusz Malicki <span class="deco">Team Leader</span></p>
-          <ul class="socials__list">
-            <li>
-              <a class="socials__link" href="#">
-                <svg class="socials__icon" width="20" height="20">
-                  <use href="./images/icons.svg#icon-facebook"></use>
-                </svg>
-              </a>
-            </li>
-
-            <li>
-              <a class="socials__link" href="#"
-                ><svg class="socials__icon" width="20" height="20">
-                  <use href="./images/icons.svg#icon-twitter"></use>
-                </svg>
-              </a>
-            </li>
-
-            <li>
-              <a class="socials__link" href="#"
-                ><svg class="socials__icon" width="20" height="20">
-                  <use href="./images/icons.svg#icon-linkedin"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Krzysztof Kryczka</span>
+              <span class="member__title">Scrum Master</span>
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
         </div>
 
-        <li class="modal__team-item">
-          <img src="images/red_curtain.jpg" alt="" width="270" height="270" />
-          <p>Mateusz Malicki <span class="deco"></span></p>
-        </li>
+        <div class="member__sub">
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Anna Sosik</span>
 
-        <!-- kontener na sociale  -->
-        <!-- <div> -->
-        <ul class="socials">
-          <li>
-            <a class="socials__link" href="#">
-              <svg>
-                class="socials__icon"
-                <use href="./images/icons.svg#icon-facebook"></use>
-              </svg>
-            </a>
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Arleta Janysz</span>
+
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Dagmara Szadkowska</span>
+
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
 
-          <li>
-            <a class="socials__link" href="#"
-              ><svg class="socials__icon">
-                <use href="./images/icons.svg#icon-twitter"></use>
-              </svg>
-            </a>
-          </li>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Dariusz Cedro</span>
 
-          <li class="socials__item">
-            <a href="#"
-              ><svg>
-                <use href="./images/icons.svg#icon-linkedin"></use>
-              </svg>
-            </a>
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
-        </ul>
-        <!-- </div> -->
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Joanna Matwiej</span>
 
-        <ul class="modal__team-list">
-          <li class="modal__team-item">
-            <img src="images/red_curtain.jpg" alt="" width="270" height="270" />
-            <p>Anna Sosik</p>
-            <!-- <div> -->
-            <ul class="socials">
-              <li class="socials__item">
-                <a href="#">
-                  <svg>
-                    <use href="./images/icons.svg#icon-facebook"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li class="socials__item">
-                <a href="#"
-                  ><svg>
-                    <use href="./images/icons.svg#icon-twitter"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="socials__item">
-                <a href="#"
-                  ><svg>
-                    <use href="./images/icons.svg#icon-linkedin"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-            <!-- </div> -->
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
-        </ul>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Karolina Kaczorowska</span>
+
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Małgorzata Kuszewska</span>
+
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- osoba -->
+          <li class="member">
+            <img src="images/red_curtain.jpg" alt="" width="270" />
+            <div class="member__box">
+              <span class="member__name">Marta Ka</span>
+
+              <ul class="member__socials-list">
+                <li>
+                  <a class="member__socials-link" href="#">
+                    <svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a class="member__socials-link" href="#"
+                    ><svg class="member__socials-icon" width="20" height="20">
+                      <use href="./images/ikony.svg#icon-linkedin2"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </div>
       </ul>
     </div>
   </div>
