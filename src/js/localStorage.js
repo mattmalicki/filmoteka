@@ -1,4 +1,4 @@
-function save(key, value) {
+function saveStorage(key, value) {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -7,7 +7,7 @@ function save(key, value) {
   }
 }
 
-function load(key) {
+function loadStorage(key) {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -17,6 +17,6 @@ function load(key) {
 }
 
 export default {
-  save,
-  load,
+  saveStorage,
+  loadStorage,
 };
