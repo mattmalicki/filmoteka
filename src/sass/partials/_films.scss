@@ -6,14 +6,18 @@
   background-size: cover;
 }
 
-.container {
+.films__container {
   //border: 1px solid black;
   margin: 0 auto 40px;
   padding: 20px 20px 0;
   min-width: 320px;
   max-width: 1280px;
+  @include tablet {
+    padding: 59px 32px 0px;
+    margin-bottom: 61px;
+  }
 }
-.grid {
+.films__grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -22,42 +26,25 @@
   flex-wrap: wrap;
   flex-direction: row;
   gap: 20px;
+  @include tablet {
+    gap: 32px;
+  }
+  @include desktop {
+    gap: 16px;
+  }
 }
 
-// .grid__item {
+// .films__grid-item {
 //   display: block;
 //   background-color: red;
 //   width: 100%;
 //   height: 440px;
+//   @include tablet {
+//     flex-basis: calc((100% - 32px) / 2);
+//     height: 495px;
+//   }
+//   @include desktop {
+//     flex-basis: calc((100% - 32px) / 3);
+//     height: 634px;
+//   }
 // }
-
-@media (min-width: 768px) {
-  .container {
-    padding: 59px 32px 0px;
-    margin-bottom: 61px;
-  }
-
-  .grid {
-    gap: 32px;
-  }
-
-  .grid__item {
-    flex-basis: calc((100% - 32px) / 2);
-    height: 495px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    margin-bottom: 60px;
-  }
-
-  .grid {
-    gap: 16px;
-  }
-
-  .grid__item {
-    flex-basis: calc((100% - 32px) / 3);
-    height: 634px;
-  }
-}
