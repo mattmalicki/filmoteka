@@ -1,14 +1,20 @@
-(() => {
-	const refs = {
-		openModalBtn: document.querySelector("[data-modal-open]"),
-		closeModalBtn: document.querySelector("[data-modal-close]"),
-		modal: document.querySelector("[data-modal]"),
-	};
+const modal = document.querySelector('[data-modal]');
+const closeModalButton = modal.querySelector('[data-modal-close]');
+const backdrop = modal.querySelector('.backdrop');
 
-	refs.openModalBtn.addEventListener("click", toggleModal);
-	refs.closeModalBtn.addEventListener("click", toggleModal);
+function closeModal() {
+  modal.classList.add('is-hidden'); // Dodaj klasę is-hidden, aby ukryć modal
+}
+closeModalButton.addEventListener('click', closeModal);
 
-	function toggleModal() {
-		refs.modal.classList.toggle("is-hidden");
-	}
-})();
+backdrop.addEventListener('click', event => {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+});
