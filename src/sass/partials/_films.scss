@@ -28,20 +28,19 @@
     @include desktop {
       gap: 16px;
     }
+    &-item {
+      display: block;
+      // background-color: yellow;
+      width: 100%;
+      height: 440px;
+      @include tablet {
+        flex-basis: calc((100% - 32px) / 2);
+        height: 495px;
+      }
+      @include desktop {
+        flex-basis: calc((100% - 32px) / 3);
+        height: 634px;
+      }
+    }
   }
-
-  // &__grid-item {
-  //   display: block;
-  //   background-color: red;
-  //   width: 100%;
-  //   height: 440px;
-  //   @include tablet {
-  //     flex-basis: calc((100% - 32px) / 2);
-  //     height: 495px;
-  //   }
-  //   @include desktop {
-  //     flex-basis: calc((100% - 32px) / 3);
-  //     height: 634px;
-  //   }
-  // }
 }
