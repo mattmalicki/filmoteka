@@ -2,6 +2,12 @@ const footer = document.getElementById('footer');
 const toggleButton = document.getElementById('toggle-footer');
 const iconUp = toggleButton.querySelector('.icon-circle-up');
 const iconDown = toggleButton.querySelector('.icon-circle-down');
+const goitStudentsLink = document.querySelector('.footer__container--modal');
+
+// Funkcja do otwierania modala
+function openModal() {
+  modal.classList.remove('is-hidden'); // Usuń klasę is-hidden, aby pokazać modal
+}
 
 function toggleFooter() {
   footer.classList.toggle('active');
@@ -16,5 +22,5 @@ function toggleFooter() {
     toggleButton.style.bottom = '15px'; // Domyślna pozycja przycisku
   }
 }
-
+goitStudentsLink.addEventListener('click', openModal);
 toggleButton.addEventListener('click', toggleFooter);
