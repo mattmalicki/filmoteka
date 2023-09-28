@@ -4,11 +4,10 @@ export async function getTrailer(type, id) {
   const requestPath = `${type}/${id}/videos`;
   try {
     const trailers = await fetchFromApi({ requestPath });
-    console.log(trailers);
     if (!trailers.id || !trailers.results) {
       return;
     }
-    for (trailer of trailers.results) {
+    for (let trailer of trailers.results) {
       if (trailer.site === 'YouTube') {
         return `https://www.youtube.com/watch?v=${trailer.key}`;
       }
