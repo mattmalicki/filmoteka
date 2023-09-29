@@ -1,15 +1,15 @@
 <div class="backdrop is-hidden" data-modal>
-  <div id="modal" class="modal">
-    <button type="button" class="modal__close-btn" data-modal-close>
-      <svg>
+  <div id="modal-team" class="modal-team">
+    <button type="button" class="modal-team__close-btn" data-modal-close>
+      <svg class="modal-team__close-btn-svg" width="20" height="20">
         <use href="./images/icons.svg#icon-cross"></use>
       </svg>
     </button>
 
-    <div class="container">
-      <h2>Nasz zespół</h2>
-      <ul class="member__list">
-        <div class="member__osier">
+    <div class="modal-team__container">
+      <h2 class="modal-team__title">Nasz zespół</h2>
+      <ul class="member__osier">
+        
           <!-- osoba -->
           <li class="member">
             <img
@@ -89,9 +89,10 @@
               </ul>
             </div>
           </li>
-        </div>
+        
+      </ul>
 
-        <div class="member__sub">
+        <ul class="member__sub">
           <!-- osoba -->
           <li class="member">
             <img
@@ -405,7 +406,7 @@
               </ul>
             </div>
           </li>
-        </div>
+        </ul>
       </ul>
     </div>
   </div>
