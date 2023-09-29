@@ -50,7 +50,6 @@ ul {
     background-clip: text;
     margin: 10px auto;
     font-size: 30px;
-    
 
     @include tablet {
       font-size: 36px;
@@ -61,7 +60,7 @@ ul {
     }
   }
 
-  &__close-btn {
+  &__close--btn {
     position: fixed;
     top: 70px;
     right: 67px;
@@ -69,7 +68,7 @@ ul {
     border: none;
     cursor: pointer;
 
-    &-svg {
+    &--svg {
       fill: rgb(0, 0, 0);
 
       &:hover {
@@ -95,7 +94,7 @@ ul {
     width: auto;
   }
 
-   @include desktop {
+  @include desktop {
     width: auto;
   }
 
@@ -107,6 +106,10 @@ ul {
     display: flex;
     gap: 20px;
     padding: 0;
+
+    @include desktop {
+      margin-top: 30px;
+    }
   }
 
   &__item {
@@ -127,6 +130,7 @@ ul {
 
     @include desktop {
       height: auto;
+      gap: 5px;
     }
   }
 
@@ -157,7 +161,7 @@ ul {
     }
   }
 
-  &__socials-list {
+  &__socials--list {
     display: flex;
     flex-direction: row;
     gap: 2px;
@@ -174,7 +178,7 @@ ul {
     }
   }
 
-  &__socials-link {
+  &__socials--link {
     display: flex;
     border-radius: 50%;
     justify-content: center;
@@ -191,7 +195,7 @@ ul {
     }
   }
 
-  &__socials-icon {
+  &__socials--icon {
     width: 11px;
     height: 11px;
 
@@ -206,15 +210,15 @@ ul {
     }
   }
 
-  &__socials-link > &__socials-icon {
+  &__socials--link > &__socials--icon {
     fill: rgb(119, 118, 118);
   }
 
-  &__socials-link:is(:hover, :focus) {
+  &__socials--link:is(:hover, :focus) {
     background-color: rgb(175, 16, 16);
   }
 
-  &__socials-link:is(:hover, :focus) > &__socials-icon {
+  &__socials--link:is(:hover, :focus) > &__socials--icon {
     fill: rgb(255, 255, 255);
   }
 
