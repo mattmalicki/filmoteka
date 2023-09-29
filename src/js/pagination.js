@@ -32,7 +32,7 @@ pagination.on('afterMove', function (eventData) {
   const endIndex = startIndex + options.itemsPerPage;
 
   if (currentPage > 1) {
-    getPopularMoviesData(startIndex, endIndex);
+    // .ex popularMovies (startIndex, endIndex);
   }
 });
 
