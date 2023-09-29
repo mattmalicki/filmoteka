@@ -1,3 +1,107 @@
-// NIE UZYWAJ WATCH SASS! Pracuj TYLKO na pliku na ktorym masz pracowac! Jesli potrzebujesz zmienic
-//   cos w innym pliku skontaktuj sie z osoba odpowiedzialna za dany plik albo Team Leaderem lub Scrum
-//   Masterem.
+.films {
+  &__container {
+    margin: 0 auto 40px;
+    padding: 20px 20px 0;
+    min-width: 320px;
+    max-width: 320px;
+    @include tablet {
+      padding: 59px 32px 0px;
+      margin-bottom: 61px;
+      max-width: 768px;
+    }
+    @include desktop {
+      padding: 60px 32px 0px;
+      margin-bottom: 61px;
+      max-width: 1280px;
+      padding-top: 60px;
+    }
+  }
+  &__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+    @include tablet {
+      gap: 32px;
+    }
+    @include desktop {
+      gap: 16px;
+    }
+    &-item {
+      display: block;
+      width: 100%;
+      height: 440px;
+      @include tablet {
+        flex-basis: calc((100% - 32px) / 2);
+        height: 495px;
+      }
+      @include desktop {
+        flex-basis: calc((100% - 32px) / 3);
+        height: 634px;
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../images/no-movie.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition-property: transform;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    & h2 {
+      font-weight: 500;
+      margin: 10px 0 0;
+      line-height: 1.33;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #000000;
+      @include tablet {
+        margin-top: 8px;
+      }
+      @include desktop {
+        margin-top: 12px;
+      }
+      @include desktop {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+    }
+    & p {
+      font-weight: 500;
+      margin: 0;
+      font-size: 12px;
+      color: #ff6b08;
+      line-height: 1.33;
+      @include desktop {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+    }
+    & img {
+      margin: 0;
+      width: 280px;
+      height: 398px;
+      border-radius: 5px;
+      @include tablet {
+        width: 336px;
+        height: 455px;
+      }
+      @include desktop {
+        width: 394px;
+        height: 574px;
+      }
+    }
+  }
+}
