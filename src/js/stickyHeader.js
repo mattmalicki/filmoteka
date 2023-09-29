@@ -1,14 +1,36 @@
+var threshold = 100; // ustalamy prog na przewinięcie strony o 100 pikseli
+
 window.addEventListener('scroll', function() {
   var originalHeader = document.querySelector('.header');
   var stickyHeader = document.querySelector('.js-header__sticky');
-  
+
   var originalHeaderRect = originalHeader.getBoundingClientRect();
-  
-  if (originalHeaderRect.bottom < 0) {
+
+  if (originalHeaderRect.bottom < -threshold) { // sprawdzamy, czy przewinięcie jest większe od progu
     stickyHeader.style.display = 'block';
   } else {
     stickyHeader.style.display = 'none';
   }
+});
+
+var logo = document.querySelector('.header__sticky__logo');
+logo.addEventListener('click', function(event) {
+  event.preventDefault();
+  var originalHeader = document.querySelector('.header');
+  var stickyHeader = document.querySelector('.js-header__sticky');
+  
+  stickyHeader.style.display = 'none';
+  window.scrollTo(0, originalHeader.offsetTop);
+});
+
+var homeLink = document.querySelector('.header__sticky__nav--item');
+homeLink.addEventListener('click', function(event) {
+  event.preventDefault();
+  var originalHeader = document.querySelector('.header');
+  var stickyHeader = document.querySelector('.js-header__sticky');
+  
+  stickyHeader.style.display = 'none';
+  window.scrollTo(0, originalHeader.offsetTop);
 });
 
 
