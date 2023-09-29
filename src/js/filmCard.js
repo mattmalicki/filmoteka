@@ -15,7 +15,7 @@ const moviesList = document.querySelector('#movies__list');
 
 export function createCard(array) {
   let cardArrayEl = [];
-  array.forEach(array => {
+  array.forEach(movie => {
     const cardEl = document.createElement('li');
     cardEl.classList.add('movie__item');
     cardEl.dataset.movieId = 'id'; //`${id}`
@@ -23,18 +23,18 @@ export function createCard(array) {
     //cardEl.dataset.genreIds = 'genre_ids'';
     //`${genre_ids}` //getMoviesGenres
 
-    cardArrayEl.push(cardEl);
     cardEl.append(
       addImage(imgURL),
       addMovieTitle(originalTitle),
-      addMovieInfo(genreIds, year, voteAverage),
+      //addMovieInfo(genreIds, year, voteAverage),
     );
-    return cardEl;
+    cardArrayEl.push(cardEl);
+    return cardArrayEl;
   });
   moviesList.append(...cardArrayEl);
 }
 createCard(array);
-////////
+//
 function addImage(imgURL) {
   const imgCont = document.createElement('div');
   imgCont.classList.add('movie__img--container');
@@ -48,7 +48,7 @@ function addImage(imgURL) {
 
   return imgCont;
 }
-//////////
+//
 function addMovieTitle(originalTitle) {
   const divInfo = document.createElement('div');
   divInfo.classList.add('movie__info');
@@ -57,11 +57,12 @@ function addMovieTitle(originalTitle) {
   movieTitle.textContent = originalTitle; // `${original_title}`;
   movieTitle.classList.add('movie__title');
 
-  divInfo.append(movieTitle);
+  addMovieInfo(genreIds, year, voteAverage);
+  divInfo.append(movieTitle, addMovieInfo(genreIds, year, voteAverage));
 
   return divInfo;
 }
-//////////
+//
 function addMovieInfo(genreIds, year, voteAverage) {
   const movieRace = document.createElement('div');
   movieRace.classList.add('movie__race');

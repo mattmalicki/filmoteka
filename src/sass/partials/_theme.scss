@@ -1,10 +1,10 @@
 body {
   background-color: #fafafa;
-  transition: background-color 1s, color 1s;
+  transition: background-color 0.5s, color 0.5s;
 }
 body.dark {
   background: #292c35;
-  transition: background-color 1s, color 1s;
+  transition: background-color 0.5s, color 0.5s;
   .footer {
     background-color: #111;
     &__container--modal {
@@ -18,7 +18,7 @@ body.dark {
 }
 
 .label {
-  background-color: #111;
+  background-color: rgb(66, 15, 4);
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -32,7 +32,7 @@ body.dark {
 }
 
 .label .orb {
-  background-color: #fff;
+  background-color: #161816;
   border-radius: 50%;
   position: absolute;
   top: 2px;
@@ -48,11 +48,11 @@ body.dark {
 }
 
 .fa-moon {
-  color: #f1c40f;
+  color: #101110;
 }
 
 .fa-sun {
-  color: #f39c12;
+  color: #b1ba17;
 }
 /* plik html do motywu ciemnego
  <div>
