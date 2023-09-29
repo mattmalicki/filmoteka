@@ -50,9 +50,14 @@ ul {
     background-clip: text;
     margin: 10px auto;
     font-size: 30px;
+    
 
     @include tablet {
       font-size: 36px;
+    }
+
+    @include desktop {
+      font-size: 40px;
     }
   }
 
@@ -90,6 +95,10 @@ ul {
     width: auto;
   }
 
+   @include desktop {
+    width: auto;
+  }
+
   &:hover {
     transform: scale(1.1); /* Skaluj element o 5% (1.05) podczas hover */
   }
@@ -115,6 +124,10 @@ ul {
     @include tablet {
       height: auto;
     }
+
+    @include desktop {
+      height: auto;
+    }
   }
 
   &__name {
@@ -122,6 +135,10 @@ ul {
 
     @include tablet {
       font-size: 18px;
+    }
+
+    @include desktop {
+      font-size: 22px;
     }
   }
 
@@ -133,6 +150,10 @@ ul {
 
     @include tablet {
       font-size: 17px;
+    }
+
+    @include desktop {
+      font-size: 20px;
     }
   }
 
@@ -147,6 +168,10 @@ ul {
     @include tablet {
       gap: 10px;
     }
+
+    @include desktop {
+      gap: 20px;
+    }
   }
 
   &__socials-link {
@@ -160,6 +185,10 @@ ul {
     @include tablet {
       padding: 12px;
     }
+
+    @include desktop {
+      padding: 12px;
+    }
   }
 
   &__socials-icon {
@@ -169,6 +198,11 @@ ul {
     @include tablet {
       width: 20px;
       height: 20px;
+    }
+
+    @include desktop {
+      width: 25px;
+      height: 25px;
     }
   }
 
