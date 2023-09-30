@@ -1,0 +1,15 @@
+.filter,
+.filter:hover {
+  overflow: scroll;
+  opacity: 1;
+  background-color: blanchedalmond;
+  color: black;
+  transition: opacity 500ms;
+  max-height: 450px;
+
+  & .is-hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 500ms;
+  }
+}
