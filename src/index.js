@@ -1,4 +1,7 @@
 import './sass/main.scss';
-import './js/fetchFromApi';
-import './js/renderFilms';
-import './js/firebase/firebase';
+import './js/header.js';
+import './js/fetchFromApi.js';
+import './js/renderFilms.js';
+//import './js/firebase/firebase.js';
+import './js/firebase/modal-auth.js';
+import './js/firebase/userAuth.js';

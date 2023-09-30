@@ -36,7 +36,10 @@ const scrollHandler = async () => {
     currentPage++;
 
     const genres = await fetchGenres();
-   // const popularMovies = await 'x';
+   // const popMovies = await 'popularMovies';
+   //const movies = popMovies.results.map (movie=> {
+
+   
 
     // (...)
 
