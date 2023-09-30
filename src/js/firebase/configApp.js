@@ -7,6 +7,7 @@ import { initializeApp } from 'firebase/app';
 const firebaseConfig = {
   apiKey: 'AIzaSyAc62HmjLcHUIGChJcMCAg71uFk92arqno',
   authDomain: 'js-team-project-filmoteka-gr02.firebaseapp.com',
+  databaseURL: 'https://js-team-project-filmoteka-gr02-default-rtdb.firebaseio.com/',
   projectId: 'js-team-project-filmoteka-gr02',
   storageBucket: 'js-team-project-filmoteka-gr02.appspot.com',
   messagingSenderId: '776953354651',
