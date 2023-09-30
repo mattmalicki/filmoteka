@@ -1,2 +1,2 @@
-// import './modal-auth';
-// import './userAuth';
+import './modal-auth';
+import './userAuth';
