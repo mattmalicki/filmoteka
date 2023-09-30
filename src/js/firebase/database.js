@@ -58,3 +58,12 @@ export function setMoviesInDB(user) {
       console.log(err);
     });
 }
+
+export function removeFilmFromLocalStorage(key, { id }) {
+  const data = loadStorage(key);
+  if (!data) return;
+
+  const currentFilmsArray = data;
+  const returnNewFilmsArray = currentFilmsArray.filter(item => item.id !== id);
+  saveStorage(key, returnNewFilmsArray);
+}
