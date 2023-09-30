@@ -1,14 +1,29 @@
 <div class="filter is-hidden">
   <div class="filter__container">
+    <button class="filter__button" type="button">X</button>
     <legend class="filter__group">Media type</legend>
     <div class="filter__media">
-      <input type="checkbox" id="movie" value="movie" name="media-type" checked />
-      <label for="media-type">Movie</label>
-      <input type="checkbox" id="tv" value="tv" name="media-type" checked />
-      <label for="media-type">Series</label>
+      <label class="filter__item"
+        ><input
+          id="movie"
+          type="checkbox"
+          value="movie"
+          name="media-type"
+          class="filter__genres-check"
+        />Movie</label
+      >
+      <label class="filter__item"
+        ><input
+          id="tv"
+          type="checkbox"
+          value="tv"
+          name="media-type"
+          class="filter__genres-check"
+        />Series</label
+      >
     </div>
     <legend class="filter__group">Genres</legend>
     <div class="filter__genres"></div>
   </div>
-  <button id="test-filter" type="button">TEST</button>
 </div>
+<button type="button" id="test">test</button>

@@ -1,8 +1,7 @@
-.filter,
-.filter:hover {
+.filter {
+  position: fixed;
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.243);
   color: black;
@@ -10,21 +9,49 @@
   padding: 10px;
   @include tablet {
     background-color: transparent;
-    max-height: 450px;
-    max-width: 300px;
+    max-height: 250px;
+    max-width: 350px;
+    padding: 0;
   }
   @include desktop {
     background-color: transparent;
-    max-height: 450px;
-    max-width: 300px;
+    max-height: 250px;
+    max-width: 350px;
+    padding: 0;
+  }
+  &__container {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid black;
+    margin: 0 auto;
+    background-color: #ffffffbc;
+  }
+  &__button {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+  &__group {
+    margin: 5px 0;
+    font-size: 20px;
+    text-align: center;
+    color: #ac1a1b;
   }
 
-  &__genres {
-    @include flex-center;
+  &__genres,
+  &__media {
+    display: flex;
     gap: 10px;
-    &-item {
-      flex-basis: calc((100% - 30px) / 4);
-    }
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-basis: calc((100% - 10px) / 2);
+    padding-left: 10px;
+    display: flex;
+    gap: 20px;
   }
 
   & .is-hidden {
@@ -32,4 +59,14 @@
     opacity: 0;
     transition: opacity 500ms;
   }
+
+  &:hover {
+    display: block;
+  }
+}
+
+body.dark .filter__container {
+  background-color: #272e34bc;
+  color: white;
+  border: 1px solid white;
 }
