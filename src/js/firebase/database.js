@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './configApp';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
-import { saveStorage } from '../localStorage';
+import { saveStorage, loadStorage } from '../localStorage';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -36,3 +36,25 @@ export function getMoviesFromDB(user) {
 
 }
 
+export function setMoviesInDB(user) {
+  const userWatched = loadStorage('watchedFilms');
+  const userQueue = loadStorage('queueFilms');
+
+  const data = {
+    watched: userWatched,
+    queue: userQueue,
+  };
+
+  console.log(`data: ${data.films}`);
+
+  update(ref(db, `users/${user.uid}`), {
+    films: data,
+  })
+    .then(() => {
+      Notify.success(`Update success`);
+    })
+    .catch(err => {
+      Notify.failure(`Error! The data hasn't been saved in the database`);
+      console.log(err);
+    });
+}
