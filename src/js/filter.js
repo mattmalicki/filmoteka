@@ -4,6 +4,7 @@ import '../sass/partials/_filter.scss';
 async function createChck() {
   const element = document.querySelector('.filter__genres');
   const genresArray = await getAllGenres();
+  console.log(genresArray);
   genresArray.forEach(genre => {
     const genreEl = document.createElement('input');
     const label = document.createElement('label');

@@ -32,7 +32,7 @@ export async function getAllGenres() {
     const tvG = await fetchFromApi({
       requestPath: 'genre/tv/list',
     });
-    const all = movieG.concat(tvG);
+    const all = movieG.genres.concat(tvG.genres);
     return all.filter((item, index) => all.indexOf(item) === index);
   } catch (err) {
     return err;
