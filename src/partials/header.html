@@ -1,9 +1,8 @@
 <header class="header">
   <div class="header__wrapper">
-    
-    <a class="header__logo">
+    <a class="header__logo" href="./index.html">
       <svg class="header__logo--svg" width="24px" height="24px">
-        <use href="./images/icons.svg#icon-film"></use>
+        <use href="./images/icons.svg#icon-logo"></use>
       </svg>
     <p class="header__logo--title">Filmoteka</p>
     </a>
@@ -11,11 +10,32 @@
        <li>
         <a class="header__nav header__nav--list-item header__is-on" href="./index.html">HOME</a>
        </li> 
-       <li">
-        <a class="header__nav header__nav--list-item">MY LIBRARY</a>
+       <li>
+        <a class="header__nav header__nav--list-item" href="./my-library.html">MY LIBRARY</a>
        </li> 
+      <li class="" id="logIn">
+        <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
+      </li>
+      <li class="is-hidden" id="logOut">
+        <button class="btn" type="button">&#128682; LOG OUT</button>
+      </li>
       </ul>
   </div>
+
+
+<!-- THEME -->
+
+<div class="theme">
+  <input type="checkbox" class="checkbox" id="chk" />
+  <label class="label" for="chk">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+    <div class="orb"></div>
+  </label>
+</div>
+
+<!-- THEME END -->
+
     <div class="header__search">
     <form class="header__search-form" id="search-form">
       <input
@@ -32,3 +52,56 @@
     </form>
     </div>
 </header>
+
+<!-- STICKY HEADER -->
+
+<header class="js-header__sticky header__sticky">
+  <div class="header__sticky__container">
+    <a class="header__sticky__logo" href="./index.html">
+      <svg class="header__sticky__logo--svg" width="24px" height="24px">
+        <use href="./images/icons.svg#icon-logo"></use>
+      </svg>
+      <p class="header__sticky__logo--title">Filmoteka</p>
+    </a>
+
+    <form class="header__sticky__search-form">
+
+    <input 
+    class="header__sticky__input" 
+    type="text" 
+    name="searchQuery" 
+    autocomplete="off" 
+    placeholder="Movie search">
+
+    <button class="header__sticky__search-button" type="submit">
+      <svg class="header__sticky__search-icon" width="12px" height="12px">
+        <use href="./images/icons.svg#icon-search"></use>
+      </svg>
+    </button>
+  </form>
+
+  <ul class="header__sticky__nav">
+    <li class="header__sticky__nav--item">
+      <a class="header__sticky__nav header__sticky__nav--item header__sticky__is-on" href="./index.html">HOME</a>
+    </li>
+    <li class="header__sticky__nav--item">
+      <a class="header__sticky__nav">MY LIBRARY</a>
+    </li>
+    
+    <!-- LOG IN LOG OUT -->
+
+    <li class="" id="logIn">
+      <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
+    </li>
+    <li class="is-hidden" id="logOut">
+      <button class="btn" type="button">&#128682; LOG OUT</button>
+    </li>
+
+<!-- LOG IN LOG OUT END -->
+
+  </ul>
+  </div>
+  <script src="./js/stickyHeader.js"></script>
+</header>
+
+<!-- STICKY HEADER END -->
