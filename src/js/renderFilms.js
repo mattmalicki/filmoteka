@@ -2,7 +2,7 @@
 const input = document.querySelector('[name=searchQuery]');
 const btn = document.querySelector('.header__search-button');
 const grid = document.querySelector('.films__grid');
-console.log(input);
+
 const API_KEY = '2b6c5a30539b25d64c2f30ee757140aa';
 let title = '';
 
@@ -30,7 +30,6 @@ async function fetcher() {
 //-------------------- EVENT LISTENERS -----------------
 
 input.addEventListener('input', event => {
-  console.log(event.currentTarget.value);
   title = event.currentTarget.value;
 });
 
@@ -43,13 +42,12 @@ btn.addEventListener('click', event => {
 
 //-------------- RENDER MOVIES GRID --------------
 function renderFilms(response) {
-  console.log(response.results);
   const markup = [...response.results]
     .map(({ id, poster_path, original_title, genre_ids, release_date }) => {
       return `<li id="${id}" class="films__grid-item">
         <a class="films__link">
           <img src="https://image.tmdb.org/t/p/w500${poster_path}"/>
-          <h2>${shortTitle(original_title)}</h2>
+          <h2>${original_title}</h2>
           <p>${getGenres(genre_ids)} | ${getReleaseDate(release_date)}</p>
         </a>
       </li>`;
@@ -90,22 +88,16 @@ function getGenres(genreIds) {
       }
     }
   });
-  if (newGenreArray.length >= 3) {
-    const shortGenres = newGenreArray.slice(0, 3).concat('Other').join(', ');
-    return shortGenres;
-  } else {
+  if (newGenreArray.length === 0) {
     return 'Other';
+  } else if (newGenreArray.length < 3) {
+    return newGenreArray;
+  } else {
+    const shortGenres = newGenreArray.slice(0, 2).concat('Other').join(', ');
+    return shortGenres;
   }
 }
 //----------- GET MOVIE RELEASE YEAR ---------------
 function getReleaseDate(date) {
   return date.split('-')[0];
 }
-
-//---------- GET SHORTING TITLE --------------
-let shortTitle = title => {
-  if (title.length > 30) {
-    return title.slice(0, 30).concat('...');
-  }
-  return title;
-};
