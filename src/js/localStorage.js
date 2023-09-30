@@ -1,4 +1,4 @@
-function saveStorage(key, value) {
+export function saveStorage(key, value) {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -7,7 +7,7 @@ function saveStorage(key, value) {
   }
 }
 
-function loadStorage(key) {
+export function loadStorage(key) {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -15,8 +15,3 @@ function loadStorage(key) {
     console.error('Get state error: ', error.message);
   }
 }
-
-export default {
-  saveStorage,
-  loadStorage,
-};
