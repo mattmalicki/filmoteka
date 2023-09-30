@@ -24,7 +24,7 @@
   },
   "dependencies": {
 
-    "tui-pagination": "^3.4.1"
+    "tui-pagination": "^3.4.1",
 
     "firebase": "^10.4.0",
     "notiflix": "^3.2.6"
