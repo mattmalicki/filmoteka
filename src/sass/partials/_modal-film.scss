@@ -1,3 +1,246 @@
-// NIE UZYWAJ WATCH SASS! Pracuj TYLKO na pliku na ktorym masz pracowac! Jesli potrzebujesz zmienic
-//   cos w innym pliku skontaktuj sie z osoba odpowiedzialna za dany plik albo Team Leaderem lub Scrum
-//   Masterem.
+.backdrop {
+  position: fixed;
+  z-index: 10000;
+  transition-duration: 0.5s;
+  background-color: #000c;
+  @include flex-center;
+  inset: 0;
+  overflow-y: scroll;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-film {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  opacity: 1;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  color: #000;
+  background-color: #fff;
+  margin-top: 20px;
+  margin-bottom: 38px;
+  font-weight: 500;
+  @include tablet {
+    flex-wrap: wrap;
+  }
+  @include desktop {
+    width: 806px;
+    height: 558px;
+    padding: 40px 12px;
+  }
+
+  &__close-btn {
+    width: 30px;
+    height: 30px;
+    color: #000;
+    background: #fff;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+  }
+
+  &__close-btn-svg {
+    width: 30;
+    height: 30;
+    fill: none;
+  }
+
+  &__poster {
+    background-image: url(../images/default-poster-mobile.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+    width: 240px;
+    height: 357px;
+    @include tablet {
+      background-image: url(../images/default-poster-tablet.jpg);
+      width: 264px;
+      height: 374px;
+      margin-right: 68px;
+    }
+    @include desktop {
+      background-image: url(../images/default-poster-desktop.jpg);
+      height: 478px;
+      width: 375px;
+      margin-right: 16px;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  &__info-about {
+    max-width: 391px;
+  }
+
+  &__title {
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 23px;
+    @include tablet {
+      max-width: 264px;
+      margin-bottom: 20px;
+    }
+    @include desktop {
+      font-size: 30px;
+      line-height: 35px;
+    }
+  }
+
+  &__info {
+    margin-bottom: 20px;
+    display: flex;
+  }
+
+  &__info-name {
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+  }
+
+  &__about {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  &__about-text {
+    max-height: 210px;
+    width: 240px;
+    color: #000;
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: auto;
+    @include tablet {
+      width: 264px;
+    }
+    @include desktop {
+      width: 391px;
+      padding-right: 12px;
+    }
+  }
+
+  &__btn-list {
+    flex-wrap: nowrap;
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  &__btn-item {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__btn {
+    text-align: center;
+    width: 110px;
+    height: 44px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-right: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    @include tablet {
+      width: 125px;
+    }
+    @include desktop {
+      width: 136px;
+    }
+  }
+}
+
+.info-name {
+  color: #8c8c8c;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info-value {
+  color: #000;
+  margin-bottom: 8px;
+  margin-left: 39px;
+  font-size: 12px;
+  line-height: 1.4;
+  display: flex;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.vote {
+  color: #fff;
+  background-color: #ff6b01;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2x) {
+  .modal-film__poster {
+    background-image: url(../images/default-poster-mobile-2x.jpg);
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2x) {
+  .modal-film__poster {
+    background-image: url(../images/default-poster-tablet-2x.jpg);
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2x) {
+  .modal-film__poster {
+    background-image: url(../images/default-poster-desktop-2x.jpg);
+  }
+}
