@@ -33,7 +33,6 @@ export function getMoviesFromDB(user) {
       }
     }
   });
-
 }
 
 export function setMoviesInDB(user) {
@@ -66,4 +65,20 @@ export function removeFilmFromLocalStorage(key, { id }) {
   const currentFilmsArray = data;
   const returnNewFilmsArray = currentFilmsArray.filter(item => item.id !== id);
   saveStorage(key, returnNewFilmsArray);
+}
+
+export function addFilmToLocalStorage(key, film) {
+  const data = loadStorage(key);
+  const currentFilmsArray = [];
+  console.log(`data: ${data}`);
+  if (data) {
+    currentFilmsArray.push(...data);
+  }
+  const isInclude = currentFilmsArray.some(({ id }) => id === film.id);
+  if (isInclude) {
+    Notify.failure(`Error! A movie with the specified {id} already exists in localStorage!`);
+    return;
+  }
+  currentFilmsArray.push(film);
+  saveStorage(key, currentFilmsArray);
 }
