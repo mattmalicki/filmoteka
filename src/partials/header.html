@@ -9,34 +9,33 @@
     <ul class="header__nav header__nav--list">
       <li>
         <a class="header__nav header__nav--list-item header__is-on" href="./index.html">HOME</a>
-       </li> 
-       <li>
+      </li>
+      <li>
         <a class="header__nav header__nav--list-item" href="./my-library.html">MY LIBRARY</a>
-       </li> 
+      </li>
       <li class="" id="logIn">
         <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
       </li>
       <li class="is-hidden" id="logOut">
         <button class="btn" type="button">&#128682; LOG OUT</button>
       </li>
-      </ul>
+    </ul>
   </div>
 
+  <!-- THEME -->
 
-<!-- THEME -->
+  <div class="theme">
+    <input type="checkbox" class="checkbox" id="chk" />
+    <label class="label" for="chk">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+      <div class="orb"></div>
+    </label>
+  </div>
 
-<div class="theme">
-  <input type="checkbox" class="checkbox" id="chk" />
-  <label class="label" for="chk">
-    <i class="fas fa-moon"></i>
-    <i class="fas fa-sun"></i>
-    <div class="orb"></div>
-  </label>
-</div>
+  <!-- THEME END -->
 
-<!-- THEME END -->
-
-    <div class="header__search">
+  <div class="header__search">
     <form class="header__search-form" id="search-form">
       <input type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
       <button class="header__search-button" type="submit">
@@ -44,8 +43,13 @@
           <use href="./images/icons.svg#icon-search"></use>
         </svg>
       </button>
+      <button class="filter__button-open" id="filter-open" type="button">
+        <svg class="header__search-icon" width="12px" height="12px">
+          <use href="./images/icons.svg#icon-filter"></use>
+        </svg>
+      </button>
     </form>
-    </div>
+  </div>
 </header>
 
 <!-- STICKY HEADER -->
@@ -60,41 +64,44 @@
     </a>
 
     <form class="header__sticky__search-form">
+      <input
+        class="header__sticky__input"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
 
-    <input 
-    class="header__sticky__input" 
-    type="text" 
-    name="searchQuery" 
-    autocomplete="off" 
-    placeholder="Movie search">
+      <button class="header__sticky__search-button" type="submit">
+        <svg class="header__sticky__search-icon" width="12px" height="12px">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
 
-    <button class="header__sticky__search-button" type="submit">
-      <svg class="header__sticky__search-icon" width="12px" height="12px">
-        <use href="./images/icons.svg#icon-search"></use>
-      </svg>
-    </button>
-  </form>
+    <ul class="header__sticky__nav">
+      <li class="header__sticky__nav--item">
+        <a
+          class="header__sticky__nav header__sticky__nav--item header__sticky__is-on"
+          href="./index.html"
+          >HOME</a
+        >
+      </li>
+      <li class="header__sticky__nav--item">
+        <a class="header__sticky__nav">MY LIBRARY</a>
+      </li>
 
-  <ul class="header__sticky__nav">
-    <li class="header__sticky__nav--item">
-      <a class="header__sticky__nav header__sticky__nav--item header__sticky__is-on" href="./index.html">HOME</a>
-    </li>
-    <li class="header__sticky__nav--item">
-      <a class="header__sticky__nav">MY LIBRARY</a>
-    </li>
-    
-    <!-- LOG IN LOG OUT -->
+      <!-- LOG IN LOG OUT -->
 
-    <li class="" id="logIn">
-      <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
-    </li>
-    <li class="is-hidden" id="logOut">
-      <button class="btn" type="button">&#128682; LOG OUT</button>
-    </li>
+      <li class="" id="logIn">
+        <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
+      </li>
+      <li class="is-hidden" id="logOut">
+        <button class="btn" type="button">&#128682; LOG OUT</button>
+      </li>
 
-<!-- LOG IN LOG OUT END -->
-
-  </ul>
+      <!-- LOG IN LOG OUT END -->
+    </ul>
   </div>
   <script src="./js/stickyHeader.js"></script>
 </header>
