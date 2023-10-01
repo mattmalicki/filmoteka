@@ -125,13 +125,15 @@
 
     &__search {
         width: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        align-items: center;
+            justify-content: center;
         
         &-form {
             width: 280px;
-            margin-left: auto;
-            margin-right: auto;
             position: relative;
-            
 
             @include tablet {
                 width: 330px;
@@ -170,6 +172,7 @@
             position: absolute;
             top: 0;
             right: 0;
+            margin-left: 10px;
         }
 
         &-icon {
@@ -178,7 +181,9 @@
             fill: #fff;
         }
     }
-  
+  .filter__button-open {
+      margin-left: 10px;
+  }
 }
 
 a {
@@ -231,9 +236,10 @@ ul {
 
   }
 
+
 //   STICKY HEADER
 
-.js-header__sticky {
+body .js-header__sticky {
     display: none;
 }
 
@@ -440,3 +446,4 @@ ul {
 .header__sticky__nav:hover {
     color: orange;
 }
+
