@@ -29,10 +29,28 @@
     background-color: #ffffffbc;
   }
   &__button {
-    position: fixed;
-    right: 0;
-    top: 0;
+    position: absolute;
+    right: 10;
+    top: 10;
+    background-color: transparent;
+    border: 0;
+    border-radius: 10px;
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.106);
+    }
+    &:active {
+      background-color: rgba(0, 0, 0, 0.106);
+      box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.75) inset;
+    }
+    @include tablet {
+      display: none;
+    }
+    @include desktop {
+      display: none;
+    }
   }
+
   &__group {
     margin: 5px 0;
     font-size: 20px;

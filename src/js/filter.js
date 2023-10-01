@@ -4,10 +4,10 @@ createChck();
 const filter = document.querySelector('.filter');
 
 const headerBttn = document.querySelector('.header__search-button');
-const test = document.querySelector('#test');
+const mobileClose = document.querySelector('.filter__button');
 
 headerBttn.addEventListener('mouseover', showFilters);
-test.addEventListener('click', showFilters);
+mobileClose.addEventListener('click', hideFilters);
 
 headerBttn.addEventListener('mouseleave', hideFilters);
 
@@ -33,7 +33,7 @@ async function createChck() {
 
 function showFilters(event) {
   if (isMobile()) {
-    filter.style.top = `0px`;
+    filter.style.top = `230px`;
     filter.style.left = `0px`;
   } else {
     filter.style.top = `${event.clientY}px`;
@@ -43,21 +43,28 @@ function showFilters(event) {
 }
 
 function hideFilters() {
-  setTimeout(() => {
-    filter.classList.add('is-hidden');
-  }, 500);
+  isMobile()
+    ? filter.classList.add('is-hidden')
+    : setTimeout(() => {
+        filter.classList.add('is-hidden');
+      }, 500);
 }
 
 export function getFilter() {
   const genres = document.querySelectorAll('[name="genres"]');
-  const types = document.querySelectorAll('[name="media-type"]');
-  const type = [];
+  const media = document.querySelectorAll('[name="media-type"]');
+  const filterGenres = [];
   genres.forEach(el => {
     el.checked ? type.push(el.id) : null;
   });
-  console.log(type);
+  const filterMedia = [];
+  media.forEach(el => {
+    el.checked ? type.push(el.id) : null;
+  });
+  console.log({ filterMedia, filterGenres });
+  return { filterMedia, filterGenres };
 }
 
 function isMobile() {
-  return false;
+  return window.matchMedia('(max-width: 767.99px)').matches;
 }
