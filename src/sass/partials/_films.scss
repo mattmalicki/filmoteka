@@ -65,17 +65,21 @@
       margin: 10px 0 0;
       line-height: 1.33;
       font-size: 12px;
+      overflow: hidden;
+      width: 280px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       text-transform: uppercase;
       color: #000000;
       @include tablet {
         margin-top: 8px;
+        width: 336px;
       }
       @include desktop {
         margin-top: 12px;
-      }
-      @include desktop {
         font-size: 20px;
         line-height: 1.2;
+        width: 394px;
       }
     }
     & p {
