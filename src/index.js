@@ -5,3 +5,4 @@ import './js/renderFilms.js';
 //import './js/firebase/firebase.js';
 import './js/firebase/modal-auth.js';
 import './js/firebase/userAuth.js';
+import './js/modal-movie.js';

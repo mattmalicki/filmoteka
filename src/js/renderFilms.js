@@ -6,7 +6,7 @@ const grid = document.querySelector('.films__grid');
 const API_KEY = '2b6c5a30539b25d64c2f30ee757140aa';
 let title = '';
 
-const options = {
+export const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
@@ -15,7 +15,7 @@ const options = {
   },
 };
 //-------------------MOVIES FETCH----------------
-async function fetcher() {
+export async function fetcher() {
   return fetch(
     `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1`,
     options,
@@ -41,7 +41,8 @@ btn.addEventListener('click', event => {
 });
 
 //-------------- RENDER MOVIES GRID --------------
-function renderFilms(response) {
+export async function renderFilms(response) {
+  console.log(response);
   const markup = [...response.results]
     .map(({ id, poster_path, original_title, genre_ids, release_date }) => {
       return `<li id="${id}" class="films__grid-item">
@@ -57,7 +58,7 @@ function renderFilms(response) {
 }
 
 //------------- GET GENRES ----------------
-const genres = [
+export const genres = [
   { id: 28, name: 'Action' },
   { id: 12, name: 'Adventure' },
   { id: 16, name: 'Animation' },
@@ -79,7 +80,7 @@ const genres = [
   { id: 37, name: 'Western' },
 ];
 
-function getGenres(genreIds) {
+export function getGenres(genreIds) {
   const newGenreArray = [];
   genres.map(genre => {
     for (const id of genreIds) {
