@@ -3,13 +3,13 @@ import { getAllGenres } from './getGenres';
 createChck();
 const filter = document.querySelector('.filter');
 
-const headerBttn = document.querySelector('.header__search-button');
+const filterOpen = document.querySelector('#filter-open');
 const mobileClose = document.querySelector('.filter__button');
 
-headerBttn.addEventListener('mouseover', showFilters);
+filterOpen.addEventListener('mouseover', showFilters);
 mobileClose.addEventListener('click', hideFilters);
 
-headerBttn.addEventListener('mouseleave', hideFilters);
+filterOpen.addEventListener('mouseleave', hideFilters);
 
 async function createChck() {
   const element = document.querySelector('.filter__genres');
