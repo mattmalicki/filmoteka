@@ -4,3 +4,4 @@ import './js/fetchFromApi.js';
 import './js/renderFilms.js';
 import './js/popularMovies';
 import './js/firebase/firebase.js';
+import './js/filmCard';
