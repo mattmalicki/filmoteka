@@ -10,9 +10,9 @@ export async function createCard(filmsArray) {
     cardEl.classList.add('films__grid-item');
     const cardLink = document.createElement('a');
     cardLink.dataset.movieId = movie.id;
-    cardLink.dataset.mediaType = movie.mediaType;
-
-    cardEl.append(cardLink, addAll(movie, genres));
+    cardLink.dataset.mediaType = movie.media_type;
+    cardLink.append(...addAll(movie, genres));
+    cardEl.append(cardLink);
     cardArrayEl.push(cardEl);
   });
   return cardArrayEl;
@@ -21,7 +21,7 @@ export async function createCard(filmsArray) {
 //
 function addAll(obj, genres) {
   const image = document.createElement('img');
-  image.src = IMG_PATH + obj.poster_path;
+  obj.poster_path ? (image.src = IMG_PATH + obj.poster_path) : null;
   image.classList.add('films__image');
 
   const title = document.createElement('p');
@@ -30,7 +30,7 @@ function addAll(obj, genres) {
 
   const info = document.createElement('p');
   info.classList.add('films__info');
-  info.textContent = `${addGenres(genres, obj.genres)} | ${getReleaseDate(obj.release_date)}`;
+  info.textContent = `${addGenres(genres, obj.genre_ids)} | ${getReleaseDate(obj.release_date)}`;
   return [image, title, info];
 }
 
@@ -44,5 +44,5 @@ function addGenres(genresApi, genresArray) {
 }
 
 function getReleaseDate(date) {
-  return date.split('-')[0];
+  return !date ? null : date.split('-')[0];
 }

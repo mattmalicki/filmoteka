@@ -55,11 +55,11 @@ export function getFilter() {
   const media = document.querySelectorAll('[name="media-type"]');
   const filterGenres = [];
   genres.forEach(el => {
-    el.checked ? type.push(el.id) : null;
+    el.checked ? filterGenres.push(el.id) : null;
   });
   const filterMedia = [];
   media.forEach(el => {
-    el.checked ? type.push(el.id) : null;
+    el.checked ? filterMedia.push(el.id) : null;
   });
   console.log({ filterMedia, filterGenres });
   return { filterMedia, filterGenres };

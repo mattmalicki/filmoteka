@@ -15,7 +15,7 @@ async function showFilms(event) {
   const filters = getFilter();
   const keyname = inputEl.value;
   if (keyname === '') {
-    if (filters.filterMedia.length === 2) {
+    if (filters.filterMedia.length === 2 || filters.filterMedia.length === 0) {
       const movies = await fetchAll(page);
       listEl.append(createCard(movies));
     }
