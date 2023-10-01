@@ -7,8 +7,13 @@ import {
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './configApp';
+import { getMoviesFromDB, setMoviesInDB } from './database';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
+import { loadStorage, saveStorage, removeStorage } from '../localStorage';
+import { ref, set } from 'firebase/database';
+import { db } from './database';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -19,7 +24,7 @@ const button = document.querySelector('#form-send');
 const logIn = document.querySelector('#logIn');
 const logOut = document.querySelector('#logOut');
 
-if (localStorage.getItem('userSession')) {
+if (loadStorage('user')) {
   logOut.classList.remove('is-hidden');
   logIn.classList.add('is-hidden');
 }
@@ -55,12 +60,25 @@ function registerUser(email, password) {
     return;
   }
   createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
+    .then(userCredential => {
+      user = userCredential.user;
       sendEmailVerification(auth.currentUser).then(() => {
         // Email verification sent!
         Notify.success(`Confirm your e-mail address to activate your account.`);
       });
-      localStorage.setItem('userSession', 'true');
+
+      saveStorage('user', user);
+
+      set(ref(db, `users/${user.uid}`), {
+        email: email,
+      })
+        .then(() => {
+          // Data saved successfully!
+          Notify.success(`Hello ${user.email}!`);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     })
     .catch(error => {
       const errorCode = error.code;
@@ -98,7 +116,9 @@ function loginUser(email, password) {
         console.log(`emailVerified: ${user.emailVerified}`);
       }
 
-      localStorage.setItem('userSession', 'true');
+      saveStorage('user', user);
+      Notify.success('Welcome!');
+      getMoviesFromDB(user);
     })
     .catch(error => {
       console.log(error);
@@ -109,7 +129,9 @@ function loginUser(email, password) {
 function logout() {
   const user = auth.currentUser;
   signOut(auth).then(() => {
-    localStorage.removeItem('userSession');
+    removeStorage('user');
+    removeStorage('watchedFilms');
+    removeStorage('queueFilms');
     location.reload();
   });
   alert('You are logged out');
