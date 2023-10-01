@@ -63,7 +63,7 @@
   }
 
   &__poster {
-    background-image: url(../images/default-poster-mobile.jpg);
+    background-image: url(../images/no-movie.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 5px;
@@ -72,13 +72,13 @@
     width: 240px;
     height: 357px;
     @include tablet {
-      background-image: url(../images/default-poster-tablet.jpg);
+      background-image: url(../images/no-movie.jpg);
       width: 264px;
       height: 374px;
       margin-right: 68px;
     }
     @include desktop {
-      background-image: url(../images/default-poster-desktop.jpg);
+      background-image: url(../images/no-movie.jpg);
       height: 478px;
       width: 375px;
       margin-right: 16px;
@@ -218,29 +218,4 @@
   border-radius: 5px;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-@media (min-device-pixel-ratio: 2),
-  (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2x) {
-  .modal-film__poster {
-    background-image: url(../images/default-poster-mobile-2x.jpg);
-  }
-}
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
-  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-  screen and (min-width: 768px) and (min-resolution: 192dpi),
-  screen and (min-width: 768px) and (min-resolution: 2x) {
-  .modal-film__poster {
-    background-image: url(../images/default-poster-tablet-2x.jpg);
-  }
-}
-@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
-  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
-  screen and (min-width: 1280px) and (min-resolution: 192dpi),
-  screen and (min-width: 1280px) and (min-resolution: 2x) {
-  .modal-film__poster {
-    background-image: url(../images/default-poster-desktop-2x.jpg);
-  }
 }
