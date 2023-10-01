@@ -15,3 +15,11 @@ export function loadStorage(key) {
     console.error('Get state error: ', error.message);
   }
 }
+
+export function removeStorage(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.error('Remove state error: ', error.message);
+    }
+  };
