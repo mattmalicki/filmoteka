@@ -5,7 +5,7 @@ ul {
 .team-backdrop {
   display: flex;
   justify-content: center;
-  padding: 80px 40px 300px;
+  padding: 60px 10px 200px 10px;
   position: fixed;
   inset: 0;
   width: 100%;
@@ -22,7 +22,7 @@ ul {
   }
 
   @include desktop {
-    padding: 8%;
+    padding: 5%;
   }
 }
 
@@ -48,11 +48,13 @@ ul {
 
   @include tablet {
     padding: 1%;
-    width: calc(100% - 30%);
+    width: calc(100% - 15%);
     height: calc(100% - 40%);
   }
   @include desktop {
     padding: 1%;
+    width: calc(100% - 50%);
+    height: calc(100% - 30%);
   }
 
   &__container {
@@ -68,14 +70,14 @@ ul {
     background-image: linear-gradient(to right, #ff0000, #000000);
     background-clip: text;
     margin: 10px auto;
-    font-size: 30px;
+    font-size: 22px;
 
     @include tablet {
-      font-size: 36px;
+      font-size: 30px;
     }
 
     @include desktop {
-      font-size: 50px;
+      font-size: 40px;
     }
   }
 
@@ -104,7 +106,6 @@ ul {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
       0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 4px 4px;
-    border: 0 solid var(--card-box-border-color);
     text-align: center;
     width: auto;
     transition: transform 0.6s ease;
@@ -119,17 +120,17 @@ ul {
     }
 
     & > img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
 
       @include tablet {
-        width: 200px;
-        height: 200px;
+        width: 115px;
+        height: 115px;
       }
 
       @include desktop {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
       }
     }
 
@@ -158,15 +159,15 @@ ul {
     }
 
     &__name {
-      font-size: 55%;
+      font-size: 35%;
       margin-bottom: 3%;
 
       @include tablet {
-        font-size: 100%;
+        font-size: 60%;
       }
 
       @include desktop {
-        font-size: 140%;
+        font-size: 80%;
       }
     }
 
@@ -174,31 +175,34 @@ ul {
       color: darkblue;
       font-weight: bold;
       display: block;
-      font-size: 50%;
+      font-size: 35%;
 
       @include tablet {
-        font-size: 90%;
+        font-size: 65%;
       }
 
       @include desktop {
-        font-size: 130%;
+        font-size: 80%;
       }
     }
 
     &__socials--list {
       display: flex;
       flex-direction: row;
-      gap: 10%;
+      gap: 6%;
       justify-content: center;
       align-items: center;
-      padding: 3%;
+      padding: 2%;
+      margin-top: 2%;
 
       @include tablet {
-        padding: 10%;
+        padding: 2%;
+        gap: 2%;
       }
 
       @include desktop {
         padding: 3%;
+        gap: 2%;
       }
     }
 
@@ -207,30 +211,30 @@ ul {
       border-radius: 50%;
       justify-content: center;
       align-items: center;
-      padding: 6px;
+      padding: 3px;
       transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
       @include tablet {
-        padding: 12px;
+        padding: 8px;
       }
 
       @include desktop {
-        padding: 20px;
+        padding: 10px;
       }
     }
 
     &__socials--icon {
-      width: 11px;
-      height: 11px;
+      width: 9px;
+      height: 9px;
 
       @include tablet {
-        width: 20px;
-        height: 20px;
+        width: 11px;
+        height: 11px;
       }
 
       @include desktop {
-        width: 25px;
-        height: 25px;
+        width: 15px;
+        height: 15px;
       }
     }
 
@@ -248,12 +252,12 @@ ul {
 
     &__sub {
       @include flex-center;
-      gap: 10%;
+      gap: 2%;
       flex-wrap: wrap;
       padding: 0;
 
       @include desktop {
-        gap: 10%;
+        gap: 5%;
         margin-top: 2%;
       }
     }
