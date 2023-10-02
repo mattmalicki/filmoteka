@@ -5,8 +5,8 @@ const iconDown = toggleButton.querySelector('.icon-circle-down');
 const goitStudentsLink = document.querySelector('.footer__container--modal');
 
 // Funkcja do otwierania modala
-function openModal() {
-  modal.classList.remove('is-hidden'); // Usuń klasę is-hidden, aby pokazać modal
+function openModalTeam() {
+  modalTeam.classList.remove('is-hidden'); // Usuń klasę is-hidden, aby pokazać modal
 }
 
 function toggleFooter() {
@@ -22,5 +22,5 @@ function toggleFooter() {
     toggleButton.style.bottom = '15px'; // Domyślna pozycja przycisku
   }
 }
-goitStudentsLink.addEventListener('click', openModal);
+goitStudentsLink.addEventListener('click', openModalTeam);
 toggleButton.addEventListener('click', toggleFooter);

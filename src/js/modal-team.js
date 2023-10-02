@@ -1,20 +1,20 @@
-const modal = document.querySelector('[data-modal]');
-const closeModalButton = modal.querySelector('[data-modal-close]');
+const modalTeam = document.querySelector('[data-modalTeam]');
+const closeModalTeamButton = modal.querySelector('[data-modalTeam-close]');
 const backdrop = modal.querySelector('.backdrop');
 
-function closeModal() {
-  modal.classList.add('is-hidden'); // Dodaj klasę is-hidden, aby ukryć modal
+function closeModalTeam() {
+  modalTeam.classList.add('is-hidden'); // Dodaj klasę is-hidden, aby ukryć modal
 }
-closeModalButton.addEventListener('click', closeModal);
+closeModalTeamButton.addEventListener('click', closeModalTeam);
 
 backdrop.addEventListener('click', event => {
   if (event.target === backdrop) {
-    closeModal();
+    closeModalTeam();
   }
 });
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
-    closeModal();
+    closeModalTeam();
   }
 });
