@@ -33,7 +33,6 @@ function addInfo(obj, genres) {
 
   const title = document.createElement('p');
   title.classList.add('films__info-title');
-  console.log(obj);
   !obj.title ? (title.textContent = obj.name) : (title.textContent = obj.title);
 
   const restInfo = document.createElement('span');
