@@ -1,0 +1,49 @@
+
+// lOADING SPINNER ANIMATION FROM:
+// https://codepen.io/pozda/pen/XxoyKe
+
+@import url('https://fonts.googleapis.com/css?family=Anton');
+$color-primary: #1e1e1e;
+$color-secondary: #F5F1ED;
+$font: Anton, sans-serif;
+
+.scroll-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    gap: 50px
+}
+
+.filmstrip-loader {
+    &__text {
+        margin: 5px auto;
+        color: $color-primary;    
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: $font;
+    }
+    &__filmstrip {
+        position: relative;
+        width: 56px;
+        height: 70px;
+        background: $color-primary;
+        z-index: -1;
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            height: 120%;
+            border-left: 5px dashed $color-secondary;
+            animation: roll 20ms infinite;
+        }
+        &:before {left: 5px;}
+        &:after {right: 5px;}
+        
+    }
+}
+
+@keyframes roll {
+    0% {top: 0px;}
+    100% {top: -15px;}
+}

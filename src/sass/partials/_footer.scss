@@ -9,27 +9,36 @@
   left: 0;
   right: 0;
   @include flex-center;
+  max-height: 100px;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+  &.active {
+    max-height: 100px;
+    opacity: 1;
+  }
+
+  @include tablet {
+    height: 79px;
+  }
+
+  @include desktop {
+    height: 77px;
+  }
 
   &__container {
     display: flex;
-    padding: 29px 0;
+    padding: 31.5px 0;
     flex-wrap: wrap;
-    gap: 5px;
     justify-content: center;
 
-    @include tablet {
-      padding: 30px 0;
-    }
-
-    @include desktop {
-      padding: 29px 0;
-    }
-
     & p {
-      padding-right: 5px;
       color: #545454;
       font-size: 14px;
       font-weight: 400;
+      margin: 0 3px;
+      line-height: 1.72;
 
       @include tablet {
         font-size: 16px;
@@ -40,8 +49,10 @@
       }
     }
 
-    & p:not(:last-child) {
+    & p:first-child,
+    p:nth-child(2) {
       border-right: 1px solid black;
+      padding-right: 5px;
     }
 
     &--modal {
@@ -50,4 +61,33 @@
       }
     }
   }
+}
+
+.hidden {
+  display: none;
+}
+
+// button
+
+#toggle-footer {
+  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.678), rgba(0, 0, 0, 0.822));
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  padding: 15px;
+  position: absolute;
+  bottom: 15px;
+  left: 25px;
+  overflow: hidden;
+  z-index: 2;
+
+  &.open {
+    display: block;
+  }
+}
+
+svg {
+  fill: rgb(255, 255, 255);
 }
