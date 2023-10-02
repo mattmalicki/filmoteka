@@ -22,7 +22,7 @@ function addImage(imgUrl) {
   imageCont.classList.add('films__image');
   const img = document.createElement('img');
   img.classList.add('films__image-img');
-  imgUrl ? (img.src = IMG_PATH + imgUrl) : null;
+  imgUrl ? (img.src = IMG_PATH + imgUrl) : (img.src = NO_POSTER);
   imageCont.append(img);
   return imageCont;
 }
