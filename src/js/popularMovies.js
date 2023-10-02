@@ -1,4 +1,5 @@
 // FT-07 Zaimplementować przesyłanie popularnych filmów na główną (pierwszą) stronę
+import { loaderToggle } from './loader';
 
 const grid = document.querySelector('.films__grid');
 let title = '';
@@ -27,11 +28,14 @@ async function fetchPopular() {
 
 
 async function renderPopularMovies() {
+  loaderToggle();
   try {
     const response = await fetchPopular();
     renderPopular(response);
   } catch (error) {
     console.error('Error rendering popular movies:', error);
+  } finally {
+    setTimeout(() => loaderToggle(), 500);
   }
 } // funkcja renderująca
 

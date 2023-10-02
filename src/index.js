@@ -3,6 +3,7 @@ import './js/header.js';
 import './js/fetchFromApi.js';
 import './js/renderFilms.js';
 import './js/popularMovies';
+import './js/loader.js';
 import './js/firebase/firebase.js';
 import './js/filmCard';
 import './js/modalFilm';
