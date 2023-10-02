@@ -22,7 +22,7 @@ ul {
   }
 
   @include desktop {
-    padding: 8%;
+    padding: 1%;
   }
 }
 
@@ -37,7 +37,6 @@ ul {
   position: relative;
   padding: 3%;
   min-width: 320px;
-
   overflow: auto;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.822);
@@ -116,7 +115,18 @@ ul {
     }
 
     & > img {
-      width: 100%;
+      width: 100px;
+      height: 100px;
+
+      @include tablet {
+        width: 200px;
+        height: 200px;
+      }
+
+      @include desktop {
+        width: 250px;
+        height: 250px;
+      }
     }
 
     &:hover {
@@ -174,7 +184,7 @@ ul {
     &__socials--list {
       display: flex;
       flex-direction: row;
-      gap: 15%;
+      gap: 10%;
       justify-content: center;
       align-items: center;
       padding: 3%;
