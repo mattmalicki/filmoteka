@@ -1,12 +1,10 @@
-var threshold = 100; // ustalamy prog na przewinięcie strony o 100 pikseli
-
 window.addEventListener('scroll', function() {
   var originalHeader = document.querySelector('.header');
   var stickyHeader = document.querySelector('.js-header__sticky');
 
   var originalHeaderRect = originalHeader.getBoundingClientRect();
 
-  if (originalHeaderRect.bottom < -threshold) { // sprawdzamy, czy przewinięcie jest większe od progu
+  if (originalHeaderRect.bottom < 0) {
     stickyHeader.style.display = 'block';
   } else {
     stickyHeader.style.display = 'none';
@@ -14,8 +12,7 @@ window.addEventListener('scroll', function() {
 });
 
 var logo = document.querySelector('.header__sticky__logo');
-logo.addEventListener('click', function(event) {
-  event.preventDefault();
+logo.addEventListener('click', function() {
   var originalHeader = document.querySelector('.header');
   var stickyHeader = document.querySelector('.js-header__sticky');
   
@@ -23,9 +20,8 @@ logo.addEventListener('click', function(event) {
   window.scrollTo(0, originalHeader.offsetTop);
 });
 
-var homeLink = document.querySelector('.header__sticky__nav--item');
-homeLink.addEventListener('click', function(event) {
-  event.preventDefault();
+var homeLink = document.querySelector('.header__sticky__nav--itemn');
+homeLink.addEventListener('click', function() {
   var originalHeader = document.querySelector('.header');
   var stickyHeader = document.querySelector('.js-header__sticky');
   
