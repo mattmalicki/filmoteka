@@ -53,3 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('keydown', handleEscapeKey);
 });
+
+const modalFilm = document.querySelector('[data-modal]');
+const closeButton = document.querySelector('[data-modal-close]');
+
+function closeModal() {
+  modalFilm.classList.toggle('is-hidden');
+}

@@ -8,32 +8,34 @@
     <div class="modal-film__poster" id="movie-poster">
       <img class="modal-film__img" src="./images/no-movie.jpg" alt="title" />
     </div>
-    <div class="modal-film__info-about">
-      <h1 class="modal-film__title" id="movie-title">Title</h1>
-      <div class="modal-film__info">
-        <div class="modal-film__info-name">
+    <div class="modal-film__about">
+      <h1 class="modal-film__about-title" id="movie-title">Title</h1>
+      <div class="modal-film__about-info">
+        <div class="modal-film__about-names">
           <p class="info-name">Vote / Votes</p>
           <p class="info-name">Popularity</p>
           <p class="info-name">Original Title</p>
           <p class="info-name">Genre</p>
         </div>
-        <div>
-          <p class="info-value">
-            <span class="vote" id="movie-vote">vote</span>
-            <span id="movie-votes">votes</span>
+        <div class="modal-film__about-values">
+          <p class="modal-film__about-values--votes">
+            <span class="modal-film__about-values--avrg" id="movie-vote-avrg">vote</span>/
+            <span id="movie-vote-all">votes</span>
           </p>
           <p class="info-value" id="movie-popularity">number</p>
-          <p class="info-value" id="movie-original-title">original-title</p>
+          <p class="modal-film__about-values--title" id="movie-original-title">original-title</p>
           <p class="info-value" id="movie-genres">genres</p>
         </div>
       </div>
-      <h2 class="modal-film__about">About</h2>
-      <p class="modal-film__about-text" id="movie-description">Lorem</p>
-      <ul class="modal-film__btn-list">
-        <li class="modal-film__btn-item">
+      <div class="modal-film__about-description">
+        <h2 class="modal-film__about-description--header">About</h2>
+        <p class="modal-film__about-description--text" id="movie-description">Lorem</p>
+      </div>
+      <ul class="modal-film__btns-list">
+        <li class="modal-film__btns-list-item">
           <button class="modal-film__btn" type="button">ADD TO WATCHED</button>
         </li>
-        <li class="modal-film__btn-item">
+        <li class="modal-film__btns-list-item">
           <button class="modal-film__btn" type="button">ADD TO QUEUE</button>
         </li>
       </ul>
