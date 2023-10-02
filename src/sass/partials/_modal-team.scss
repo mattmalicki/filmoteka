@@ -5,7 +5,7 @@ ul {
 .team-backdrop {
   display: flex;
   justify-content: center;
-  padding: 13% 8%;
+  padding: 80px 40px 300px;
   position: fixed;
   inset: 0;
   width: 100%;
@@ -22,7 +22,7 @@ ul {
   }
 
   @include desktop {
-    padding: 1%;
+    padding: 8%;
   }
 }
 
@@ -37,6 +37,8 @@ ul {
   position: relative;
   padding: 3%;
   min-width: 320px;
+  width: calc(100% - 50%);
+  height: calc(100% - 20%);
   overflow: auto;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.822);
@@ -46,6 +48,8 @@ ul {
 
   @include tablet {
     padding: 1%;
+    width: calc(100% - 30%);
+    height: calc(100% - 40%);
   }
   @include desktop {
     padding: 1%;
