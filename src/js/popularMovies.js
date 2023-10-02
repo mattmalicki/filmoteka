@@ -8,7 +8,7 @@ const options = {
   headers: {
     accept: 'application/json',
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZmEwYTgwNDZiYWRmMDlmOGM2MWVhOWMwNjFkMjc1ZCIsInN1YiI6IjY1MGM0MDg4NDRlYTU0MDBjNjMxZDVjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QCvrUYw290qbZ5ir3M1mVaFysI8g2yCPJXwVdcerhR4',
-  }, // auth też może być źle, narazie testowo tak jak w renderFilms (i działa! :D)
+  },
 };
 
 async function fetchPopular() {
@@ -84,12 +84,13 @@ function getGenres(genreIds) {
       }
     }
   });
-
-  if (newGenreArray.length >= 3) {
-    const shortGenres = newGenreArray.slice(0, 3).concat('Other').join(', ');
-    return shortGenres;
-  } else {
+  if (newGenreArray.length === 0) {
     return 'Other';
+  } else if (newGenreArray.length < 3) {
+    return newGenreArray;
+  } else {
+    const shortGenres = newGenreArray.slice(0, 2).concat('Other').join(', ');
+    return shortGenres;
   }
 }
 
