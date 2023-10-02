@@ -1,87 +1,59 @@
-import { fetchFromApi } from './fetchFromApi';
-import { getTVGenres, getMoviesGenres } from './getGenres';
+import { getAllGenres } from './getGenres';
 
-const array = [
-  'id',
-  'name', //
-  'overview', //
-  'poster_path', //
-  'media_type', //
-  'genre_ids', //
-  'popularity',
-  'first_air_date', //
-];
-////<ul class="movies__list" id="movies__list"></ul> do wklejenia do html albo zamienic klasy
-const moviesList = document.querySelector('#movies__list');
+const IMG_PATH = 'https://image.tmdb.org/t/p/original';
+const NO_POSTER = './images/no-movie.jpg';
 
-export function createCard(array) {
+export async function createCard(filmsArray) {
+  const genres = await getAllGenres();
   let cardArrayEl = [];
-  array.forEach(movie => {
+  filmsArray.forEach(movie => {
     const cardEl = document.createElement('li');
-    cardEl.classList.add('movie__item');
-    cardEl.dataset.movieId = 'id'; //`${id}`
-    cardEl.dataset.mediaType = 'media__type'; //`${media__type}`
-    //cardEl.dataset.genreIds = 'genre_ids'';
-    //`${genre_ids}` //getMoviesGenres
-
-    cardEl.append(
-      addImage(imgURL),
-      addMovieTitle(originalTitle),
-      //addMovieInfo(genreIds, year, voteAverage),
-    );
+    cardEl.classList.add('films__grid-item');
+    cardEl.dataset.movieId = movie.id;
+    cardEl.dataset.mediaType = movie.media_type;
+    cardEl.append(addImage(movie.poster_path), addInfo(movie, genres));
     cardArrayEl.push(cardEl);
-    return cardArrayEl;
   });
-  moviesList.append(...cardArrayEl);
+  return cardArrayEl;
 }
-createCard(array);
 
-//
-function addImage(imgURL) {
-  const imgCont = document.createElement('div');
-  imgCont.classList.add('movie__img--container');
-
+function addImage(imgUrl) {
+  const imageCont = document.createElement('div');
+  imageCont.classList.add('films__image');
   const img = document.createElement('img');
-  img.src = imgURL;
-  img.alt = 'Movie poster';
-  img.classList.add('movie__img');
-
-  imgCont.append(img);
-
-  return imgCont;
+  img.classList.add('films__image-img');
+  imgUrl ? (img.src = IMG_PATH + imgUrl) : (img.src = NO_POSTER);
+  imageCont.append(img);
+  return imageCont;
 }
-//
-function addMovieTitle(originalTitle) {
-  const divInfo = document.createElement('div');
-  divInfo.classList.add('movie__info');
 
-  const movieTitle = document.createElement('p');
-  movieTitle.textContent = originalTitle; // `${original_title}`;
-  movieTitle.classList.add('movie__title');
+function addInfo(obj, genres) {
+  const infoCont = document.createElement('div');
+  infoCont.classList.add('films__info');
 
-  addMovieInfo(genreIds, year, voteAverage);
-  divInfo.append(movieTitle, addMovieInfo(genreIds, year, voteAverage));
+  const title = document.createElement('p');
+  title.classList.add('films__info-title');
+  console.log(obj);
+  !obj.title ? (title.textContent = obj.name) : (title.textContent = obj.title);
 
-  return divInfo;
+  const restInfo = document.createElement('span');
+  restInfo.classList.add('films__info-rest');
+  restInfo.textContent = `${addGenres(genres, obj.genre_ids)} | ${getReleaseDate(
+    obj.release_date,
+  )}`;
+  infoCont.append(title, restInfo);
+  return infoCont;
 }
-//
-function addMovieInfo(genreIds, year, voteAverage) {
-  const movieRace = document.createElement('div');
-  movieRace.classList.add('movie__race');
 
-  const movieGenreIds = document.createElement('p');
-  movieGenreIds.textContent = genreIds; //`${genre_ids}`
-  movieGenreIds.classList.add('movie__genre');
+function addGenres(genresApi, genresArray) {
+  const movieGenres = [];
+  genresApi.forEach(genre => {
+    const index = genresArray.indexOf(genre.id);
+    index >= 0 ? movieGenres.push(genre.name) : null;
+  });
+  return movieGenres;
+}
 
-  const movieYear = document.createElement('p');
-  movieYear.textContent = year;
-  movieYear.classList.add('movie__year');
-
-  const movieRating = document.createElement('p');
-  movieRating.textContent = voteAverage; //`${vote_average}`
-  movieRating.classList.add('movie__rating');
-
-  movieRace.append(genreIds, year, voteAverage);
-
-  return movieRace;
+function getReleaseDate(date) {
+  return !date ? 'Unknown release date' : date.split('-')[0];
 }
