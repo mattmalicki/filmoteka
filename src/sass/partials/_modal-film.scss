@@ -60,9 +60,6 @@
   }
 
   &__poster {
-    background-image: url(../images/no-movie.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
     border-radius: 5px;
     flex-basis: 100%;
     @include tablet {

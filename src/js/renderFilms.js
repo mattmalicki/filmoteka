@@ -2,6 +2,7 @@ import * as api from './fetchAll';
 import { createCard } from './filmCard';
 import { getFilter } from './filter';
 import Notiflix from 'notiflix';
+import './modalFilm';
 
 const formEl = document.querySelector('#search-form');
 const listEl = document.querySelector('.films__grid');
