@@ -2,25 +2,32 @@ ul {
   list-style-type: none;
 }
 
-.backdrop {
+.team-backdrop {
   display: flex;
   justify-content: center;
-  padding: 60px;
+  padding: 13% 8%;
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 1;
   background-color: #000c;
   transition: all 0.5s;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
+
+  @include tablet {
+    padding: 10%;
+  }
+
+  @include desktop {
+    padding: 8%;
+  }
 }
 
 .is-hidden {
-  opacity: 0;
+  display: none;
   visibility: hidden;
   pointer-events: none;
   transition-delay: 500ms;
@@ -28,32 +35,28 @@ ul {
 
 .modal-team {
   position: relative;
-  padding: 20px 30px;
+  padding: 3%;
   min-width: 320px;
-  width: 100%;
-  min-height: 1200px;
-  
+
+  overflow: auto;
+  box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.822);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.14),
     0px 4px 6px rgba(0, 0, 0, 0.2);
   // display: none;
 
   @include tablet {
-     min-height: 1500px;
-     
+    padding: 1%;
   }
-
   @include desktop {
-     min-height: 1500px;
-     
+    padding: 1%;
   }
 
   &__container {
     @include flex-center;
     flex-direction: column;
-    padding: 20px;
-    overflow: overflow-y;
-    max-height: 1000px;
+    padding: 1%;
+    gap: 5%;
   }
 
   &__title {
@@ -69,14 +72,15 @@ ul {
     }
 
     @include desktop {
-      font-size: 40px;
+      font-size: 50px;
     }
   }
 
   &__close--btn {
-    position: fixed;
-    top: 80px;
-    right: 77px;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    z-index: 1;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -91,159 +95,153 @@ ul {
       }
     }
   }
-}
 
-.member {
-  background: white;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 0px 0px 4px 4px;
-  border: 0 solid var(--card-box-border-color);
-  text-align: center;
-  width: 100px;
-  transition: transform 0.6s ease;
-
-  @include tablet {
-    width: auto;
-  }
-
-  @include desktop {
-    width: auto;
-  }
-
-  &:hover {
-    transform: scale(1.1); /* Skaluj element o 5% (1.05) podczas hover */
-  }
-
-  &__osier {
-    display: flex;
-    gap: 20px;
-    padding: 0;
-
-    @include desktop {
-      margin-top: 30px;
-      gap: 30px;
-    }
-  }
-
-  &__item {
-    display: flex;
-  }
-
-  &__box {
-    padding: 10px;
+  .member {
+    background: white;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 4px 4px;
+    border: 0 solid var(--card-box-border-color);
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 70px;
+    width: auto;
+    transition: transform 0.6s ease;
+    margin-bottom: 2%;
 
     @include tablet {
-      height: auto;
+      width: auto;
     }
 
     @include desktop {
-      height: auto;
-      gap: 5px;
-    }
-  }
-
-  &__name {
-    font-size: 11px;
-
-    @include tablet {
-      font-size: 18px;
+      width: auto;
     }
 
-    @include desktop {
-      font-size: 22px;
-    }
-  }
-
-  &__title {
-    color: darkblue;
-    font-weight: bold;
-    display: block;
-    font-size: 10px;
-
-    @include tablet {
-      font-size: 17px;
+    & > img {
+      width: 100%;
     }
 
-    @include desktop {
-      font-size: 20px;
-    }
-  }
-
-  &__socials--list {
-    display: flex;
-    flex-direction: row;
-    gap: 2px;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-
-    @include tablet {
-      gap: 10px;
+    &:hover {
+      transform: scale(1.1); /* Skaluj element o 5% (1.05) podczas hover */
     }
 
-    @include desktop {
-      gap: 20px;
-    }
-  }
+    &__osier {
+      @include flex-center;
+      gap: 5%;
+      padding: 1%;
+      margin-bottom: 2%;
 
-  &__socials--link {
-    display: flex;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    padding: 6px;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    @include tablet {
-      padding: 12px;
+      @include desktop {
+        margin-top: 1% auto;
+        gap: 5%;
+      }
     }
 
-    @include desktop {
-      padding: 12px;
-    }
-  }
-
-  &__socials--icon {
-    width: 11px;
-    height: 11px;
-
-    @include tablet {
-      width: 20px;
-      height: 20px;
+    &__box {
+      padding: 5%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    @include desktop {
-      width: 25px;
-      height: 25px;
+    &__name {
+      font-size: 55%;
+      margin-bottom: 3%;
+
+      @include tablet {
+        font-size: 100%;
+      }
+
+      @include desktop {
+        font-size: 140%;
+      }
     }
-  }
 
-  &__socials--link > &__socials--icon {
-    fill: rgb(119, 118, 118);
-  }
+    &__title {
+      color: darkblue;
+      font-weight: bold;
+      display: block;
+      font-size: 50%;
 
-  &__socials--link:is(:hover, :focus) {
-    background-color: rgb(175, 16, 16);
-  }
+      @include tablet {
+        font-size: 90%;
+      }
 
-  &__socials--link:is(:hover, :focus) > &__socials--icon {
-    fill: rgb(255, 255, 255);
-  }
+      @include desktop {
+        font-size: 130%;
+      }
+    }
 
-  &__sub {
-    @include flex-center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 0;
+    &__socials--list {
+      display: flex;
+      flex-direction: row;
+      gap: 15%;
+      justify-content: center;
+      align-items: center;
+      padding: 3%;
 
-    @include desktop {
-         gap: 30px;
+      @include tablet {
+        padding: 10%;
+      }
+
+      @include desktop {
+        padding: 3%;
+      }
+    }
+
+    &__socials--link {
+      display: flex;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      @include tablet {
+        padding: 12px;
+      }
+
+      @include desktop {
+        padding: 20px;
+      }
+    }
+
+    &__socials--icon {
+      width: 11px;
+      height: 11px;
+
+      @include tablet {
+        width: 20px;
+        height: 20px;
+      }
+
+      @include desktop {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    &__socials--link > &__socials--icon {
+      fill: rgb(119, 118, 118);
+    }
+
+    &__socials--link:is(:hover, :focus) {
+      background-color: rgb(175, 16, 16);
+    }
+
+    &__socials--link:is(:hover, :focus) > &__socials--icon {
+      fill: rgb(255, 255, 255);
+    }
+
+    &__sub {
+      @include flex-center;
+      gap: 10%;
+      flex-wrap: wrap;
+      padding: 0;
+
+      @include desktop {
+        gap: 10%;
+        margin-top: 2%;
+      }
     }
   }
 }

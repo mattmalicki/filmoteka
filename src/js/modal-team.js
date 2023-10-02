@@ -1,6 +1,6 @@
 const modalTeam = document.querySelector('[data-modalTeam]');
 const closeModalTeamButton = modal.querySelector('[data-modalTeam-close]');
-const backdrop = modal.querySelector('.backdrop');
+const backdropTeam = modal.querySelector('.team-backdrop');
 
 function closeModalTeam() {
   modalTeam.classList.add('is-hidden'); // Dodaj klasę is-hidden, aby ukryć modal
@@ -8,7 +8,7 @@ function closeModalTeam() {
 closeModalTeamButton.addEventListener('click', closeModalTeam);
 
 backdrop.addEventListener('click', event => {
-  if (event.target === backdrop) {
+  if (event.target === backdropTeam) {
     closeModalTeam();
   }
 });
