@@ -1,6 +1,7 @@
 import { getAllGenres } from './getGenres';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
+const NO_POSTER = './images/no-movie.jpg';
 
 export async function createCard(filmsArray) {
   const genres = await getAllGenres();
@@ -8,30 +9,40 @@ export async function createCard(filmsArray) {
   filmsArray.forEach(movie => {
     const cardEl = document.createElement('li');
     cardEl.classList.add('films__grid-item');
-    const cardLink = document.createElement('a');
-    cardLink.dataset.movieId = movie.id;
-    cardLink.dataset.mediaType = movie.media_type;
-    cardLink.append(...addAll(movie, genres));
-    cardEl.append(cardLink);
+    cardEl.dataset.movieId = movie.id;
+    cardEl.dataset.mediaType = movie.media_type;
+    cardEl.append(addImage(movie.poster_path), addInfo(movie, genres));
     cardArrayEl.push(cardEl);
   });
   return cardArrayEl;
 }
 
-//
-function addAll(obj, genres) {
-  const image = document.createElement('img');
-  obj.poster_path ? (image.src = IMG_PATH + obj.poster_path) : null;
-  image.classList.add('films__image');
+function addImage(imgUrl) {
+  const imageCont = document.createElement('div');
+  imageCont.classList.add('films__image');
+  const img = document.createElement('img');
+  img.classList.add('films__image-img');
+  imgUrl ? (img.src = IMG_PATH + imgUrl) : null;
+  imageCont.append(img);
+  return imageCont;
+}
+
+function addInfo(obj, genres) {
+  const infoCont = document.createElement('div');
+  infoCont.classList.add('films__info');
 
   const title = document.createElement('p');
-  title.classList.add('films__name');
-  title.textContent = obj.title;
+  title.classList.add('films__info-title');
+  console.log(obj);
+  !obj.title ? (title.textContent = obj.name) : (title.textContent = obj.title);
 
-  const info = document.createElement('p');
-  info.classList.add('films__info');
-  info.textContent = `${addGenres(genres, obj.genre_ids)} | ${getReleaseDate(obj.release_date)}`;
-  return [image, title, info];
+  const restInfo = document.createElement('span');
+  restInfo.classList.add('films__info-rest');
+  restInfo.textContent = `${addGenres(genres, obj.genre_ids)} | ${getReleaseDate(
+    obj.release_date,
+  )}`;
+  infoCont.append(title, restInfo);
+  return infoCont;
 }
 
 function addGenres(genresApi, genresArray) {
@@ -44,5 +55,5 @@ function addGenres(genresApi, genresArray) {
 }
 
 function getReleaseDate(date) {
-  return !date ? null : date.split('-')[0];
+  return !date ? 'Unknown release date' : date.split('-')[0];
 }
