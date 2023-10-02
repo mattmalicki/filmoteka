@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+$color-primary: #a21313;
+$color-secondary: #ffa600;
+$color-tertiary: #ffffff;
+$font-lato: Lato, sans-serif;
+
+.modal-auth {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  transform: scale(1.1);
+
+  &__content {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 15% auto;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #131313;
+    box-shadow: 0 3px 18px #fff9f9;
+    font-family: $font-lato;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: $color-tertiary;
+    font-size: 50px;
+    font-weight: bold;
+    float: right;
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+      text-decoration: none;
+      cursor: pointer;
+      
+    }
+
+    @include phone {
+      font-size: 40px;
+    }
+
+    @include tablet {
+      font-size: 45px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0;
+    color: $color-primary;
+    font-family: $font-lato;
+    padding-bottom: 20px;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+
+    @include phone {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    @include tablet {
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+
+  &__form {
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+
+    @media (min-width: 320px) and (max-width: 479.98px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include phone {
+      font-size: 12px;
+    }
+
+    @include tablet {
+      font-size: 14px;
+    }
+
+    &-input {
+      width: 100%;
+      height: 40px;
+      border: 0;
+      border-bottom: 1px solid $color-tertiary;
+      background-color: transparent;
+      outline: transparent;
+      font-family: $font-lato;
+
+      &::placeholder {
+        color: $color-tertiary;
+      }
+
+      &:is(:hover, :focus) {
+        border-color: orange;
+      }
+
+      &:is(:hover::placeholder, :focus::placeholder) {
+        color: #ffa600;
+      }
+    }
+
+    &-send {
+      padding: 12px 30px;
+      background-color: #131313;
+      color: $color-tertiary;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 10px;
+      border: 2px solid $color-tertiary;
+      font-family: $font-lato;
+
+      &:hover {
+        border: solid 2px #f00;
+        background-color: #4c0c13;
+        color: $color-tertiary;
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      font-family: $font-lato;
+    }
+
+    &-text {
+      margin: 0;
+      color: $color-tertiary;
+    }
+
+    &-button-register {
+      padding: 0;
+      background-color: transparent;
+      color: $color-tertiary;
+      border: none;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: $font-lato;
+      @media (min-width: 320px) and (max-width: 479.98px) {
+        margin-right: auto;
+      }
+    }
+
+    &-typeAuth {
+      padding: 0;
+      background-color: transparent;
+      color: $color-secondary;
+      border: none;
+      cursor: pointer;
+      font-size: inherit;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.clicked::placeholder {
+  color: $color-primary;
+}

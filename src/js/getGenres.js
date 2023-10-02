@@ -18,8 +18,22 @@ export async function getMoviesGenres() {
       requestPath: 'genre/movie/list',
     });
     const movieGenres = response.genres;
-    console.log(movieGenres);
     return movieGenres;
+  } catch (err) {
+    return err;
+  }
+}
+
+export async function getAllGenres() {
+  try {
+    const movieG = await fetchFromApi({
+      requestPath: 'genre/movie/list',
+    });
+    const tvG = await fetchFromApi({
+      requestPath: 'genre/tv/list',
+    });
+    const all = movieG.genres.concat(tvG.genres);
+    return all.filter((item, index) => all.indexOf(item) === index);
   } catch (err) {
     return err;
   }
