@@ -8,4 +8,3 @@ import './js/filter.js';
 import './js/firebase/firebase.js';
 import './js/filmCard';
 import './js/modalFilm';
-import './js/showFilms.js';
