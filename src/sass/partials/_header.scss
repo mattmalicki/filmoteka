@@ -104,6 +104,8 @@
             list-style-type: none;
             display: flex; 
             gap: 40px;
+            padding: 0;
+            align-items: center;
 
             &-item {
                 font-size: 12px;
@@ -331,16 +333,14 @@ body .js-header__sticky {
     }
 
     &__search-form {
-        width: 170px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100px;
         transition-property: border-color;
         transition-duration: .25s;
         transition-timing-function: cubic-bezier(.4, 0, .2, 1);
         position: relative;
        
             @include tablet {
-                width: 330px;
+                width: 270px;
             }
         
             @include desktop {
@@ -386,7 +386,7 @@ body .js-header__sticky {
     margin-left: auto;
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 10px;
     font-size: 12px;
    
 
@@ -408,6 +408,9 @@ body .js-header__sticky {
             margin-right: 15px;
         }
     }
+        .filter__button-open {
+            margin-left: 10px;
+        }
 }
 
 .header__search-form input:focus,
