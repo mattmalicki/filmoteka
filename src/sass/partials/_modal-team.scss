@@ -56,8 +56,8 @@ height: 300vh;
     @include flex-center;
     flex-direction: column;
     padding: 20px;
-    overflow: auto;
-    max-height: 1000px
+    overflow: overflow-y;
+    max-height: 1000px;
   }
 
   &__title {
@@ -78,9 +78,9 @@ height: 300vh;
   }
 
   &__close--btn {
-    position: sticky;
-    
-    right: 67px;
+    position: fixed;
+    top: 80px;
+    right: 77px;
     background-color: transparent;
     border: none;
     cursor: pointer;
