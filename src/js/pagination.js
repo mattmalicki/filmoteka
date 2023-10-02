@@ -1,4 +1,6 @@
-// import { f.ex popularMovies} from'./'//
+//<--The following code has been created with TOASTUI Component/Pagination-->//
+
+import { fetchPopular } from './';
 import Pagination from 'tui-pagination';
 
 const options = {
@@ -25,15 +27,36 @@ const options = {
 
 const pagination = new Pagination('pagination', options);
 
+// EVENT "afterMove" from TOASTUI Component/Pagination API//
+//<-- The function below calculates the starting and ending indices of the items to be displayed on the current page. It accepts an array of items as input and returns a new array containing the subset of items for the current page -->//
+
 pagination.on('afterMove', function (eventData) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
   const currentPage = eventData.page;
   const startIndex = (currentPage - 1) * options.itemsPerPage;
   const endIndex = startIndex + options.itemsPerPage;
 
   if (currentPage > 1) {
-    // .ex popularMovies (startIndex, endIndex);
+    fetchPopular(startIndex, endIndex);
   }
 });
 
-// export default pagination//;
+export default pagination;
+
+// <--Code need to be add to the others functions: --> //
+// FetchPopular:
+// 1. import pagination from './pagination';
+// 2. pagination.getCurrentPage(page);
+// 3. pagination.on('afterMove', evt => {
+//  fetchPopular(evt.page);
+//});
+
+// searchBy:
+// 1. import pagination from './pagination';
+// 2. const ex.paginationTemplate = document.querySelector('#pagination');
+// pagination.reset();
+// const ex.paginationTemplate.classList.add('is-hidden');
+// pagination.on('afterMove', e => {
+// margeData?(e.page);
+// });
