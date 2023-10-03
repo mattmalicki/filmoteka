@@ -52,6 +52,12 @@
         transform: scale(1.03);
       }
     }
+    &-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+    }
   }
 
   &__image {
