@@ -20,23 +20,27 @@ async function createChck() {
   if (header) {
     return;
   }
-  const element = document.querySelector('.filter__genres');
-  const genresArray = await getAllGenres();
-  genresArray.forEach(genre => {
-    const genreEl = document.createElement('input');
-    const label = document.createElement('label');
-    genreEl.value = genre.id;
-    genreEl.id = genre.id;
-    genreEl.type = 'checkbox';
-    genreEl.dataset.idName = genre.name;
-    genreEl.name = 'genres';
-    genreEl.classList.add('filter__genres-check');
-    label.for = 'genres';
-    label.classList.add('filter__item');
-    label.textContent = genre.name;
-    label.prepend(genreEl);
-    element.append(label);
-  });
+  try {
+    const element = document.querySelector('.filter__genres');
+    const genresArray = await getAllGenres();
+    genresArray.forEach(genre => {
+      const genreEl = document.createElement('input');
+      const label = document.createElement('label');
+      genreEl.value = genre.id;
+      genreEl.id = genre.id;
+      genreEl.type = 'checkbox';
+      genreEl.dataset.idName = genre.name;
+      genreEl.name = 'genres';
+      genreEl.classList.add('filter__genres-check');
+      label.for = 'genres';
+      label.classList.add('filter__item');
+      label.textContent = genre.name;
+      label.prepend(genreEl);
+      element.append(label);
+    });
+  } catch (err) {
+    console.log(`Error: ${err.toString()}`);
+  }
 }
 
 function showFilters(event) {
