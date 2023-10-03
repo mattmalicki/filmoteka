@@ -1,42 +1,88 @@
 // FT-14 "Naciśnięcie przycisku "Watched" powoduje wyświetlenie oglądanych przez użytkownika filmów"
 // FT-15 "Naciśnięcie przycisku "Queue" powoduje wyświetlenie filmów dodanych do kolejki użytkownika"
 
-const watchedButton = document.querySelector('#show-watched-button'); //sprawdzić id przycisku!
-const queuedButton = document.querySelector('#show-quequed-button'); //sprawdzić id przycisku!
-const gallery = document.querySelector('#gallery'); //sprawdzić id galerii!
+const watchedButton = document.querySelector('#libraryWatchedButton');
+const queuedButton = document.querySelector('#libraryQueuedButton');
+const grid = document.querySelector('.films__grid');
 
 
-function clearGallery() {
-  while (gallery.firstChild) {
-    gallery.firstChild.remove();
+// =========================== Funkcje do renderowania kart
+
+function renderLocalStorage(params) {
+
+  if (params === null) {
+    grid.innerText = 'So empty! 🍿'
+    grid.style.fontSize = "x-large";
+  } else {
+    const markup = params
+      .map(({ id, poster_path, original_title, release_date }) => {
+        return `
+      <li id="${id}" class="films__grid-item">
+        <a class="films__link">
+          <img src="https://image.tmdb.org/t/p/w500${poster_path}" class="films__image-img"/>
+          <h2 class="films__info-title">${shortTitle(original_title)}</h2>
+          <p class="films__info-rest">${getReleaseDate(release_date)}</p>
+        </a>
+      </li>`;
+      })
+      .join('');
+
+    grid.innerHTML = markup;
   }
-} // czyszczenie poprzednio wyświetlonych filmów
-
-
-function displayWatched() {
-  clearGallery();
-
-  // dodać funkcjonalność firebase
-} 
-// wyświetlanie filmów pobranych z danych użytkownika w firebase
-
-const handleWatchedButton = () => {
-  displayWatched();
 }
 
-watchedButton.addEventListener('click', handleWatchedButton); //sam guzik watched
-
-
-function displayQueued() {
-    clearGallery();
-
-    // dodać funkcjonalność firebase
-}
-// wyświetlanie filmów pobranych z danych użytkownika w firebase
-
-const handleQueuedButton = () => {
-    displayQueued();
+function getReleaseDate(date) {
+  return date.split('-')[0];
 }
 
-queuedButton.addEventListener('click', handleQueuedButton); //sam guzik queued
+let shortTitle = title => {
+  if (title.length > 30) {
+    return title.slice(0, 30).concat('...');
+  }
+  return title;
+};
 
+
+// =========================== Funkcje do obsługi guzików i zmiana stanu
+
+function handleWatchedButton() {
+  grid.innerHTML = '';
+
+  const watchedFilms = JSON.parse(localStorage.getItem('watchedFilms'));
+  // console.log('Test przycisku Watched, dane pobrane! ' + watchedFilms);
+
+  watchedButton.classList.add("my-library-header__button--current");
+  queuedButton.classList.remove("my-library-header__button--current");
+
+  renderLocalStorage(watchedFilms);
+}
+
+watchedButton.addEventListener('click', handleWatchedButton);
+//sam guzik watched
+
+
+function handleQueuedButton() {
+  grid.innerHTML = '';
+
+  const queuedFilms = JSON.parse(localStorage.getItem('queueFilms'));
+  // console.log('Test przycisku Queued, dane pobrane! ' + queuedFilms);
+
+  queuedButton.classList.add("my-library-header__button--current");
+  watchedButton.classList.remove("my-library-header__button--current");
+
+  renderLocalStorage(queuedFilms);
+}
+
+queuedButton.addEventListener('click', handleQueuedButton);
+//sam guzik queued
+
+
+// =========================== Funkcje do podstawowego wyświetlania
+
+document.addEventListener('DOMContentLoaded', renderOnLoad());
+
+function renderOnLoad() {
+  const watchedLocalStorage = JSON.parse(localStorage.getItem('watchedFilms'));
+
+  renderLocalStorage(watchedLocalStorage);
+}

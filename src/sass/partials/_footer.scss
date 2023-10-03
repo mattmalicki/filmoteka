@@ -11,12 +11,12 @@
   @include flex-center;
   max-height: 100px;
   overflow: hidden;
-  opacity: 0;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  display: none;
 
   &.active {
     max-height: 100px;
-    opacity: 1;
+    display: block;
   }
 
   @include tablet {
@@ -76,8 +76,8 @@
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, bottom 0.3s ease-in-out;
-  padding: 15px;
-  position: absolute;
+  padding: 10px;
+  position: sticky;
   bottom: 15px;
   left: 25px;
   overflow: hidden;
@@ -88,6 +88,6 @@
   }
 }
 
-svg {
+.open svg {
   fill: rgb(255, 255, 255);
 }
