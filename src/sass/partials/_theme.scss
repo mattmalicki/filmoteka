@@ -17,6 +17,24 @@ body.dark {
   .films__grid-text {
     color: #fff;
   }
+  .modal-film {
+    background-color: #484343;
+    color: #fff;
+    &__close-btn {
+      background-color: #fff;
+    }
+  }
+  .info-name {
+    color: #fff;
+  }
+  .modal-film__btn {
+    background-color: #fafafa;
+    &:hover,
+    &:focus {
+      background-color: #ff6b01;
+      color: #fff;
+    }
+  }
 }
 .checkbox {
   opacity: 0;
