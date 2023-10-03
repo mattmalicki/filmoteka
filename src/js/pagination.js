@@ -1,6 +1,5 @@
 //<--The following code has been created with TOASTUI Component/Pagination-->//
 
-import { showFilms } from './renderFilms';
 import Pagination from 'tui-pagination';
 
 const options = {
@@ -43,4 +42,3 @@ pagination.on('afterMove', function (eventData) {
 });
 
 export default pagination;
-
