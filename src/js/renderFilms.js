@@ -1,103 +1,71 @@
-//-------- variables -------------
-const input = document.querySelector('[name=searchQuery]');
-const btn = document.querySelector('.header__search-button');
-const grid = document.querySelector('.films__grid');
+import * as api from './fetchAll';
+import { createCard } from './filmCard';
+import { getFilter } from './filter';
+import Notiflix from 'notiflix';
+import './modalFilm';
 
-const API_KEY = '2b6c5a30539b25d64c2f30ee757140aa';
-let title = '';
+const formEl = document.querySelector('#search-form');
+const listEl = document.querySelector('.films__grid');
+const inputEl = document.querySelector('[name="searchQuery"]');
+let page = 1;
 
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZmEwYTgwNDZiYWRmMDlmOGM2MWVhOWMwNjFkMjc1ZCIsInN1YiI6IjY1MGM0MDg4NDRlYTU0MDBjNjMxZDVjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QCvrUYw290qbZ5ir3M1mVaFysI8g2yCPJXwVdcerhR4',
-  },
-};
-//-------------------MOVIES FETCH----------------
-async function fetcher() {
-  return fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1`,
-    options,
-  ).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
-}
+formEl.addEventListener('submit', showFilms);
 
-//-------------------- EVENT LISTENERS -----------------
-
-input.addEventListener('input', event => {
-  title = event.currentTarget.value;
-});
-
-btn.addEventListener('click', event => {
+async function showFilms(event) {
   event.preventDefault();
-  fetcher()
-    .then(response => renderFilms(response))
-    .catch(error => console.log(error));
-});
-
-//-------------- RENDER MOVIES GRID --------------
-function renderFilms(response) {
-  const markup = [...response.results]
-    .map(({ id, poster_path, original_title, genre_ids, release_date }) => {
-      return `<li id="${id}" class="films__grid-item">
-        <a class="films__link">
-          <img src="https://image.tmdb.org/t/p/w500${poster_path}"/>
-          <h2>${original_title}</h2>
-          <p>${getGenres(genre_ids)} | ${getReleaseDate(release_date)}</p>
-        </a>
-      </li>`;
-    })
-    .join('');
-  grid.innerHTML = markup;
-}
-
-//------------- GET GENRES ----------------
-const genres = [
-  { id: 28, name: 'Action' },
-  { id: 12, name: 'Adventure' },
-  { id: 16, name: 'Animation' },
-  { id: 35, name: 'Comedy' },
-  { id: 80, name: 'Crime' },
-  { id: 99, name: 'Documentary' },
-  { id: 18, name: 'Drama' },
-  { id: 10751, name: 'Family' },
-  { id: 14, name: 'Fantasy' },
-  { id: 36, name: 'History' },
-  { id: 27, name: 'Horror' },
-  { id: 10402, name: 'Music' },
-  { id: 9648, name: 'Mystery' },
-  { id: 10749, name: 'Romance' },
-  { id: 878, name: 'Science Fiction' },
-  { id: 10770, name: 'TV Movie' },
-  { id: 53, name: 'Thriller' },
-  { id: 10752, name: 'War' },
-  { id: 37, name: 'Western' },
-];
-
-function getGenres(genreIds) {
-  const newGenreArray = [];
-  genres.map(genre => {
-    for (const id of genreIds) {
-      if (genre.id === id) {
-        newGenreArray.push(genre.name);
-      }
-    }
-  });
-  if (newGenreArray.length === 0) {
-    return 'Other';
-  } else if (newGenreArray.length < 3) {
-    return newGenreArray;
-  } else {
-    const shortGenres = newGenreArray.slice(0, 2).concat('Other').join(', ');
-    return shortGenres;
+  while (listEl.firstChild) {
+    listEl.firstChild.remove();
   }
-}
-//----------- GET MOVIE RELEASE YEAR ---------------
-function getReleaseDate(date) {
-  return date.split('-')[0];
+  const filters = getFilter();
+  if (filters.filterMedia.length === 0) {
+    new Notiflix.Notify.failure('Please choose media type in filter.');
+    return;
+  }
+  const keyname = inputEl.value;
+  if (filters.filterGenres.length > 0) {
+    if (filters.filterMedia.length === 2) {
+      const movies = await api.fetchAllOnlyGenres(filters.filterGenres, page);
+      const arrayEl = await createCard(movies);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    } else {
+      const movies =
+        filters.filterMedia.indexOf('movie') >= 0
+          ? await api.fetchMovieOnlyGenres(filters.filterGenres, page)
+          : await api.fetchTvOnlyGenres(filters.filterGenres, page);
+      const arrayEl = await createCard(movies.results);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    }
+  } else if (keyname === '') {
+    if (filters.filterMedia.length === 2) {
+      const movies = await api.fetchTrendingAll(page);
+      const arrayEl = await createCard(movies.results);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    } else {
+      const movies =
+        filters.filterMedia.indexOf('movie') >= 0
+          ? await api.fetchTrendingMovies(page)
+          : await api.fetchTrendingTv(page);
+      const arrayEl = await createCard(movies.results);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    }
+  } else {
+    if (filters.filterMedia.length === 2) {
+      const movies = await api.fetchAllWithName(keyname, page);
+      const arrayEl = await createCard(movies);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    } else {
+      const movies =
+        filters.filterMedia.indexOf('movie') >= 0
+          ? await api.fetchMoviesWithName(keyname, page)
+          : await api.fetchTvWithName(keyname, page);
+      const arrayEl = await createCard(movies.results);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    }
+  }
 }

@@ -33,8 +33,31 @@ export async function getAllGenres() {
       requestPath: 'genre/tv/list',
     });
     const all = movieG.genres.concat(tvG.genres);
-    return all.filter((item, index) => all.indexOf(item) === index);
+    return removeDuplicates(all);
   } catch (err) {
     return err;
   }
+}
+
+function removeDuplicates(array) {
+  // Declare a new array
+  let newArray = [];
+
+  // Declare an empty object
+  let uniqueObject = {};
+
+  // Loop for the array elements
+  for (let i in array) {
+    // Extract the title
+    objTitle = array[i]['id'];
+
+    // Use the title as the index
+    uniqueObject[objTitle] = array[i];
+  }
+
+  // Loop to push unique object into array
+  for (i in uniqueObject) {
+    newArray.push(uniqueObject[i]);
+  }
+  return newArray;
 }
