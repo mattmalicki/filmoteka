@@ -11,7 +11,10 @@ body.dark {
       color: #fff;
     }
   }
-  .films h2 {
+  .films__info-title {
+    color: #fff;
+  }
+  .films__grid-text {
     color: #fff;
   }
 }
@@ -19,9 +22,8 @@ body.dark {
   opacity: 0;
   position: absolute;
 }
-
 .label {
-  background-color: #3f45b2;
+  background-color: #200770;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -40,7 +42,7 @@ body.dark {
 }
 
 .label .orb {
-  background-color: #6b6e6b;
+  background-color: #fff;
   border-radius: 50%;
   position: absolute;
   top: 0px;
@@ -63,7 +65,7 @@ body.dark {
 }
 
 .fa-moon {
-  color: #101110;
+  color: #90ad1d;
   @include font($fs: 13px);
   @include tablet {
     @include font($fs: 14px);
