@@ -18,6 +18,7 @@ const movie = {
 
 async function fillData(obj) {
   try {
+    const genres = await getAllGenres();
     obj.poster_path ? (movie.image.src = IMG_PATH + obj.posterPath) : (movie.image.src = NO_POSTER);
     obj.title ? (movie.title.textContent = obj.title) : (movie.title.textContent = obj.name);
     movie.avrgVote = obj.vote_average;
@@ -50,13 +51,15 @@ function addGenres(genresApi, genresArray) {
 }
 
 async function filmClicked(event) {
-  // event.preventDefault();
-  console.log('Current: ', event.currentTarget);
-  console.log(`Target: ${event.eventPhase}`);
-  if (event.currentTarget.nodeName === 'LI') {
-    event.stopPropagation();
-    console.log('Please work li');
+  if (event.target.nodeName === 'UL') {
+    console.log('That was UL');
+    return;
   }
+  let liElement = event.target;
+  while (liElement && !liElement.nodeName === 'LI') {
+    liElement = event.target.parentNode;
+  }
+  console.log(liElement);
 }
 
 document.querySelector('.films__grid').addEventListener('click', filmClicked);

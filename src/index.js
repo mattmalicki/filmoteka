@@ -1,7 +1,6 @@
 import './sass/main.scss';
 import './js/header.js';
 import './js/fetchFromApi.js';
-import './js/buttonHandler.js';
 import './js/renderFilms.js';
 import './js/loader.js';
 import './js/filter.js';
@@ -9,3 +8,4 @@ import './js/firebase/firebase.js';
 import './js/filmCard';
 import './js/modalFilm';
 import './js/scrollToTop';
+import './js/buttonHandler.js';
