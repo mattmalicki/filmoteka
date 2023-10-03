@@ -4,13 +4,16 @@ const filter = document.querySelector('.filter');
 const header = document.querySelector('.header-library');
 
 const filterOpen = document.querySelector('#filter-open');
+const filterOpenSticky = document.querySelector('#filter-open-sticky');
 const mobileClose = document.querySelector('.filter__button');
 
 if (!header) {
   filterOpen.addEventListener('mouseover', showFilters);
+  // filterOpenSticky.addEventListener('mouseover', showFilters);
   mobileClose.addEventListener('click', hideFilters);
 
   filterOpen.addEventListener('mouseleave', hideFilters);
+  // filterOpenSticky.addEventListener('mouseleave', hideFilters);
 }
 
 async function createChck() {
