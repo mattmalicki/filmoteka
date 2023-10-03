@@ -64,10 +64,10 @@
     border-radius: 5px;
     flex-basis: 100%;
     @include tablet {
-      flex-basis: calc((100% - 68px) / 2);
+      flex-basis: 264px;
     }
     @include desktop {
-      flex-basis: calc((100% - 16px) / 2);
+      flex-basis: 375px;
     }
   }
 
@@ -86,10 +86,10 @@
 
     flex-basis: 100%;
     @include tablet {
-      flex-basis: calc((100% - 68px) / 2);
+      flex-basis: calc(100% - 264px - 68px);
     }
     @include desktop {
-      flex-basis: calc((100% - 16px) / 2);
+      flex-basis: calc(100% - 375px - 16px);
     }
     &-title {
       overflow-y: scroll;

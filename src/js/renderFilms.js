@@ -21,15 +21,12 @@ if (!header) {
 }
 async function showFilms(event) {
   event.preventDefault();
-  while (listEl.firstChild) {
-    listEl.firstChild.remove();
-  }
+  clearList();
   data.filters = getFilter();
   data.keyname = inputEl.value;
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
-      console.log(movies);
       const arrayEl = await createCard(movies.results);
       !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
       listEl.append(...arrayEl);
@@ -41,17 +38,23 @@ async function showFilms(event) {
     }
   } else {
     if (data.keyname === '') {
-      const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
+      const movies = await api.fetchTrendingMovies(data.page);
       console.log(movies);
       const arrayEl = await createCard(movies.results);
       !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
       listEl.append(...arrayEl);
     } else {
-      const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
+      const movies = await api.fetchMoviesWithName(data.keyname, data.page);
       const arrayEl = await createCard(movies.results);
       !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
       listEl.append(...arrayEl);
     }
+  }
+}
+
+function clearList() {
+  while (listEl.firstChild) {
+    listEl.firstChild.remove();
   }
 }
 
