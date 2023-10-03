@@ -11,8 +11,8 @@ const grid = document.querySelector('.films__grid');
 function renderLocalStorage(params) {
 
   if (params === null) {
-    grid.innerText = 'So empty! 🍿'
-    grid.style.fontSize = "x-large";
+    grid.textContent = "So empty! 🍿";
+    grid.classList = 'films__grid-text';
   } else {
     const markup = params
       .map(({ id, poster_path, original_title, release_date }) => {
