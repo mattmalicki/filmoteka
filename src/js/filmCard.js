@@ -1,20 +1,23 @@
-import { getAllGenres } from './getGenres';
+import { getMoviesGenres } from './getGenres';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 const NO_POSTER = './images/no-movie.jpg';
 
 export async function createCard(filmsArray) {
-  const genres = await getAllGenres();
-  let cardArrayEl = [];
-  filmsArray.forEach(movie => {
-    const cardEl = document.createElement('li');
-    cardEl.classList.add('films__grid-item');
-    cardEl.dataset.movieId = movie.id;
-    cardEl.dataset.mediaType = movie.media_type;
-    cardEl.append(addImage(movie.poster_path), addInfo(movie, genres));
-    cardArrayEl.push(cardEl);
-  });
-  return cardArrayEl;
+  try {
+    const genres = await getMoviesGenres();
+    let cardArrayEl = [];
+    filmsArray.forEach(movie => {
+      const cardEl = document.createElement('li');
+      cardEl.classList.add('films__grid-item');
+      cardEl.dataset.movieId = movie.id;
+      cardEl.append(addImage(movie.poster_path), addInfo(movie, genres));
+      cardArrayEl.push(cardEl);
+    });
+    return cardArrayEl;
+  } catch (err) {
+    console.log(`Error: ${err.toString()}`);
+  }
 }
 
 function addImage(imgUrl) {

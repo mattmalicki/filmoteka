@@ -1,4 +1,4 @@
-import { getAllGenres } from './getGenres';
+import { getMoviesGenres } from './getGenres';
 
 const filter = document.querySelector('.filter');
 const header = document.querySelector('.header-library');
@@ -22,7 +22,7 @@ async function createChck() {
   }
   try {
     const element = document.querySelector('.filter__genres');
-    const genresArray = await getAllGenres();
+    const genresArray = await getMoviesGenres();
     genresArray.forEach(genre => {
       const genreEl = document.createElement('input');
       const label = document.createElement('label');
@@ -64,17 +64,11 @@ function hideFilters() {
 
 export function getFilter() {
   const genres = document.querySelectorAll('[name="genres"]');
-  const media = document.querySelectorAll('[name="media-type"]');
   const filterGenres = [];
   genres.forEach(el => {
     el.checked ? filterGenres.push(el.id) : null;
   });
-  const filterMedia = [];
-  media.forEach(el => {
-    el.checked ? filterMedia.push(el.id) : null;
-  });
-  console.log({ filterMedia, filterGenres });
-  return { filterMedia, filterGenres };
+  return filterGenres;
 }
 
 function isMobile() {
