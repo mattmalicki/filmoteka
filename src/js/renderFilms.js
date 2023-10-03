@@ -29,6 +29,7 @@ async function showFilms(event) {
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
+      console.log(movies);
       const arrayEl = await createCard(movies.results);
       !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
       listEl.append(...arrayEl);
@@ -39,9 +40,19 @@ async function showFilms(event) {
       listEl.append(...arrayEl);
     }
   } else {
-    const movies = await api.fetchTrendingMovies(data.page);
-    const arrayEl = await createCard(movies.results);
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
-    listEl.append(...arrayEl);
+    if (data.keyname === '') {
+      const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
+      console.log(movies);
+      const arrayEl = await createCard(movies.results);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    } else {
+      const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
+      const arrayEl = await createCard(movies.results);
+      !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+      listEl.append(...arrayEl);
+    }
   }
 }
+
+function fillData() {}
