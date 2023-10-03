@@ -50,9 +50,13 @@ function addGenres(genresApi, genresArray) {
 }
 
 async function filmClicked(event) {
-  event.preventDefault();
-  console.log(event.currentTarget);
-  console.log(event.target);
+  // event.preventDefault();
+  console.log('Current: ', event.currentTarget);
+  console.log(`Target: ${event.eventPhase}`);
+  if (event.currentTarget.nodeName === 'LI') {
+    event.stopPropagation();
+    console.log('Please work li');
+  }
 }
 
 document.querySelector('.films__grid').addEventListener('click', filmClicked);
