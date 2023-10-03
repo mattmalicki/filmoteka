@@ -1,5 +1,4 @@
-import { getAllGenres } from './getGenres';
-import { fetchDetailsMovie, fetchDetailsTv } from './fetchAll';
+import { fetchDetailsMovie } from './fetchAll';
 
 const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
@@ -20,21 +19,21 @@ const movie = {
   genres: document.querySelector('#movie-genres'),
 };
 
-async function fillData(id) {
+function fillData(obj) {
+  obj.poster_path ? (movie.image.src = IMG_PATH + obj.poster_path) : (movie.image.src = NO_POSTER);
+  movie.title.textContent = obj.title;
+  movie.avrgVote.textContent = obj.vote_average;
+  movie.allVotes.textContent = obj.vote_count;
+  movie.popularity.textContent = obj.popularity;
+  movie.description.textContent = obj.overview;
+  movie.originalTitle.textContent = obj.original_title;
+  movie.genres.textContent = showGenres(obj.genres);
+}
+
+async function fetchReturn(id) {
   try {
     const obj = await fetchDetailsMovie(id);
-    console.log(obj);
-    const genres = await getAllGenres();
-    obj.poster_path
-      ? (movie.image.src = IMG_PATH + obj.poster_path)
-      : (movie.image.src = NO_POSTER);
-    movie.title.textContent = obj.title;
-    movie.avrgVote.textContent = obj.vote_average;
-    movie.allVotes.textContent = obj.vote_count;
-    movie.popularity.textContent = obj.popularity;
-    movie.description.textContent = obj.overview;
-    movie.originalTitle.textContent = obj.original_title;
-    movie.genres.textContent = showGenres(obj.genres);
+    fillData(obj);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
   }
@@ -60,15 +59,6 @@ function openModal() {
   modalFilm.classList.toggle('is-hidden');
 }
 
-function addGenres(genresApi, genresArray) {
-  const movieGenres = [];
-  genresApi.forEach(genre => {
-    const index = genresArray.indexOf(genre.id);
-    index >= 0 ? null : movieGenres.push(genre.name);
-  });
-  return movieGenres;
-}
-
 function showGenres(genres) {
   const array = [];
   genres.forEach(genre => {
@@ -82,7 +72,7 @@ async function filmClicked(event) {
     return;
   }
   const liElement = event.target.closest('li');
-  fillData(liElement.dataset.movieId);
+  fetchReturn(liElement.dataset.movieId);
   openModal();
 }
 
