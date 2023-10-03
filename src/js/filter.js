@@ -1,17 +1,22 @@
 import { getAllGenres } from './getGenres';
 
-createChck();
 const filter = document.querySelector('.filter');
+const header = document.querySelector('.header-library');
 
 const filterOpen = document.querySelector('#filter-open');
 const mobileClose = document.querySelector('.filter__button');
 
-filterOpen.addEventListener('mouseover', showFilters);
-mobileClose.addEventListener('click', hideFilters);
+if (!header) {
+  filterOpen.addEventListener('mouseover', showFilters);
+  mobileClose.addEventListener('click', hideFilters);
 
-filterOpen.addEventListener('mouseleave', hideFilters);
+  filterOpen.addEventListener('mouseleave', hideFilters);
+}
 
 async function createChck() {
+  if (header) {
+    return;
+  }
   const element = document.querySelector('.filter__genres');
   const genresArray = await getAllGenres();
   genresArray.forEach(genre => {
@@ -68,3 +73,5 @@ export function getFilter() {
 function isMobile() {
   return window.matchMedia('(max-width: 767.99px)').matches;
 }
+
+createChck();
