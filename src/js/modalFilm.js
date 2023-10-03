@@ -1,4 +1,14 @@
 import { fetchDetailsMovie } from './fetchAll';
+import {
+  addFilmToLocalStorage,
+  removeFilmFromLocalStorage,
+  setMoviesInDB,
+} from './firebase/database';
+
+import { loadStorage } from './localStorage';
+import { Report } from 'notiflix';
+
+let film = null;
 
 const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
@@ -28,6 +38,7 @@ function fillData(obj) {
   movie.description.textContent = obj.overview;
   movie.originalTitle.textContent = obj.original_title;
   movie.genres.textContent = showGenres(obj.genres);
+  return (film = obj);
 }
 
 async function fetchReturn(id) {
@@ -77,3 +88,53 @@ async function filmClicked(event) {
 }
 
 document.querySelector('.films__grid').addEventListener('click', filmClicked);
+
+const watchedBtn = document.querySelector('#watchedFilmBtn');
+const queueBtn = document.querySelector('#queueFilmBtn');
+
+watchedBtn.addEventListener('click', btnHandler);
+queueBtn.addEventListener('click', btnHandler);
+
+function btnHandler(e) {
+  const user = loadStorage('user');
+
+  const button = e.target;
+
+  const storage = button.dataset.list === 'watched' ? 'watched' : 'queue';
+
+  const KEYS = {
+    WATCHED: 'watchedFilms',
+    QUEUE: 'queueFilms',
+  };
+
+  const storageKey = button.dataset.list === 'watched' ? KEYS.WATCHED : KEYS.QUEUE;
+
+  const currentAction = button.dataset.action;
+
+  switch (currentAction) {
+    case 'remove': {
+      removeFilmFromLocalStorage(storageKey, film);
+      button.dataset.action = 'add';
+      button.blur();
+      button.textContent = `Add to ${storage}`;
+      if (user) {
+        setMoviesInDB(user);
+      }
+      break;
+    }
+    case 'add': {
+      addFilmToLocalStorage(storageKey, film);
+      //Report.success('', 'Film added to storage');
+      button.dataset.action = 'remove';
+      button.blur();
+      button.textContent = `Remove from ${storage}`;
+      if (user) {
+        setMoviesInDB(user);
+      }
+      break;
+    }
+
+    default:
+      return;
+  }
+}
