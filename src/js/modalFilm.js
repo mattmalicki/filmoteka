@@ -55,10 +55,7 @@ async function filmClicked(event) {
     console.log('That was UL');
     return;
   }
-  let liElement = event.target;
-  while (liElement && !liElement.nodeName === 'LI') {
-    liElement = event.target.parentNode;
-  }
+  let liElement = event.target.closest('li');
   console.log(liElement);
 }
 

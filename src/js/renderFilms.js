@@ -4,13 +4,14 @@ import { getFilter } from './filter';
 import Notiflix from 'notiflix';
 import './modalFilm';
 
+const header = document.querySelector('.header-library');
 const formEl = document.querySelector('#search-form');
 const listEl = document.querySelector('.films__grid');
 const inputEl = document.querySelector('[name="searchQuery"]');
 let page = 1;
-
-formEl.addEventListener('submit', showFilms);
-
+if (!header) {
+  formEl.addEventListener('submit', showFilms);
+}
 async function showFilms(event) {
   event.preventDefault();
   while (listEl.firstChild) {
