@@ -2,18 +2,17 @@ import { getMoviesGenres } from './getGenres';
 
 const filter = document.querySelector('.filter');
 const header = document.querySelector('.header-library');
+const form = document.querySelector('#search-form');
 
 const filterOpen = document.querySelector('#filter-open');
 const filterOpenSticky = document.querySelector('#filter-open-sticky');
-const mobileClose = document.querySelector('.filter__button');
+const filterClose = document.querySelector('.filter__button');
 
 if (!header) {
-  filterOpen.addEventListener('mouseover', showFilters);
-  // filterOpenSticky.addEventListener('mouseover', showFilters);
-  mobileClose.addEventListener('click', hideFilters);
-
-  filterOpen.addEventListener('mouseleave', hideFilters);
-  // filterOpenSticky.addEventListener('mouseleave', hideFilters);
+  filterOpen.addEventListener('click', showFilters);
+  filterOpenSticky.addEventListener('click', showFiltersSticky);
+  filterClose.addEventListener('click', hideFilters);
+  filter.addEventListener('focusout', hideFilters);
 }
 
 async function createChck() {
@@ -47,6 +46,25 @@ function showFilters(event) {
   if (isMobile()) {
     filter.style.top = `230px`;
     filter.style.left = `0px`;
+  } else if (isTablet()) {
+    filter.style.top = `${form.getBoundingClientRect().top + 25}px`;
+    filter.style.left = `${form.getBoundingClientRect().left}px`;
+  } else {
+    filter.style.top = `${event.clientY}px`;
+    filter.style.left = `${event.clientX}px`;
+  }
+  filter.classList.remove('is-hidden');
+}
+
+function showFiltersSticky(event) {
+  const formSticky = document.querySelector('.header__sticky__search-form');
+
+  if (isMobile()) {
+    filter.style.top = `${formSticky.getBoundingClientRect().top + 75}px`;
+    filter.style.left = `0px`;
+  } else if (isTablet()) {
+    filter.style.top = `${formSticky.getBoundingClientRect().top + 25}px`;
+    filter.style.left = `${formSticky.getBoundingClientRect().left}px`;
   } else {
     filter.style.top = `${event.clientY}px`;
     filter.style.left = `${event.clientX}px`;
@@ -55,11 +73,7 @@ function showFilters(event) {
 }
 
 function hideFilters() {
-  isMobile()
-    ? filter.classList.add('is-hidden')
-    : setTimeout(() => {
-        filter.classList.add('is-hidden');
-      }, 500);
+  filter.classList.add('is-hidden');
 }
 
 export function getFilter() {
@@ -74,5 +88,7 @@ export function getFilter() {
 function isMobile() {
   return window.matchMedia('(max-width: 767.99px)').matches;
 }
-
+function isTablet() {
+  return window.matchMedia('(min-width: 768px) and (max-width: 1279.99px)').matches;
+}
 createChck();
