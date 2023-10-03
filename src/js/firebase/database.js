@@ -82,3 +82,19 @@ export function addFilmToLocalStorage(key, film) {
   currentFilmsArray.push(film);
   saveStorage(key, currentFilmsArray);
 }
+
+export function isInclude(key, filmID) {
+  const data = loadStorage(key);
+
+  const allFilms = [];
+
+  if (data) {
+    allFilms.push(...data);
+  }
+
+  if (!allFilms) {
+    return false;
+  }
+
+  return allFilms.some(e => e.id === Number(filmID));
+}
