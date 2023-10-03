@@ -57,7 +57,11 @@ function handleWatchedButton() {
   renderLocalStorage(watchedFilms);
 }
 
-watchedButton.addEventListener('click', handleWatchedButton);
+if (document.querySelector('#libraryWatchedButton') === null) {
+  return;
+} else {
+  watchedButton.addEventListener('click', handleWatchedButton);
+}
 //sam guzik watched
 
 
@@ -73,7 +77,12 @@ function handleQueuedButton() {
   renderLocalStorage(queuedFilms);
 }
 
-queuedButton.addEventListener('click', handleQueuedButton);
+
+if (document.querySelector('#libraryQueuedButton') === null) {
+  return;
+} else {
+  queuedButton.addEventListener('click', handleQueuedButton);
+}
 //sam guzik queued
 
 
