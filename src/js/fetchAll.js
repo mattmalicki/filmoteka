@@ -97,6 +97,26 @@ export async function fetchAllOnlyGenres(with_genres, page, ...rest) {
   }
 }
 
+export async function fetchDetailsMovie(id) {
+  try {
+    const requestPath = `movie/${id}`;
+    const movie = await fetchFromApi({ requestPath });
+    return movie;
+  } catch (err) {
+    return err.toString();
+  }
+}
+
+export async function fetchDetailsTv(id) {
+  try {
+    const requestPath = `tv/${id}`;
+    const series = await fetchFromApi({ requestPath });
+    return series;
+  } catch (err) {
+    return err.toString();
+  }
+}
+
 function mergeData(movies, series) {
   const array = movies.concat(series);
   return array.sort((firsObj, secObj) => secObj.popularity - firsObj.popularity);
