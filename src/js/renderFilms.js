@@ -4,6 +4,7 @@ import { getFilter } from './filter';
 import Notiflix from 'notiflix';
 import './modalFilm';
 
+
 const header = document.querySelector('.header-library');
 const data = {
   apiPage: 1,
