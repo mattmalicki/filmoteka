@@ -1,4 +1,4 @@
-import { fetchFromApi } from './fetchFromApi';
+import { popularMovies } from './popularMovies';
 import Notiflix from 'notiflix';
 
 // SHOW/HIDE "FILMSTRIP" SPINNER ON/DONE RENDERING MOVIES //
@@ -36,7 +36,10 @@ const scrollHandler = async () => {
     currentPage++;
 
     const genres = await fetchGenres();
-   // const popMovies = await 'popularMovies';
+    const popMovies = await popularMovies(currentPage);
+    const movies = popMovies.results.map(movie => {
+      
+    })
    //const movies = popMovies.results.map (movie=> {
 
    

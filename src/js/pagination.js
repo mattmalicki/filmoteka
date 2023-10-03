@@ -1,6 +1,6 @@
 //<--The following code has been created with TOASTUI Component/Pagination-->//
 
-import { fetchPopular } from './';
+import { showFilms } from './renderFilms';
 import Pagination from 'tui-pagination';
 
 const options = {
@@ -38,25 +38,9 @@ pagination.on('afterMove', function (eventData) {
   const endIndex = startIndex + options.itemsPerPage;
 
   if (currentPage > 1) {
-    fetchPopular(startIndex, endIndex);
+    showFilms(startIndex, endIndex);
   }
 });
 
 export default pagination;
 
-// <--Code need to be add to the others functions: --> //
-// FetchPopular:
-// 1. import pagination from './pagination';
-// 2. pagination.getCurrentPage(page);
-// 3. pagination.on('afterMove', evt => {
-//  fetchPopular(evt.page);
-//});
-
-// searchBy:
-// 1. import pagination from './pagination';
-// 2. const ex.paginationTemplate = document.querySelector('#pagination');
-// pagination.reset();
-// const ex.paginationTemplate.classList.add('is-hidden');
-// pagination.on('afterMove', e => {
-// margeData?(e.page);
-// });

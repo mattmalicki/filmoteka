@@ -6,6 +6,7 @@ import './modalFilm';
 import pagination from './pagination';
 import { loaderToggle } from './loader';
 
+
 const header = document.querySelector('.header-library');
 const data = {
   page: 1,
