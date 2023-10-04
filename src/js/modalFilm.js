@@ -19,9 +19,11 @@ const KEYS = {
 
 const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
+const playTrailer = document.querySelector('#modal-film-trailer');
 
 closeButton.addEventListener('click', closeModal);
 modalFilm.addEventListener('click', closeModalOutside);
+playTrailer.addEventListener('click', showTrailer);
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 const NO_POSTER = './images/no-movie.jpg';
@@ -36,6 +38,7 @@ const movie = {
   description: document.querySelector('#movie-description'),
   genres: document.querySelector('#movie-genres'),
   trailer: document.querySelector('#movie-trailer'),
+  trailerBttn: document.querySelector('#modal-film-trailer'),
 };
 
 async function fillData(obj) {
@@ -47,7 +50,16 @@ async function fillData(obj) {
   movie.description.textContent = obj.overview;
   movie.originalTitle.textContent = obj.original_title;
   movie.genres.textContent = showGenres(obj.genres);
+  movie.trailerBttn.dataset.movieId = obj.id;
   return (film = obj);
+}
+
+async function showTrailer(event) {
+  modalFilm.classList.toggle('is-hidden');
+  const id = event.target.dataset.movieId;
+  const src = await getTrailer(id);
+  src ? showVideo(src) : noMovie();
+  return;
 }
 
 async function fetchReturn(id) {

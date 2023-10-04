@@ -36,8 +36,6 @@
   background-color: #fff;
   padding: 48px 20px;
   font-weight: 500;
-  overflow-x: scroll;
-  overflow-y: hidden;
   @include tablet {
     max-width: 900px;
     flex-wrap: nowrap;
@@ -97,7 +95,6 @@
       flex-basis: calc(100% - 375px - 16px);
     }
     &-title {
-      overflow-y: scroll;
       text-transform: uppercase;
       font-size: 20px;
       line-height: 23px;
@@ -180,6 +177,16 @@
       background-color: #ff6b08;
       color: #fff;
       border: 1px solid #ff6b08;
+    }
+    &--trailer {
+      border-color: #b41f1f;
+      color: #b41f1f;
+      background-color: transparent;
+      &:hover,
+      &:focus {
+        background-color: #b41f1f;
+        color: #fff;
+      }
     }
   }
 }
