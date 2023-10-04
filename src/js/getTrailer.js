@@ -7,16 +7,18 @@ export async function getTrailer(id) {
     if (!trailers.results) {
       return;
     }
-    for (let trailer of trailers.results) {
-      if (trailer.site === 'YouTube' && trailer.name.toLowerCase().includes('trailer')) {
-        return `//www.youtube.com/embed/${trailer.key}`;
-      } else {
-        return;
-      }
+    console.log(trailers.results);
+    let officialTrailers = [];
+    trailers.results.forEach(item => {
+      item.name.toLowerCase().includes('trailer') ? officialTrailers.push(item) : null;
+    });
+    console.log(officialTrailers);
+    if (officialTrailers.length && officialTrailers[0].key) {
+      return `https://www.youtube.com/embed/${officialTrailers[0].key}`;
+    } else {
+      return `https://www.youtube.com/embed/${trailers.results[0].key}`;
     }
   } catch (err) {
     return err;
   }
 }
-
-// <iframe width="560" height="315" src="https://www.youtube.com/embed/lJIrF4YjHfQ?si=JjAVaEwM0b9gnyyy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

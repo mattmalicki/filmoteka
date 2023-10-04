@@ -17,7 +17,7 @@ async function handleWatchedButton() {
   const watchedFilms = loadStorage('watchedFilms');
   watchedButton.classList.add('my-library-header__button--current');
   queuedButton.classList.remove('my-library-header__button--current');
-  if (watchedFilms.length !== 0) {
+  if (watchedFilms.length > 0) {
     const array = await createCard(watchedFilms);
     grid.append(...array);
     return;
@@ -32,7 +32,7 @@ async function handleQueuedButton() {
 
   queuedButton.classList.add('my-library-header__button--current');
   watchedButton.classList.remove('my-library-header__button--current');
-  if (queuedFilms.length !== 0) {
+  if (queuedFilms.length > 0) {
     const array = await createCard(queuedFilms);
     grid.append(...array);
     return;

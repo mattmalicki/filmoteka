@@ -5,10 +5,21 @@ const chk = document.getElementById('chk');
 chk.addEventListener('click', changeTheme);
 
 function changeTheme() {
-  //sam sprawdzi czy jest dark czy nie i albo usunie albo doda
   document.querySelector('body').classList.toggle('dark');
+  console.log(chk.checked);
 
-  //pobiera dane z local i sprawdza ktore jest i zapisuje przeciwne do tego co jest.
-  loadStorage('theme') === 'dark' ? saveStorage('theme', 'light') : saveStorage('theme', 'dark');
+  loadStorage('darkTheme') ? saveStorage('darkTheme', false) : saveStorage('darkTheme', true);
 }
-loadStorage('theme') === 'dark' ? changeTheme() : null;
+
+loadTheme();
+
+function loadTheme() {
+  if (loadStorage('darkTheme')) {
+    addDark();
+    chk.checked = true;
+  }
+}
+
+function addDark() {
+  document.querySelector('body').classList.add('dark');
+}
