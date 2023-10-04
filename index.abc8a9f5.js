@@ -1,2 +1,0 @@
-const modalTeam=document.querySelector("[data-modalTeam]"),closeModalTeamButton=document.querySelector("[data-modalTeam-close]"),backdropTeam=document.querySelector(".team-backdrop");function closeModalTeam(){modalTeam.classList.add("is-hidden")}closeModalTeamButton.addEventListener("click",closeModalTeam),backdrop.addEventListener("click",(e=>{e.target===backdropTeam&&closeModalTeam()})),document.addEventListener("keydown",(e=>{"Escape"===e.key&&closeModalTeam()}));
-//# sourceMappingURL=index.abc8a9f5.js.map
