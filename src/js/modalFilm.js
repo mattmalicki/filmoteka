@@ -89,7 +89,7 @@ async function filmClicked(event) {
     return;
   }
   const liElement = event.target.closest('li');
-  fetchReturn(liElement.dataset.movieId);
+  liElement.dataset.movieId ? fetchReturn(liElement.dataset.movieId) : fetchReturn(liElement.id);
   checkWatchedORQueue(liElement.dataset.movieId);
   openModal();
 }

@@ -6,20 +6,21 @@ import './modalFilm';
 import { loaderToggle } from './loader';
 
 const header = document.querySelector('.header-library');
-export const data = {
+const data = {
   page: 1,
   allPages: 0,
   keyname: '',
   filters: [],
 };
 const formEl = document.querySelector('#search-form');
+const loadMore = document.querySelector('.pagination__button');
 const listEl = document.querySelector('.films__grid');
 const inputEl = document.querySelector('[name="searchQuery"]');
 if (!header) {
   formEl.addEventListener('submit', onSubmit);
+  loadMore.addEventListener('click', showFilms);
+  showFilms();
 }
-const loadMore = document.querySelector('.pagination__button');
-loadMore.addEventListener('click', showFilms);
 
 function onSubmit(event) {
   event.preventDefault();
@@ -30,7 +31,7 @@ function onSubmit(event) {
   showFilms();
 }
 
-export function showFilms() {
+function showFilms() {
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       genreNoName();
@@ -45,8 +46,6 @@ export function showFilms() {
     }
   }
 }
-
-showFilms();
 
 function clearList() {
   while (listEl.firstChild) {
