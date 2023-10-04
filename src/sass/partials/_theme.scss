@@ -21,18 +21,17 @@ body.dark {
     background-color: #484343;
     color: #fff;
     &__close-btn {
-      background-color: #fff;
+      background-color: transparent;
     }
   }
   .info-name {
     color: #fff;
   }
   .modal-film__btn {
-    background-color: #fafafa;
     &:hover,
     &:focus {
-      background-color: #ff6b01;
-      color: #fff;
+      background-color: #fff;
+      color: #ff6b01;
     }
   }
 

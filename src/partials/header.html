@@ -43,23 +43,28 @@
 
   <div class="header__search">
     <form class="header__search-form" id="search-form">
-      <input type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+      <input
+        id="inputHeader"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
       <button class="header__search-button" type="submit">
         <svg class="header__search-icon" width="12px" height="12px">
           <use href="./images/icons.svg#icon-search"></use>
         </svg>
       </button>
 
-<!-- FILTROWANIE -->
+      <!-- FILTROWANIE -->
 
       <button class="filter__button-open" id="filter-open" type="button">
         <svg class="header__search-icon" width="12px" height="12px">
           <use href="./images/icons.svg#icon-filter"></use>
         </svg>
       </button>
-    
-    <!-- FILTROWANIE END -->
 
+      <!-- FILTROWANIE END -->
     </form>
   </div>
 </header>
@@ -75,8 +80,9 @@
     </a>
 
     <div class="header__search">
-      <form class="header__sticky__search-form">
+      <form id="sticky-search-form" class="header__sticky__search-form">
         <input
+          id="inputSticky"
           class="header__sticky__input"
           type="text"
           name="searchQuery"
@@ -89,15 +95,14 @@
             <use href="./images/icons.svg#icon-search"></use>
           </svg>
         </button>
-      
 
-      <!-- FILTROWANIE -->
+        <!-- FILTROWANIE -->
 
-      <button class="filter__button-open" id="filter-open-sticky" type="button">
-        <svg class="header__search-icon" width="12px" height="12px">
-          <use href="./images/icons.svg#icon-filter"></use>
-        </svg>
-      </button>
+        <button class="filter__button-open" id="filter-open-sticky" type="button">
+          <svg class="header__search-icon" width="12px" height="12px">
+            <use href="./images/icons.svg#icon-filter"></use>
+          </svg>
+        </button>
       </form>
     </div>
 
