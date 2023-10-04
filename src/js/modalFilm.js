@@ -21,7 +21,7 @@ const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
 
 closeButton.addEventListener('click', closeModal);
-modalFilm.addEventListener('click', closeModal);
+modalFilm.addEventListener('click', closeModalOutside);
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 const NO_POSTER = './images/no-movie.jpg';
@@ -74,6 +74,13 @@ function clearData() {
 function closeModal() {
   modalFilm.classList.toggle('is-hidden');
   clearData();
+}
+
+function closeModalOutside(event) {
+  if (event.target.className.includes('backdrop')) {
+    modalFilm.classList.toggle('is-hidden');
+    clearData();
+  }
 }
 
 function openModal() {
