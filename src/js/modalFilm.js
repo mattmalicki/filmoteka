@@ -21,6 +21,7 @@ const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
 
 closeButton.addEventListener('click', closeModal);
+modalFilm.addEventListener('click', closeModal);
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 const NO_POSTER = './images/no-movie.jpg';
