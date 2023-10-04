@@ -56,6 +56,9 @@ function addInfo(obj, genres) {
 }
 
 function addGenres(genresApi, genresArray) {
+  if (!genresArray) {
+    return;
+  }
   const movieGenres = [];
   genresApi.forEach(genre => {
     const index = genresArray.indexOf(genre.id);
