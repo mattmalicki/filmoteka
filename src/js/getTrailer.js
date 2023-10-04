@@ -7,13 +7,14 @@ export async function getTrailer(id) {
     if (!trailers.results) {
       return;
     }
+    console.log(trailers.results);
     let officialTrailers = [];
-    officialTrailers = trailers.results.filter(item => {
-      item.name.toLowerCase().includes('trailer');
+    trailers.results.forEach(item => {
+      item.name.toLowerCase().includes('trailer') ? officialTrailers.push(item) : null;
     });
     console.log(officialTrailers);
     if (officialTrailers.length && officialTrailers[0].key) {
-      return `https://www.youtube.com/embed/${officialTrailer[0].key}`;
+      return `https://www.youtube.com/embed/${officialTrailers[0].key}`;
     } else {
       return `https://www.youtube.com/embed/${trailers.results[0].key}`;
     }
