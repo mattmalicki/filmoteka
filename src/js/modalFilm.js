@@ -184,6 +184,7 @@ function btnHandler(e) {
       if (user) {
         setMoviesInDB(user);
       }
+      location.reload();
       break;
     }
     case 'add': {
