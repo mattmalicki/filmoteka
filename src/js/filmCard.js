@@ -11,13 +11,21 @@ export async function createCard(filmsArray) {
       const cardEl = document.createElement('li');
       cardEl.classList.add('films__grid-item');
       cardEl.dataset.movieId = movie.id;
-      cardEl.append(addImage(movie.poster_path), addInfo(movie, genres));
+      cardEl.append(addTrailer(), addImage(movie.poster_path), addInfo(movie, genres));
       cardArrayEl.push(cardEl);
     });
     return cardArrayEl;
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
   }
+}
+
+function addTrailer() {
+  const trailerBttn = document.createElement('button');
+  trailerBttn.type = 'button';
+  trailerBttn.classList.add('films__trailer');
+  trailerBttn.textContent = 'Trailer';
+  return trailerBttn;
 }
 
 function addImage(imgUrl) {

@@ -5,9 +5,10 @@ import {
   setMoviesInDB,
   isInclude,
 } from './firebase/database';
-
+import { showVideo, hideVideo } from './modalVideo';
 import { loadStorage } from './localStorage';
-import { Report } from 'notiflix';
+import Notiflix, { Report } from 'notiflix';
+import { getTrailer } from './getTrailer';
 
 let film = null;
 
@@ -51,7 +52,8 @@ async function fillData(obj) {
 async function fetchReturn(id) {
   try {
     const obj = await fetchDetailsMovie(id);
-    const trailer = fillData(obj);
+    const trailer = await fillData(obj);
+    movie.trailer.src = trailer;
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
   }
@@ -90,9 +92,21 @@ async function filmClicked(event) {
     return;
   }
   const liElement = event.target.closest('li');
+  if (event.target.nodeName === 'BUTTON') {
+    const movieId = liElement.dataset.movieId ? liElement.dataset.movieId : liElement.id;
+    const src = await getTrailer(movieId);
+    src ? showVideo(src) : noMovie();
+    return;
+  }
   liElement.dataset.movieId ? fetchReturn(liElement.dataset.movieId) : fetchReturn(liElement.id);
   checkWatchedORQueue(liElement.dataset.movieId);
   openModal();
+}
+
+function noMovie() {
+  new Notiflix.Notify.failure('No trailer found');
+  // hideVideo();
+  return;
 }
 
 document.querySelector('.films__grid').addEventListener('click', filmClicked);
