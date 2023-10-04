@@ -35,6 +35,15 @@ body.dark {
       color: #fff;
     }
   }
+
+  .pagination__button {
+    border-color: white;
+    color: white;
+    &:hover,
+    &:focus {
+      border-color: #ff6b01;
+    }
+  }
 }
 .checkbox {
   opacity: 0;

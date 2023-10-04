@@ -3,12 +3,10 @@ import { createCard } from './filmCard';
 import { getFilter } from './filter';
 import Notiflix from 'notiflix';
 import './modalFilm';
-import pagination from './pagination';
 import { loaderToggle } from './loader';
 
-
 const header = document.querySelector('.header-library');
-const data = {
+export const data = {
   page: 1,
   allPages: 0,
   keyname: '',
@@ -20,17 +18,19 @@ const inputEl = document.querySelector('[name="searchQuery"]');
 if (!header) {
   formEl.addEventListener('submit', onSubmit);
 }
+const loadMore = document.querySelector('.pagination__button');
+loadMore.addEventListener('click', showFilms);
 
 function onSubmit(event) {
   event.preventDefault();
+  clearList();
   data.page = 1;
   data.filters = getFilter();
   data.keyname = inputEl.value;
   showFilms();
 }
 
-function showFilms() {
-  clearList();
+export function showFilms() {
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       genreNoName();
