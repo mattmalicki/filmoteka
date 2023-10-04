@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 import './modalFilm';
 import { loaderToggle } from './loader';
 
-const header = document.querySelector('.header-library');
+const headerLibrary = document.querySelector('.header-library');
 const data = {
   page: 1,
   allPages: 0,
@@ -13,11 +13,15 @@ const data = {
   filters: [],
 };
 const formEl = document.querySelector('#search-form');
+const formSticky = document.querySelector('#sticky-search-form');
 const loadMore = document.querySelector('.pagination__button');
 const listEl = document.querySelector('.films__grid');
-const inputEl = document.querySelector('[name="searchQuery"]');
-if (!header) {
+const inputEl = document.querySelector('#inputHeader');
+const inputSticky = document.querySelector('#inputSticky');
+
+if (!headerLibrary) {
   formEl.addEventListener('submit', onSubmit);
+  formSticky.addEventListener('submit', onSubmit);
   loadMore.addEventListener('click', showFilms);
   showFilms();
 }
@@ -27,8 +31,24 @@ function onSubmit(event) {
   clearList();
   data.page = 1;
   data.filters = getFilter();
-  data.keyname = inputEl.value;
+  checkInput();
   showFilms();
+}
+
+function checkInput() {
+  if (!inputEl.value && !inputSticky.value) {
+    return;
+  }
+  if (inputEl.value) {
+    data.keyname = inputEl.value;
+    inputSticky.value = inputEl.value;
+    return;
+  }
+  if (inputSticky.value) {
+    data.keyname = inputSticky.value;
+    inputEl.value = inputSticky.value;
+    return;
+  }
 }
 
 function showFilms() {
