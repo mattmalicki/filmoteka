@@ -1,10 +1,10 @@
 import { fetchFromApi } from './fetchFromApi';
 
-export async function getTrailer(type, id) {
-  const requestPath = `${type}/${id}/videos`;
+export async function getTrailer(id) {
+  const requestPath = `movie/${id}/videos`;
   try {
     const trailers = await fetchFromApi({ requestPath });
-    if (!trailers.id || !trailers.results) {
+    if (!trailers.results) {
       return;
     }
     for (let trailer of trailers.results) {

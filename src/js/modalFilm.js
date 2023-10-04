@@ -33,9 +33,10 @@ const movie = {
   originalTitle: document.querySelector('#movie-original-title'),
   description: document.querySelector('#movie-description'),
   genres: document.querySelector('#movie-genres'),
+  trailer: document.querySelector('#movie-trailer'),
 };
 
-function fillData(obj) {
+async function fillData(obj) {
   obj.poster_path ? (movie.image.src = IMG_PATH + obj.poster_path) : (movie.image.src = NO_POSTER);
   movie.title.textContent = obj.title;
   movie.avrgVote.textContent = obj.vote_average;
@@ -50,7 +51,7 @@ function fillData(obj) {
 async function fetchReturn(id) {
   try {
     const obj = await fetchDetailsMovie(id);
-    fillData(obj);
+    const trailer = fillData(obj);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
   }

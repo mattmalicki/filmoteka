@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 10;
   background-color: #000c;
   width: 100vw;
   height: 100vh;
@@ -140,7 +140,7 @@
   }
 
   &__btns-list {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     display: flex;
     list-style: none;
     margin: 0;
