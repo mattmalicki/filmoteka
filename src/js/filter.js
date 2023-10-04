@@ -12,7 +12,6 @@ if (!header) {
   filterOpen.addEventListener('click', showFilters);
   filterOpenSticky.addEventListener('click', showFiltersSticky);
   filterClose.addEventListener('click', hideFilters);
-  filter.addEventListener('focusout', hideFilters);
 }
 
 async function createChck() {

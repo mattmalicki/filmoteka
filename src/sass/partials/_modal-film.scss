@@ -14,7 +14,7 @@
     padding-bottom: 0;
   }
   @include desktop {
-    padding: 150px 237px;
+    padding: 64px;
     padding-bottom: 0;
   }
   & .is-hidden {
@@ -25,7 +25,8 @@
 }
 
 .modal-film {
-  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
   position: relative;
   display: flex;
   justify-content: space-evenly;
@@ -35,14 +36,18 @@
   background-color: #fff;
   padding: 48px 20px;
   font-weight: 500;
+  overflow-x: scroll;
+  overflow-y: hidden;
   @include tablet {
+    max-width: 900px;
     flex-wrap: nowrap;
     padding: 40px 36px;
     gap: 68px;
   }
   @include desktop {
+    max-width: 1080px;
     flex-wrap: nowrap;
-    padding: 40px 12px;
+    padding: 40px;
     gap: 16px;
   }
 
