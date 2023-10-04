@@ -3,9 +3,7 @@ import { createCard } from './filmCard';
 import { getFilter } from './filter';
 import Notiflix from 'notiflix';
 import './modalFilm';
-import pagination from './pagination';
 import { loaderToggle } from './loader';
-
 
 const header = document.querySelector('.header-library');
 const data = {
@@ -15,14 +13,18 @@ const data = {
   filters: [],
 };
 const formEl = document.querySelector('#search-form');
+const loadMore = document.querySelector('.pagination__button');
 const listEl = document.querySelector('.films__grid');
 const inputEl = document.querySelector('[name="searchQuery"]');
 if (!header) {
   formEl.addEventListener('submit', onSubmit);
+  loadMore.addEventListener('click', showFilms);
+  showFilms();
 }
 
 function onSubmit(event) {
   event.preventDefault();
+  clearList();
   data.page = 1;
   data.filters = getFilter();
   data.keyname = inputEl.value;
@@ -30,7 +32,6 @@ function onSubmit(event) {
 }
 
 function showFilms() {
-  clearList();
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       genreNoName();
@@ -45,8 +46,6 @@ function showFilms() {
     }
   }
 }
-
-showFilms();
 
 function clearList() {
   while (listEl.firstChild) {
