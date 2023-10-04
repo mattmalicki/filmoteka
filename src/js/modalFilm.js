@@ -3,12 +3,18 @@ import {
   addFilmToLocalStorage,
   removeFilmFromLocalStorage,
   setMoviesInDB,
+  isInclude,
 } from './firebase/database';
 
 import { loadStorage } from './localStorage';
 import { Report } from 'notiflix';
 
 let film = null;
+
+const KEYS = {
+  WATCHED: 'watchedFilms',
+  QUEUE: 'queueFilms',
+};
 
 const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
@@ -84,6 +90,7 @@ async function filmClicked(event) {
   }
   const liElement = event.target.closest('li');
   fetchReturn(liElement.dataset.movieId);
+  checkWatchedORQueue(liElement.dataset.movieId);
   openModal();
 }
 
@@ -95,17 +102,38 @@ const queueBtn = document.querySelector('#queueFilmBtn');
 watchedBtn.addEventListener('click', btnHandler);
 queueBtn.addEventListener('click', btnHandler);
 
+function checkWatchedORQueue(movieID) {
+  watchedBtn.setAttribute('data-id', movieID);
+  watchedBtn.setAttribute('data-action', isInclude(KEYS.WATCHED, movieID) ? 'remove' : 'add');
+
+  if (watchedBtn.matches('[data-action="remove"]')) {
+    watchedBtn.classList.add('modal-film__btn--active');
+  } else {
+    watchedBtn.classList.remove('modal-film__btn--active');
+  }
+
+  watchedBtn.textContent = `${
+    isInclude(KEYS.WATCHED, movieID) ? 'Remove from watched' : 'Add to watched'
+  }`;
+
+  queueBtn.setAttribute('data-id', movieID);
+  queueBtn.setAttribute('data-action', isInclude(KEYS.QUEUE, movieID) ? 'remove' : 'add');
+
+  if (queueBtn.matches('[data-action="remove"]')) {
+    queueBtn.classList.add('modal-film__btn--active');
+  } else {
+    queueBtn.classList.remove('modal-film__btn--active');
+  }
+
+  queueBtn.textContent = `${isInclude(KEYS.QUEUE, movieID) ? 'Remove from queue' : 'Add to queue'}`;
+}
+
 function btnHandler(e) {
   const user = loadStorage('user');
 
   const button = e.target;
 
   const storage = button.dataset.list === 'watched' ? 'watched' : 'queue';
-
-  const KEYS = {
-    WATCHED: 'watchedFilms',
-    QUEUE: 'queueFilms',
-  };
 
   const storageKey = button.dataset.list === 'watched' ? KEYS.WATCHED : KEYS.QUEUE;
 
@@ -117,6 +145,7 @@ function btnHandler(e) {
       button.dataset.action = 'add';
       button.blur();
       button.textContent = `Add to ${storage}`;
+      button.classList.remove('modal-film__btn--active');
       if (user) {
         setMoviesInDB(user);
       }
@@ -128,6 +157,7 @@ function btnHandler(e) {
       button.dataset.action = 'remove';
       button.blur();
       button.textContent = `Remove from ${storage}`;
+      button.classList.add('modal-film__btn--active');
       if (user) {
         setMoviesInDB(user);
       }
