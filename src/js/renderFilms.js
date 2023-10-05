@@ -42,6 +42,7 @@ function checkInput(input) {
 }
 
 function showFilms() {
+  loaderToggle();
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       genreNoName();
@@ -65,7 +66,6 @@ function clearList() {
 
 async function genreNoName() {
   try {
-    loaderToggle();
     const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
@@ -85,7 +85,6 @@ function genreWithName() {
 
 async function nameNoGenre() {
   try {
-    loaderToggle();
     const movies = await api.fetchMoviesWithName(data.keyname, data.page);
     const arrayEl = await createCard(sortArray(movies.results));
     data.allPages = movies.total_pages;
@@ -101,7 +100,6 @@ async function nameNoGenre() {
 
 async function noNameNoGenre() {
   try {
-    loaderToggle();
     const movies = await api.fetchTrendingMovies(data.page);
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;

@@ -20,7 +20,9 @@ const KEYS = {
 const modalFilm = document.querySelector('[data-modal]');
 const closeButton = document.querySelector('[data-modal-close]');
 const playTrailer = document.querySelector('#modal-film-trailer');
+const listEl = document.querySelector('.films__grid');
 
+listEl.addEventListener('click', filmClicked);
 closeButton.addEventListener('click', closeModal);
 modalFilm.addEventListener('click', closeModalOutside);
 playTrailer.addEventListener('click', showTrailer);
@@ -104,23 +106,29 @@ function showGenres(genres) {
   genres.forEach(genre => {
     array.push(genre.name);
   });
-  return array;
+  return array.join(', ');
 }
 
 async function filmClicked(event) {
-  if (event.target.nodeName === 'UL') {
-    return;
+  try {
+    if (event.target.nodeName === 'UL') {
+      return;
+    }
+    const liElement = event.target.closest('li');
+    if (event.target.nodeName === 'BUTTON') {
+      const movieId = liElement.dataset.movieId ? liElement.dataset.movieId : liElement.id;
+      const src = await getTrailer(movieId);
+      src ? showVideo(src) : noMovie();
+      return;
+    }
+    liElement.dataset.movieId ? fetchReturn(liElement.dataset.movieId) : fetchReturn(liElement.id);
+    checkWatchedORQueue(liElement.dataset.movieId);
+    setTimeout(() => {
+      openModal();
+    }, 100);
+  } catch (err) {
+    console.log(`Error: ${err.toString()}`);
   }
-  const liElement = event.target.closest('li');
-  if (event.target.nodeName === 'BUTTON') {
-    const movieId = liElement.dataset.movieId ? liElement.dataset.movieId : liElement.id;
-    const src = await getTrailer(movieId);
-    src ? showVideo(src) : noMovie();
-    return;
-  }
-  liElement.dataset.movieId ? fetchReturn(liElement.dataset.movieId) : fetchReturn(liElement.id);
-  checkWatchedORQueue(liElement.dataset.movieId);
-  openModal();
 }
 
 function noMovie() {
@@ -128,8 +136,6 @@ function noMovie() {
   // hideVideo();
   return;
 }
-
-document.querySelector('.films__grid').addEventListener('click', filmClicked);
 
 const watchedBtn = document.querySelector('#watchedFilmBtn');
 const queueBtn = document.querySelector('#queueFilmBtn');
