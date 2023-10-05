@@ -1,10 +1,8 @@
 body {
   background-color: #fafafa;
-  transition: background-color 0.5s, color 0.5s;
 }
 body.dark {
   background: #292c35;
-  transition: background-color 0.5s, color 0.5s;
   .footer {
     background-color: #111;
     &__container--modal {
@@ -110,13 +108,3 @@ body.dark {
     @include font($fs: 12px);
   }
 }
-/* plik html do motywu ciemnego
- <div>
-    <input type="checkbox" class="checkbox" id="chk" />
-    <label class="label" for="chk">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-      <div class="orb"></div>
-    </label>
-  </div>
-  */

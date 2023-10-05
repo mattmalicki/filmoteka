@@ -28,27 +28,17 @@ if (!headerLibrary) {
 
 function onSubmit(event) {
   event.preventDefault();
+  const input = event.target[0];
   clearList();
+  data.keyname = input.value;
   data.page = 1;
   data.filters = getFilter();
-  checkInput();
+  checkInput(input);
   showFilms();
 }
 
-function checkInput() {
-  if (!inputEl.value && !inputSticky.value) {
-    return;
-  }
-  if (inputEl.value) {
-    data.keyname = inputEl.value;
-    inputSticky.value = inputEl.value;
-    return;
-  }
-  if (inputSticky.value) {
-    data.keyname = inputSticky.value;
-    inputEl.value = inputSticky.value;
-    return;
-  }
+function checkInput(input) {
+  input.id === 'inputHeader' ? (inputSticky.value = input.value) : (inputEl.value = input.value);
 }
 
 function showFilms() {

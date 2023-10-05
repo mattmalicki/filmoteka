@@ -33,6 +33,7 @@
     margin: 0;
     padding: 0;
     @include flex-center;
+    justify-content: left;
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 20px;
