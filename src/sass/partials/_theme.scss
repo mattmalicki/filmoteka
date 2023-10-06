@@ -31,6 +31,15 @@ body.dark {
       background-color: #fff;
       color: #ff6b01;
     }
+    &--trailer {
+      background-color: #b41f1f;
+      color: #fff;
+      &:hover,
+      &:focus {
+        background-color: #fff;
+        color: #b41f1f;
+      }
+    }
   }
 
   .pagination__button {
