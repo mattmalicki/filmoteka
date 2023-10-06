@@ -48,9 +48,14 @@ function addInfo(obj, genres) {
 
   const restInfo = document.createElement('span');
   restInfo.classList.add('films__info-rest');
-  restInfo.textContent = `${addGenres(genres, obj.genre_ids)} | ${getReleaseDate(
-    obj.release_date,
-  )}`;
+  const movieGenres = obj.genre_ids
+    ? addGenres(genres, obj.genre_ids)
+    : obj.genres
+        .map(item => {
+          return item.name;
+        })
+        .join(', ');
+  restInfo.textContent = `${movieGenres} | ${getReleaseDate(obj.release_date)}`;
   infoCont.append(title, restInfo);
   return infoCont;
 }
@@ -59,12 +64,13 @@ function addGenres(genresApi, genresArray) {
   if (!genresArray) {
     return;
   }
+  console.log(genresArray);
   const movieGenres = [];
   genresApi.forEach(genre => {
     const index = genresArray.indexOf(genre.id);
     index >= 0 ? movieGenres.push(genre.name) : null;
   });
-  return movieGenres;
+  return movieGenres.join(', ');
 }
 
 function getReleaseDate(date) {
