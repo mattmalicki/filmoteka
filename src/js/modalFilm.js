@@ -18,13 +18,11 @@ const KEYS = {
 };
 
 const modalFilm = document.querySelector('[data-modal]');
-const closeButton = document.querySelector('[data-modal-close]');
 const playTrailer = document.querySelector('#modal-film-trailer');
 const listEl = document.querySelector('.films__grid');
 
 listEl.addEventListener('click', filmClicked);
-closeButton.addEventListener('click', closeModal);
-modalFilm.addEventListener('click', closeModalOutside);
+modalFilm.addEventListener('click', closeModal);
 playTrailer.addEventListener('click', showTrailer);
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
@@ -85,16 +83,19 @@ function clearData() {
   movie.genres.textContent = '';
 }
 
-function closeModal() {
-  modalFilm.classList.toggle('is-hidden');
-  clearData();
-}
-
-function closeModalOutside(event) {
-  if (event.target.className.includes('backdrop')) {
+function closeModal(event) {
+  const clicked = event.target;
+  if (clicked.nodeName === 'use' || clicked.nodeName === 'svg') {
+    'modalClose' in clicked.closest('button').dataset
+      ? (modalFilm.classList.toggle('is-hidden'), clearData())
+      : null;
+    return;
+  } else if (clicked.className.includes('backdrop')) {
     modalFilm.classList.toggle('is-hidden');
     clearData();
+    return;
   }
+  return;
 }
 
 function openModal() {
