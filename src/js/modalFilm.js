@@ -89,10 +89,12 @@ function closeModal(event) {
     'modalClose' in clicked.closest('button').dataset
       ? (modalFilm.classList.toggle('is-hidden'), clearData())
       : null;
+    delete modalFilm.dataset.wasOpened;
     return;
   } else if (clicked.className.includes('backdrop')) {
     modalFilm.classList.toggle('is-hidden');
     clearData();
+    delete modalFilm.dataset.wasOpened;
     return;
   }
   return;
@@ -100,6 +102,7 @@ function closeModal(event) {
 
 function openModal() {
   modalFilm.classList.toggle('is-hidden');
+  modalFilm.dataset.wasOpened = true;
 }
 
 function showGenres(genres) {
