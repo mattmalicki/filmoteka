@@ -37,7 +37,6 @@ function onSubmit(event) {
   data.filters = getFilter();
   checkInput(input);
   showFilms();
-  showLoader();
 }
 
 function checkInput(input) {
@@ -74,7 +73,7 @@ async function genreNoName() {
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? noMovie() : null;
+    !arrayEl.length ? noMovie() : showLoader();
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
@@ -101,7 +100,7 @@ async function nameNoGenre() {
     const arrayEl = await createCard(sortArray(movies.results));
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? noMovie() : null;
+    !arrayEl.length ? noMovie() : showLoader();
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
@@ -116,7 +115,7 @@ async function noNameNoGenre() {
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? noMovie() : null;
+    !arrayEl.length ? noMovie() : showLoader();
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
