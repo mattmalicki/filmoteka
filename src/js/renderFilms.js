@@ -4,6 +4,7 @@ import { getFilter } from './filter';
 import Notiflix from 'notiflix';
 import './modalFilm';
 import { loaderToggle } from './loader';
+import { filmClicked } from './modalFilm';
 
 const headerLibrary = document.querySelector('.header-library');
 const data = {
@@ -43,6 +44,7 @@ function checkInput(input) {
 
 function showFilms() {
   loaderToggle();
+  listEl.addEventListener('click', filmClicked);
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       genreNoName();
@@ -70,7 +72,7 @@ async function genreNoName() {
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+    !arrayEl.length ? noMovie() : null;
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
@@ -78,9 +80,15 @@ async function genreNoName() {
     loaderToggle();
   }
 }
+listEl.addEventListener('click', filmClicked);
 
+function noMovie() {
+  new Notiflix.Notify.failure('No movies found');
+  listEl.removeEventListener('click', filmClicked);
+}
 function genreWithName() {
   new Notiflix.Notify.failure("Can't search movies by name and genres.");
+  listEl.removeEventListener('click', filmClicked);
 }
 
 async function nameNoGenre() {
@@ -89,7 +97,7 @@ async function nameNoGenre() {
     const arrayEl = await createCard(sortArray(movies.results));
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+    !arrayEl.length ? noMovie() : null;
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
@@ -104,7 +112,7 @@ async function noNameNoGenre() {
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+    !arrayEl.length ? noMovie() : null;
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);

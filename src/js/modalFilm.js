@@ -19,9 +19,7 @@ const KEYS = {
 
 const modalFilm = document.querySelector('[data-modal]');
 const playTrailer = document.querySelector('#modal-film-trailer');
-const listEl = document.querySelector('.films__grid');
 
-listEl.addEventListener('click', filmClicked);
 modalFilm.addEventListener('click', closeModal);
 playTrailer.addEventListener('click', showTrailer);
 
@@ -113,7 +111,7 @@ function showGenres(genres) {
   return array.join(', ');
 }
 
-async function filmClicked(event) {
+export async function filmClicked(event) {
   try {
     if (event.target.nodeName === 'UL') {
       return;
