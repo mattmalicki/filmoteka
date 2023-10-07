@@ -6,7 +6,6 @@ chk.addEventListener('click', changeTheme);
 
 function changeTheme() {
   document.querySelector('body').classList.toggle('dark');
-  console.log(chk.checked);
 
   loadStorage('darkTheme') ? saveStorage('darkTheme', false) : saveStorage('darkTheme', true);
 }
