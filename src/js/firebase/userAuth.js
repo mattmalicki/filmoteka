@@ -28,7 +28,9 @@ const logOutSticky = document.querySelector('#logOutSticky');
 
 if (loadStorage('user')) {
   logOut.classList.remove('is-hidden');
+  logOutSticky.classList.remove('is-hidden');
   logIn.classList.add('is-hidden');
+  logInSticky.classList.add('is-hidden');
 }
 
 form.addEventListener('submit', e => {
