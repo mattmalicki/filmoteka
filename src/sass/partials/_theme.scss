@@ -55,13 +55,16 @@ body.dark {
     color: white;
     border: 1px solid white;
   }
+  .label .orb {
+    background-color: #6b3e3e;
+  }
 }
 .checkbox {
   opacity: 0;
   position: absolute;
 }
 .label {
-  background-color: #200770;
+  background-color: #272e34bc;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -103,7 +106,7 @@ body.dark {
 }
 
 .fa-moon {
-  color: #90ad1d;
+  color: #d7dcc2;
   @include font($fs: 13px);
   @include tablet {
     @include font($fs: 14px);
@@ -111,7 +114,7 @@ body.dark {
 }
 
 .fa-sun {
-  color: #b1ba17;
+  color: #f9ff86;
   @include font($fs: 11px);
   @include tablet {
     @include font($fs: 12px);
