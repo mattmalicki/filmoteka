@@ -230,8 +230,6 @@ body .js-header__sticky {
   z-index: 1;
   background-image: linear-gradient(#ff001bb3, #000000b3);
   background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding-top: 5px;
   padding-bottom: 5px;
   animation-name: show_header;
@@ -239,7 +237,6 @@ body .js-header__sticky {
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   position: fixed;
   top: 0;
-  display: block;
 
   &__is-on {
     &::after {
