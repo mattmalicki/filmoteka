@@ -5,6 +5,7 @@ import Notiflix from 'notiflix';
 import './modalFilm';
 import { loaderToggle } from './loader';
 import { filmClicked } from './modalFilm';
+import { showLoader, hideLoader } from './pagination';
 
 const headerLibrary = document.querySelector('.header-library');
 const data = {
@@ -36,6 +37,7 @@ function onSubmit(event) {
   data.filters = getFilter();
   checkInput(input);
   showFilms();
+  showLoader();
 }
 
 function checkInput(input) {
@@ -85,10 +87,12 @@ listEl.addEventListener('click', filmClicked);
 function noMovie() {
   new Notiflix.Notify.failure('No movies found');
   listEl.removeEventListener('click', filmClicked);
+  hideLoader();
 }
 function genreWithName() {
   new Notiflix.Notify.failure("Can't search movies by name and genres.");
   listEl.removeEventListener('click', filmClicked);
+  hideLoader();
 }
 
 async function nameNoGenre() {
