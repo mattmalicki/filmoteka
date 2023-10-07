@@ -45,10 +45,7 @@ form.addEventListener('submit', e => {
   }
 });
 
-logOut.addEventListener('click', () => {
-  document.location.reload();
-  logout();
-});
+logOut.addEventListener('click', logout);
 
 function registerUser(email, password) {
   if (email.length < 4) {
@@ -132,9 +129,9 @@ function logout() {
     removeStorage('user');
     removeStorage('watchedFilms');
     removeStorage('queueFilms');
-    location.reload();
   });
   alert('You are logged out');
   logOut.classList.add('is-hidden');
   logIn.classList.remove('is-hidden');
+  location.reload();
 }
