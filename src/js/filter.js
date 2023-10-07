@@ -15,7 +15,7 @@ if (!header) {
 }
 
 function outsideWindow(event) {
-  if (event.target.closest('#filter-open') || event.target.closest('#filter')) {
+  if (event.target.closest('.filter__button-open') || event.target.closest('#filter')) {
     return;
   }
   hideFilters();
