@@ -27,6 +27,8 @@ obj.inputFields.forEach(inputField => {
 function openModal() {
   obj.modal.style.display = 'block';
   setInputFieldValidation();
+  window.addEventListener('click', outsideWindow);
+  document.addEventListener('keydown', keydownClose);
 }
 
 function closeModal() {
@@ -34,17 +36,19 @@ function closeModal() {
   handleRegisterButtonClick();
 }
 
-window.onclick = function (event) {
+function outsideWindow(event) {
   if (event.target === obj.modal) {
     closeModal();
+    document.removeEventListener('keydown', keydownClose);
+    window.removeEventListener('click', outsideWindow);
   }
-};
+}
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape' || event.code === 27) {
-    closeModal();
-  }
-});
+function keydownClose(event) {
+  event.key === 'Escape' ? closeModal() : event.code === 27 ? closeModal() : null;
+  document.removeEventListener('keydown', keydownClose);
+  window.removeEventListener('click', outsideWindow);
+}
 
 function register(event) {
   event.preventDefault();
