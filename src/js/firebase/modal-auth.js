@@ -6,6 +6,7 @@ const obj = {
   loginButton: document.querySelector('#form-send'),
   registerButton: document.querySelector('#type-auth-btn'),
   openModalBtn: document.querySelector('#open-modal-btn'),
+  openModalBtnSticky: document.querySelector('#open-modal-btn-sticky'),
   closeModalBtn: document.querySelector('#close-modal-btn'),
   inputFields: document.querySelectorAll('.modal-auth__form-input'),
 };
@@ -15,6 +16,7 @@ const RegisterText = obj.registerText.textContent;
 const RegisterButton = obj.loginButton.textContent;
 
 obj.openModalBtn.addEventListener('click', openModal);
+obj.openModalBtnSticky.addEventListener('click', openModal);
 obj.closeModalBtn.addEventListener('click', closeModal);
 obj.registerButton.addEventListener('click', register);
 
