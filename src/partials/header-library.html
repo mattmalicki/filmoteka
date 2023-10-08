@@ -45,7 +45,12 @@
   <div class="my-library-header">
     <ul class="my-library-header__buttons-list">
       <li class="my-library-header__buttons--item">
-        <button class="my-library-header__button my-library-header__button--current" id="libraryWatchedButton">Watched</button>
+        <button
+          class="my-library-header__button my-library-header__button--current"
+          id="libraryWatchedButton"
+        >
+          Watched
+        </button>
       </li>
       <li class="my-library-header__buttons--item">
         <button class="my-library-header__button" id="libraryQueuedButton">Queue</button>
@@ -70,21 +75,27 @@
     <div class="my-library-header"> -->
     <ul class="my-library-header__buttons-list">
       <li class="my-library-header__buttons--item">
-        <button class="my-library-header__button my-library-header__button--sticky my-library-header__button--current" id="libraryWatchedButton">Watched</button>
+        <button
+          class="my-library-header__button my-library-header__button--sticky my-library-header__button--current"
+          id="libraryWatchedButton-sticky"
+        >
+          Watched
+        </button>
       </li>
       <li class="my-library-header__buttons--item">
-        <button class="my-library-header__button my-library-header__button--sticky" id="libraryQueuedButton">Queue</button>
+        <button
+          class="my-library-header__button my-library-header__button--sticky"
+          id="libraryQueuedButton-sticky"
+        >
+          Queue
+        </button>
       </li>
     </ul>
     <!-- </div> -->
 
     <ul class="header-library__sticky__nav">
       <li>
-        <a
-          class="header-library__sticky__nav header__sticky__is-on"
-          href="./index.html"
-          >HOME</a
-        >
+        <a class="header-library__sticky__nav header__sticky__is-on" href="./index.html">HOME</a>
       </li>
       <li>
         <a class="header-library__sticky__nav" href="./my-library.html">MY LIBRARY</a>
@@ -92,10 +103,10 @@
 
       <!-- LOG IN LOG OUT -->
 
-      <li class="" id="logIn">
-        <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
+      <li class="" id="logInSticky">
+        <button class="btn" type="button" id="open-modal-btn-sticky">&#128526; LOG IN</button>
       </li>
-      <li class="is-hidden" id="logOut">
+      <li class="is-hidden" id="logOutSticky">
         <button class="btn" type="button">&#128682; LOG OUT</button>
       </li>
 

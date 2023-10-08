@@ -14,6 +14,14 @@ if (!header) {
   filterClose.addEventListener('click', hideFilters);
 }
 
+function outsideWindow(event) {
+  if (event.target.closest('.filter__button-open') || event.target.closest('#filter')) {
+    return;
+  }
+  hideFilters();
+  window.removeEventListener('click', outsideWindow);
+}
+
 async function createChck() {
   if (header) {
     return;
@@ -53,6 +61,7 @@ function showFilters(event) {
     filter.style.left = `${event.clientX}px`;
   }
   filter.classList.remove('is-hidden');
+  window.addEventListener('click', outsideWindow);
 }
 
 function showFiltersSticky(event) {
@@ -69,6 +78,7 @@ function showFiltersSticky(event) {
     filter.style.left = `${event.clientX}px`;
   }
   filter.classList.remove('is-hidden');
+  window.addEventListener('click', outsideWindow);
 }
 
 function hideFilters() {

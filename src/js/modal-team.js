@@ -1,26 +1,33 @@
 const modalTeam = document.querySelector('[data-modalTeam]');
-const closeModalTeamButton = document.querySelector('[data-modalTeam-close]');
 const backdropTeam = document.querySelector('.team-backdrop');
+const goitStudentsLink = document.querySelector('.footer__container--modal');
+
+goitStudentsLink.addEventListener('click', openModalTeam);
+backdropTeam.addEventListener('click', closeModal);
+
+function closeModal(event) {
+  const clicked = event.target;
+  if (clicked.nodeName === 'use' || clicked.nodeName === 'svg') {
+    'modalteamClose' in clicked.closest('button').dataset ? closeModalTeam() : null;
+    return;
+  } else if (clicked.className.includes('team-backdrop')) {
+    closeModalTeam();
+    clearData();
+    return;
+  }
+  return;
+}
 
 function closeModalTeam() {
-  modalTeam.classList.add('is-hidden'); // Dodaj klasę is-hidden, aby ukryć modal
+  modalTeam.classList.toggle('is-hidden');
 }
-closeModalTeamButton.addEventListener('click', closeModalTeam);
-modalTeam.addEventListener('click', closeModalTeamOutside);
 
-function closeModalTeamOutside(event) {
-  if (event.target.className.includes('team-backdrop')) {
-    modalTeam.classList.toggle('is-hidden');
-  }
+function keydownClose(event) {
+  event.key === 'Escape' ? closeModalTeam() : null;
+  document.removeEventListener('keydown', keydownClose);
 }
-backdrop.addEventListener('click', event => {
-  if (event.target === backdropTeam) {
-    closeModalTeam();
-  }
-});
 
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeModalTeam();
-  }
-});
+function openModalTeam() {
+  modalTeam.classList.toggle('is-hidden');
+  document.addEventListener('keydown', keydownClose);
+}

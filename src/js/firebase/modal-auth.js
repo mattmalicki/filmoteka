@@ -6,6 +6,7 @@ const obj = {
   loginButton: document.querySelector('#form-send'),
   registerButton: document.querySelector('#type-auth-btn'),
   openModalBtn: document.querySelector('#open-modal-btn'),
+  openModalBtnSticky: document.querySelector('#open-modal-btn-sticky'),
   closeModalBtn: document.querySelector('#close-modal-btn'),
   inputFields: document.querySelectorAll('.modal-auth__form-input'),
 };
@@ -15,6 +16,7 @@ const RegisterText = obj.registerText.textContent;
 const RegisterButton = obj.loginButton.textContent;
 
 obj.openModalBtn.addEventListener('click', openModal);
+obj.openModalBtnSticky.addEventListener('click', openModal);
 obj.closeModalBtn.addEventListener('click', closeModal);
 obj.registerButton.addEventListener('click', register);
 
@@ -25,6 +27,8 @@ obj.inputFields.forEach(inputField => {
 function openModal() {
   obj.modal.style.display = 'block';
   setInputFieldValidation();
+  window.addEventListener('click', outsideWindow);
+  document.addEventListener('keydown', keydownClose);
 }
 
 function closeModal() {
@@ -32,17 +36,19 @@ function closeModal() {
   handleRegisterButtonClick();
 }
 
-window.onclick = function (event) {
+function outsideWindow(event) {
   if (event.target === obj.modal) {
     closeModal();
+    document.removeEventListener('keydown', keydownClose);
+    window.removeEventListener('click', outsideWindow);
   }
-};
+}
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape' || event.code === 27) {
-    closeModal();
-  }
-});
+function keydownClose(event) {
+  event.key === 'Escape' ? closeModal() : event.code === 27 ? closeModal() : null;
+  document.removeEventListener('keydown', keydownClose);
+  window.removeEventListener('click', outsideWindow);
+}
 
 function register(event) {
   event.preventDefault();

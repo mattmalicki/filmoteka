@@ -22,11 +22,15 @@ const modal = document.querySelector('#modal');
 const form = document.querySelector('#modal-auth-form');
 const button = document.querySelector('#form-send');
 const logIn = document.querySelector('#logIn');
+const logInSticky = document.querySelector('#logInSticky');
 const logOut = document.querySelector('#logOut');
+const logOutSticky = document.querySelector('#logOutSticky');
 
 if (loadStorage('user')) {
   logOut.classList.remove('is-hidden');
+  logOutSticky.classList.remove('is-hidden');
   logIn.classList.add('is-hidden');
+  logInSticky.classList.add('is-hidden');
 }
 
 form.addEventListener('submit', e => {
@@ -45,10 +49,8 @@ form.addEventListener('submit', e => {
   }
 });
 
-logOut.addEventListener('click', () => {
-  document.location.reload();
-  logout();
-});
+logOut.addEventListener('click', logout);
+logOutSticky.addEventListener('click', logout);
 
 function registerUser(email, password) {
   if (email.length < 4) {
@@ -99,7 +101,9 @@ function loginUser(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       logOut.classList.remove('is-hidden');
+      logOutSticky.classList.remove('is-hidden');
       logIn.classList.add('is-hidden');
+      logInSticky.classList.add('is-hidden');
 
       const user = auth.currentUser;
       Notify.success(`User ${user.email} logged in success`);
@@ -132,9 +136,11 @@ function logout() {
     removeStorage('user');
     removeStorage('watchedFilms');
     removeStorage('queueFilms');
-    location.reload();
   });
   alert('You are logged out');
   logOut.classList.add('is-hidden');
+  logOutSticky.classList.add('is-hidden');
   logIn.classList.remove('is-hidden');
+  logInSticky.classList.remove('is-hidden');
+  location.reload();
 }

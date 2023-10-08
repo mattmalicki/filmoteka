@@ -18,6 +18,6 @@ function addSrcVideo(src) {
 export function hideVideo() {
   modalTrailer.classList.toggle('is-hidden');
   const modalFilm = document.querySelector('[data-modal]');
-  modalFilm.className.includes('is-hidden') ? modalFilm.classList.remove('is-hidden') : null;
+  'wasOpened' in modalFilm.dataset ? modalFilm.classList.remove('is-hidden') : null;
   clearSrcVideo();
 }

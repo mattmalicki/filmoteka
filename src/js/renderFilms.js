@@ -4,6 +4,8 @@ import { getFilter } from './filter';
 import Notiflix from 'notiflix';
 import './modalFilm';
 import { loaderToggle } from './loader';
+import { filmClicked } from './modalFilm';
+import { showLoader, hideLoader } from './pagination';
 
 const headerLibrary = document.querySelector('.header-library');
 const data = {
@@ -28,30 +30,22 @@ if (!headerLibrary) {
 
 function onSubmit(event) {
   event.preventDefault();
+  const input = event.target[0];
   clearList();
+  data.keyname = input.value;
   data.page = 1;
   data.filters = getFilter();
-  checkInput();
+  checkInput(input);
   showFilms();
 }
 
-function checkInput() {
-  if (!inputEl.value && !inputSticky.value) {
-    return;
-  }
-  if (inputEl.value) {
-    data.keyname = inputEl.value;
-    inputSticky.value = inputEl.value;
-    return;
-  }
-  if (inputSticky.value) {
-    data.keyname = inputSticky.value;
-    inputEl.value = inputSticky.value;
-    return;
-  }
+function checkInput(input) {
+  input.id === 'inputHeader' ? (inputSticky.value = input.value) : (inputEl.value = input.value);
 }
 
 function showFilms() {
+  loaderToggle();
+  listEl.addEventListener('click', filmClicked);
   if (data.filters.length > 0) {
     if (data.keyname === '') {
       genreNoName();
@@ -75,12 +69,11 @@ function clearList() {
 
 async function genreNoName() {
   try {
-    loaderToggle();
     const movies = await api.fetchMovieOnlyGenres(data.filters, data.page);
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+    !arrayEl.length ? noMovie() : showLoader();
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
@@ -88,19 +81,26 @@ async function genreNoName() {
     loaderToggle();
   }
 }
+listEl.addEventListener('click', filmClicked);
 
+function noMovie() {
+  new Notiflix.Notify.failure('No movies found');
+  listEl.removeEventListener('click', filmClicked);
+  hideLoader();
+}
 function genreWithName() {
   new Notiflix.Notify.failure("Can't search movies by name and genres.");
+  listEl.removeEventListener('click', filmClicked);
+  hideLoader();
 }
 
 async function nameNoGenre() {
   try {
-    loaderToggle();
     const movies = await api.fetchMoviesWithName(data.keyname, data.page);
     const arrayEl = await createCard(sortArray(movies.results));
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+    !arrayEl.length ? noMovie() : showLoader();
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
@@ -111,12 +111,11 @@ async function nameNoGenre() {
 
 async function noNameNoGenre() {
   try {
-    loaderToggle();
     const movies = await api.fetchTrendingMovies(data.page);
     const arrayEl = await createCard(movies.results);
     data.allPages = movies.total_pages;
     data.page++;
-    !arrayEl.length ? new Notiflix.Notify.failure('No movies found') : null;
+    !arrayEl.length ? noMovie() : showLoader();
     listEl.append(...arrayEl);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);

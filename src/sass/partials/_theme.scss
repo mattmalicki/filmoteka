@@ -1,10 +1,8 @@
 body {
   background-color: #fafafa;
-  transition: background-color 0.5s, color 0.5s;
 }
 body.dark {
   background: #292c35;
-  transition: background-color 0.5s, color 0.5s;
   .footer {
     background-color: #111;
     &__container--modal {
@@ -33,6 +31,15 @@ body.dark {
       background-color: #fff;
       color: #ff6b01;
     }
+    &--trailer {
+      background-color: #b41f1f;
+      color: #fff;
+      &:hover,
+      &:focus {
+        background-color: #fff;
+        color: #b41f1f;
+      }
+    }
   }
 
   .pagination__button {
@@ -48,13 +55,16 @@ body.dark {
     color: white;
     border: 1px solid white;
   }
+  .label .orb {
+    background-color: #6b3e3e;
+  }
 }
 .checkbox {
   opacity: 0;
   position: absolute;
 }
 .label {
-  background-color: #200770;
+  background-color: #272e34bc;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -96,7 +106,7 @@ body.dark {
 }
 
 .fa-moon {
-  color: #90ad1d;
+  color: #d7dcc2;
   @include font($fs: 13px);
   @include tablet {
     @include font($fs: 14px);
@@ -104,19 +114,9 @@ body.dark {
 }
 
 .fa-sun {
-  color: #b1ba17;
+  color: #f9ff86;
   @include font($fs: 11px);
   @include tablet {
     @include font($fs: 12px);
   }
 }
-/* plik html do motywu ciemnego
- <div>
-    <input type="checkbox" class="checkbox" id="chk" />
-    <label class="label" for="chk">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-      <div class="orb"></div>
-    </label>
-  </div>
-  */
