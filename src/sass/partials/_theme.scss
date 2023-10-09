@@ -55,8 +55,11 @@ body.dark {
     color: white;
     border: 1px solid white;
   }
-  .label .orb {
-    background-color: #6b3e3e;
+  .label {
+    border-color: #b41f1f;
+    & .orb {
+      background-color: #6b3e3e;
+    }
   }
 }
 .checkbox {
@@ -64,6 +67,7 @@ body.dark {
   position: absolute;
 }
 .label {
+  border: 0.5px solid white;
   background-color: #272e34bc;
   border-radius: 50px;
   cursor: pointer;
@@ -86,7 +90,6 @@ body.dark {
   background-color: #fff;
   border-radius: 50%;
   position: absolute;
-  top: 0px;
   left: 0px;
   height: 16px;
   width: 16px;
@@ -100,9 +103,6 @@ body.dark {
 
 .checkbox:checked + .label .orb {
   transform: translateX(19px);
-  @include tablet {
-    transform: translateX(20px);
-  }
 }
 
 .fa-moon {

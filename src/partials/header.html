@@ -1,70 +1,73 @@
 <header class="header">
-  <div class="header__wrapper">
-    <a class="header__logo" href="./index.html">
-      <svg class="header__logo--svg" width="24px" height="24px">
-        <use href="./images/icons.svg#icon-logo"></use>
-      </svg>
-      <p class="header__logo--title">Filmoteka</p>
-    </a>
-    <ul class="header__nav header__nav--list">
-      <li>
-        <a class="header__nav header__nav--list-item header__is-on" href="./index.html">HOME</a>
-      </li>
-      <li>
-        <a class="header__sticky__nav" href="./my-library.html">MY LIBRARY</a>
-      </li>
-
-      <!-- LOGOWANIE -->
-
-      <li class="" id="logIn">
-        <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
-      </li>
-      <li class="is-hidden" id="logOut">
-        <button class="btn" type="button">&#128682; LOG OUT</button>
-      </li>
-
-      <!-- LOGOWANIE END -->
-    </ul>
-  </div>
-
-  <!-- THEME -->
-
-  <div class="theme">
-    <input type="checkbox" class="checkbox" id="chk" />
-    <label class="label" for="chk">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-      <div class="orb"></div>
-    </label>
-  </div>
-
-  <!-- THEME END -->
-
-  <div class="header__search">
-    <form class="header__search-form" id="search-form">
-      <input
-        id="inputHeader"
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Movie search"
-      />
-      <button class="header__search-button" type="submit">
-        <svg class="header__search-icon" width="12px" height="12px">
-          <use href="./images/icons.svg#icon-search"></use>
+  <div class="header__container">
+    <div class="header__wrapper">
+      <a class="header__logo" href="./index.html">
+        <svg class="header__logo--svg" width="24px" height="24px">
+          <use href="./images/icons.svg#icon-logo"></use>
         </svg>
-      </button>
+        <p class="header__logo--title">Filmoteka</p>
+      </a>
+      <ul class="header__nav">
+        <li>
+          <a class="header__nav-item header__nav-item--is-on" href="./index.html">HOME</a>
+        </li>
+        <li>
+          <a class="header__nav-item" href="./my-library.html">MY LIBRARY</a>
+        </li>
 
-      <!-- FILTROWANIE -->
+        <!-- LOGOWANIE -->
 
-      <button class="filter__button-open" id="filter-open" type="button">
-        <svg class="header__search-icon" width="12px" height="12px">
-          <use href="./images/icons.svg#icon-filter"></use>
-        </svg>
-      </button>
+        <li class="" id="logIn">
+          <button class="header__nav-item--logIn" type="button" id="open-modal-btn">LOG IN</button>
+        </li>
+        <li class="is-hidden" id="logOut">
+          <button class="header__nav-item--logOut" type="button">LOG OUT</button>
+        </li>
 
-      <!-- FILTROWANIE END -->
-    </form>
+        <!-- LOGOWANIE END -->
+      </ul>
+    </div>
+
+    <!-- THEME -->
+
+    <div class="header__theme">
+      <input type="checkbox" class="checkbox" id="chk" />
+      <label class="label" for="chk">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="orb"></div>
+      </label>
+    </div>
+
+    <!-- THEME END -->
+
+    <div class="header__search">
+      <form class="header__search-form" id="search-form">
+        <input
+          id="inputHeader"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Movie search"
+          class="header__search-input"
+        />
+        <button class="header__search-button" type="submit">
+          <svg class="header__search-icon" width="12px" height="12px">
+            <use href="./images/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+
+        <!-- FILTROWANIE -->
+
+        <button class="filter__button-open" id="filter-open" type="button">
+          <svg class="header__search-icon" width="12px" height="12px">
+            <use href="./images/icons.svg#icon-filter"></use>
+          </svg>
+        </button>
+
+        <!-- FILTROWANIE END -->
+      </form>
+    </div>
   </div>
 </header>
 
@@ -79,18 +82,18 @@
     </a>
 
     <div class="header__search">
-      <form id="sticky-search-form" class="header__sticky__search-form">
+      <form id="sticky-search-form" class="header__search-form header__sticky-form">
         <input
           id="inputSticky"
-          class="header__sticky__input"
           type="text"
           name="searchQuery"
           autocomplete="off"
           placeholder="Movie search"
+          class="header__search-input"
         />
 
-        <button class="header__sticky__search-button" type="submit">
-          <svg class="header__sticky__search-icon" width="12px" height="12px">
+        <button class="header__search-button" type="submit">
+          <svg class="header__search-icon" width="12px" height="12px">
             <use href="./images/icons.svg#icon-search"></use>
           </svg>
         </button>
@@ -107,21 +110,23 @@
 
     <!-- FILTROWANIE END -->
 
-    <ul class="header__nav header__nav--list">
+    <ul class="header__nav">
       <li>
-        <a class="header__nav header__nav--list-item header__is-on" href="./index.html">HOME</a>
+        <a class="header__nav-item header__nav-item--is-on" href="./index.html">HOME</a>
       </li>
       <li>
-        <a class="header__sticky__nav" href="./my-library.html">MY LIBRARY</a>
+        <a class="header__nav-item" href="./my-library.html">MY LIBRARY</a>
       </li>
 
       <!-- LOG IN LOG OUT -->
 
       <li class="" id="logInSticky">
-        <button class="btn" type="button" id="open-modal-btn-sticky">&#128526; LOG IN</button>
+        <button class="header__nav-item--logIn" type="button" id="open-modal-btn-sticky">
+          LOG IN
+        </button>
       </li>
       <li class="is-hidden" id="logOutSticky">
-        <button class="btn" type="button">&#128682; LOG OUT</button>
+        <button class="header__nav-item--logOut" type="button">LOG OUT</button>
       </li>
 
       <!-- LOG IN LOG OUT END -->
