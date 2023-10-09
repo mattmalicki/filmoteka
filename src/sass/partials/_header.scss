@@ -114,6 +114,10 @@
         cursor: pointer;
         border-bottom: 0.5px solid white;
         padding: 2px;
+        &:hover,
+        &:focus {
+          color: orange;
+        }
       }
       &:hover,
       &:focus {
