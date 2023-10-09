@@ -5,6 +5,7 @@
   background-size: cover;
   background-position: bottom;
   height: 230px;
+  color: #fff;
 
   @include tablet {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
@@ -35,18 +36,14 @@
         linear-gradient(to right, #2f303a 40%, transparent);
     }
   }
-}
 
-.my-library-header {
-  &__buttons-list {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  &__buttons {
+    @include flex-center;
+    flex-wrap: nowrap;
+    gap: 10px;
 
-    @include phone {
-      gap: 10px;
+    @media screen and (max-width: 390px) {
+      flex-wrap: wrap;
     }
 
     @include tablet {
@@ -56,26 +53,24 @@
       gap: 16px;
     }
   }
-
   &__button {
     background-color: transparent;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    width: 130px;
     height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     text-transform: uppercase;
-    color: #ffffff;
-
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
 
-    min-width: 60px;
+    width: 80px;
+    @include tablet {
+      min-width: 152px;
+    }
+
+    @include desktop {
+      min-width: 148px;
+    }
 
     &--current {
       background-color: #ff6b01;
@@ -85,40 +80,13 @@
 
     &:hover,
     &:focus {
-      color: #fff;
-      box-shadow: none;
       cursor: pointer;
       background-color: #ff6b08;
-      border: 1px solid #ff6b08;
-    }
-
-    @include tablet {
-      min-width: 152px;
-    }
-
-    @include desktop {
-      min-width: 147px;
+      border-color: #ff6b08;
     }
 
     &--sticky {
       height: 22px;
-
-      @include phone {
-        width: 69px;
-      }
     }
-  }
-}
-
-.header-library__sticky__nav {
-  margin-left: 0;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  list-style: none;
-  gap: 20px;
-
-  @include phone {
-    gap: 8px;
   }
 }
