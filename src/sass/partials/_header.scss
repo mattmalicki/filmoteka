@@ -107,17 +107,13 @@
     }
 
     &-item {
-      white-space: nowrap;
       &--logIn,
       &--logOut {
-        white-space: nowrap;
-        background-color: #000;
+        background-color: transparent;
         color: #fff;
-        border: none;
-        border-radius: 10px;
         cursor: pointer;
-        border: 2px solid white;
-        padding: 3px 7px;
+        border-bottom: 0.5px solid white;
+        padding: 2px;
       }
       &:hover,
       &:focus {
