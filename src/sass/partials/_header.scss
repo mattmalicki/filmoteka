@@ -95,12 +95,22 @@
 
   &__nav {
     @include flex-center;
-    gap: 40px;
+    gap: 10px;
     font-size: 12px;
 
+    @include tablet {
+      gap: 20px;
+    }
+
+    @include desktop {
+      gap: 40px;
+    }
+
     &-item {
+      white-space: nowrap;
       &--logIn,
       &--logOut {
+        white-space: nowrap;
         background-color: #000;
         color: #fff;
         border: none;
@@ -127,12 +137,10 @@
   }
 
   &__search {
-    width: 100%;
     @include flex-center;
 
     &-form {
       width: 280px;
-      //   margin-top: 50px;
       position: relative;
 
       @include tablet {
@@ -197,10 +205,30 @@
     top: 0;
     &__container {
       max-width: 1280px;
-      padding: 10px 32px;
+      padding: 10px 5px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @include tablet {
+        padding: 10px 32px;
+      }
+
+      @include desktop {
+        padding: 10px 32px;
+      }
+    }
+    &-form {
+      margin-right: 20px;
+      width: 140px;
+
+      @include tablet {
+        width: 330px;
+      }
+
+      @include desktop {
+        width: 394px;
+      }
     }
   }
 }
