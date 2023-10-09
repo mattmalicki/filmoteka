@@ -113,8 +113,14 @@
     }
     &-names {
       color: #8c8c8c;
+      &-item {
+        margin: 12px 0;
+      }
     }
     &-values {
+      &-item {
+        margin: 12px 0;
+      }
       &--avrg {
         color: #fff;
         background-color: #ff6b01;
@@ -129,9 +135,11 @@
     &-description {
       &--header {
         text-transform: uppercase;
+        margin: 15px 0;
       }
       &--text {
         line-height: 20px;
+        margin: 12px 0;
       }
     }
   }
@@ -189,9 +197,4 @@
       }
     }
   }
-}
-
-.body.dark .modal-film {
-  background-color: #292c35;
-  color: #fff;
 }

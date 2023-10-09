@@ -61,6 +61,13 @@ body.dark {
       background-color: #6b3e3e;
     }
   }
+  .modal-film {
+    background-color: #292c35;
+    color: #fff;
+    &__about-names {
+      color: #fff;
+    }
+  }
 }
 .checkbox {
   opacity: 0;

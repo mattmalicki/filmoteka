@@ -23,10 +23,10 @@ async function handleWatchedButton() {
   }
 
   const watchedFilms = loadStorage('watchedFilms');
-  watchedButton.classList.add('my-library-header__button--current');
-  watchedButtonSticky.classList.add('my-library-header__button--current');
-  queuedButton.classList.remove('my-library-header__button--current');
-  queuedButtonSticky.classList.remove('my-library-header__button--current');
+  watchedButton.classList.add('header-library__button--current');
+  watchedButtonSticky.classList.add('header-library__button--current');
+  queuedButton.classList.remove('header-library__button--current');
+  queuedButtonSticky.classList.remove('header-library__button--current');
   if (watchedFilms && watchedFilms.length > 0) {
     grid.addEventListener('click', filmClicked);
     const array = await createCard(watchedFilms);
@@ -44,10 +44,10 @@ async function handleQueuedButton() {
 
   const queuedFilms = loadStorage('queueFilms');
 
-  queuedButton.classList.add('my-library-header__button--current');
-  queuedButtonSticky.classList.add('my-library-header__button--current');
-  watchedButton.classList.remove('my-library-header__button--current');
-  watchedButtonSticky.classList.remove('my-library-header__button--current');
+  queuedButton.classList.add('header-library__button--current');
+  queuedButtonSticky.classList.add('header-library__button--current');
+  watchedButton.classList.remove('header-library__button--current');
+  watchedButtonSticky.classList.remove('header-library__button--current');
   if (queuedFilms && queuedFilms.length > 0) {
     grid.addEventListener('click', filmClicked);
     const array = await createCard(queuedFilms);

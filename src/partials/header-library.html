@@ -1,120 +1,118 @@
 <header class="header header-library">
-  <div class="header__wrapper">
-    <a class="header__logo" href="./index.html">
-      <svg class="header__logo--svg" width="24px" height="24px">
-        <use href="./images/icons.svg#icon-logo"></use>
-      </svg>
-      <p class="header__logo--title">Filmoteka</p>
-    </a>
-    <ul class="header__nav header__nav--list">
+  <div class="header__container">
+    <div class="header__wrapper">
+      <a class="header__logo" href="./index.html">
+        <svg class="header__logo--svg" width="24px" height="24px">
+          <use href="./images/icons.svg#icon-logo"></use>
+        </svg>
+        <p class="header__logo--title">Filmoteka</p>
+      </a>
+      <ul class="header__nav">
+        <li>
+          <a class="header__nav-item" href="./index.html">HOME</a>
+        </li>
+        <li>
+          <a class="header__nav-item header__nav-item--is-on" href="./my-library.html"
+            >MY LIBRARY</a
+          >
+        </li>
+
+        <!-- LOGOWANIE -->
+
+        <li class="" id="logIn">
+          <button class="header__nav-item--logIn" type="button" id="open-modal-btn">LOG IN</button>
+        </li>
+        <li class="is-hidden" id="logOut">
+          <button class="header__nav-item--logOut" type="button">LOG OUT</button>
+        </li>
+
+        <!-- LOGOWANIE END -->
+      </ul>
+    </div>
+
+    <!-- THEME -->
+
+    <div class="header__theme">
+      <input type="checkbox" class="checkbox" id="chk" />
+      <label class="label" for="chk">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="orb"></div>
+      </label>
+    </div>
+
+    <!-- THEME END -->
+
+    <ul class="header-library__buttons">
       <li>
-        <a class="header__nav header__nav--list-item" href="./index.html">HOME</a>
-      </li>
-      <li>
-        <a class="header__nav header__nav--list-item header__is-on" href="./my-library.html"
-          >MY LIBRARY</a
-        >
-      </li>
-
-      <!-- LOGOWANIE -->
-
-      <li class="" id="logIn">
-        <button class="btn" type="button" id="open-modal-btn">&#128526; LOG IN</button>
-      </li>
-      <li class="is-hidden" id="logOut">
-        <button class="btn" type="button">&#128682; LOG OUT</button>
-      </li>
-
-      <!-- LOGOWANIE END -->
-    </ul>
-  </div>
-
-  <!-- THEME -->
-
-  <div class="theme">
-    <input type="checkbox" class="checkbox" id="chk" />
-    <label class="label" for="chk">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-      <div class="orb"></div>
-    </label>
-  </div>
-
-  <!-- THEME END -->
-
-  <div class="my-library-header">
-    <ul class="my-library-header__buttons-list">
-      <li class="my-library-header__buttons--item">
         <button
-          class="my-library-header__button my-library-header__button--current"
+          class="header-library__button header-library__button--current"
           id="libraryWatchedButton"
         >
           Watched
         </button>
       </li>
-      <li class="my-library-header__buttons--item">
-        <button class="my-library-header__button" id="libraryQueuedButton">Queue</button>
+      <li>
+        <button class="header-library__button" id="libraryQueuedButton">Queue</button>
       </li>
     </ul>
   </div>
-
-  <!-- </div> -->
 </header>
 
 <!-- STICKY HEADER -->
 
 <header class="js-header__sticky header__sticky">
   <div class="header__sticky__container">
-    <a class="header__sticky__logo" href="./index.html">
-      <svg class="header__sticky__logo--svg" width="24px" height="24px">
+    <a class="header__logo" href="./index.html">
+      <svg class="header__logo--svg" width="24px" height="24px">
         <use href="./images/icons.svg#icon-logo"></use>
       </svg>
-      <p class="header__sticky__logo--title">Filmoteka</p>
+      <p class="header__logo--title">Filmoteka</p>
     </a>
-    <!-- 
-    <div class="my-library-header"> -->
-    <ul class="my-library-header__buttons-list">
-      <li class="my-library-header__buttons--item">
+
+    <ul class="header-library__buttons">
+      <li>
         <button
-          class="my-library-header__button my-library-header__button--sticky my-library-header__button--current"
+          class="header-library__button header-library__button--sticky header-library__button--current"
           id="libraryWatchedButton-sticky"
         >
           Watched
         </button>
       </li>
-      <li class="my-library-header__buttons--item">
+      <li>
         <button
-          class="my-library-header__button my-library-header__button--sticky"
+          class="header-library__button header-library__button--sticky"
           id="libraryQueuedButton-sticky"
         >
           Queue
         </button>
       </li>
     </ul>
-    <!-- </div> -->
 
-    <ul class="header-library__sticky__nav">
+    <!-- FILTROWANIE END -->
+
+    <ul class="header__nav">
       <li>
-        <a class="header-library__sticky__nav header__sticky__is-on" href="./index.html">HOME</a>
+        <a class="header__nav-item header__nav-item--is-on" href="./index.html">HOME</a>
       </li>
       <li>
-        <a class="header-library__sticky__nav" href="./my-library.html">MY LIBRARY</a>
+        <a class="header__nav-item" href="./my-library.html">MY LIBRARY</a>
       </li>
 
       <!-- LOG IN LOG OUT -->
 
       <li class="" id="logInSticky">
-        <button class="btn" type="button" id="open-modal-btn-sticky">&#128526; LOG IN</button>
+        <button class="header__nav-item--logIn" type="button" id="open-modal-btn-sticky">
+          LOG IN
+        </button>
       </li>
       <li class="is-hidden" id="logOutSticky">
-        <button class="btn" type="button">&#128682; LOG OUT</button>
+        <button class="header__nav-item--logOut" type="button">LOG OUT</button>
       </li>
 
       <!-- LOG IN LOG OUT END -->
     </ul>
   </div>
-
   <script src="./js/stickyHeader.js"></script>
 </header>
-
 <!-- STICKY HEADER END -->
