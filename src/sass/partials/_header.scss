@@ -36,9 +36,13 @@
   }
   &__container {
     max-width: 1280px;
+    height: 100%;
     margin: 0 auto;
     padding: 40px 32px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   &__wrapper {
     display: flex;
@@ -128,7 +132,7 @@
 
     &-form {
       width: 280px;
-      margin-top: 50px;
+      //   margin-top: 50px;
       position: relative;
 
       @include tablet {
@@ -155,6 +159,10 @@
       &::placeholder {
         color: inherit;
       }
+      &:hover,
+      &:focus {
+        border-color: orange;
+      }
     }
 
     &-button {
@@ -171,194 +179,28 @@
   }
   &__theme {
     position: absolute;
-    right: 45px;
+    right: 45;
+    top: 100;
   }
-}
-
-//   STICKY HEADER
-
-body .js-header__sticky {
-  display: none;
-}
-
-.header__sticky {
-  width: 100%;
-  z-index: 1;
-  background-image: linear-gradient(#ff001bb3, #000000b3);
-  background-position: 50%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  animation-name: show_header;
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  position: fixed;
-  top: 0;
-
-  &__is-on {
-    &::after {
-      width: 100%;
-      content: '';
-      display: block;
-      height: 4px;
-      border-radius: 2px;
-      background: red;
-    }
-  }
-
-  &__container {
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-
-    @include tablet {
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-
-    @include desktop {
-      padding-left: 35px;
-      padding-right: 32px;
-      max-width: 100%;
-    }
-  }
-
-  &__logo {
+  &__sticky {
+    width: 100vw;
     color: #fff;
-    fill: #fff;
-    align-items: center;
-    transition-property: color, fill;
-    transition-duration: 0.25s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-
-    &:hover,
-    &:focus {
-      color: orange;
-    }
-
-    &--svg {
-      fill: #fff;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-    }
-
-    &--title {
-      text-align: center;
-      margin-left: 10px;
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 35px;
-      display: none;
-
-      @include tablet {
-        display: flex;
-        margin: 0 20px 0 10px;
-      }
-
-      @include desktop {
-        display: flex;
-        margin: 0 0 0 10px;
-      }
-    }
-  }
-
-  &__search-form {
-    width: 120px;
-    transition-property: border-color;
-    transition-duration: 0.25s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-
-    @include tablet {
-      width: 270px;
-    }
-
-    @include desktop {
-      width: 394px;
-    }
-  }
-
-  &__input {
-    width: 100%;
-    height: 20px;
-    color: #fff;
-    background-color: #0000;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    transition-property: border-color;
-    transition-duration: 0.25s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  &__search-button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    position: absolute;
+    z-index: 1;
+    background-image: linear-gradient(#ff001bb3, #000000b3);
+    background-position: 50%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    animation-name: show_header;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: fixed;
     top: 0;
-    right: 0;
-    margin-left: 10px;
-    margin-right: 15px;
-  }
-
-  &__search-icon {
-    width: 12px;
-    height: 12px;
-    fill: #fff;
-  }
-
-  &__nav {
-    margin-left: auto;
-    display: flex;
-    list-style: none;
-    gap: 10px;
-    font-size: 12px;
-
-    &-item {
-      margin-left: auto;
+    &__container {
+      max-width: 1280px;
+      padding: 10px 32px;
       display: flex;
-      transition: center;
-      text-transform: uppercase;
-      color: #fff;
+      justify-content: space-between;
       align-items: center;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 14px;
-      transition-property: color;
-      transition-duration: 0.25s;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      margin-right: 15px;
     }
   }
-  .filter__button-open {
-    margin-left: 10px;
-  }
-}
-
-.header__search-form input:focus,
-.header__search-form input:hover {
-  border-bottom: 0.5px solid orange;
-}
-
-.header__sticky__input:focus,
-.header__sticky__input:hover {
-  border-bottom: 0.5px solid orange;
-}
-
-.header__sticky__nav:focus,
-.header__sticky__nav:hover {
-  color: orange;
 }
