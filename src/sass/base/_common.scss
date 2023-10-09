@@ -1,18 +1,25 @@
-// NIE UZYWAJ WATCH SASS! Pracuj TYLKO na pliku na ktorym masz pracowac! Jesli potrzebujesz zmienic
-//   cos w innym pliku skontaktuj sie z osoba odpowiedzialna za dany plik albo Team Leaderem lub Scrum
-//   Masterem.
-
-.is-hidden {
-  display: none;
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.btn {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  //margin-top: 30px;
-  border: 2px solid white;
-  padding: 3px 7px;
+button,
+a,
+input {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
