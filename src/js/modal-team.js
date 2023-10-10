@@ -1,9 +1,8 @@
 const modalTeam = document.querySelector('[data-modalTeam]');
-const backdropTeam = document.querySelector('.team-backdrop');
-const goitStudentsLink = document.querySelector('.footer__container--modal');
+const goitStudentsLink = document.querySelector('.footer-modal');
 
 goitStudentsLink.addEventListener('click', openModalTeam);
-backdropTeam.addEventListener('click', closeModal);
+modalTeam.addEventListener('click', closeModal);
 
 function closeModal(event) {
   const clicked = event.target;
@@ -12,7 +11,6 @@ function closeModal(event) {
     return;
   } else if (clicked.className.includes('team-backdrop')) {
     closeModalTeam();
-    clearData();
     return;
   }
   return;
