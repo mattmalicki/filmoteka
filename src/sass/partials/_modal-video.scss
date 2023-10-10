@@ -30,6 +30,13 @@
     border: 0;
     margin: 0 auto;
     position: relative;
+    background: rgb(17, 112, 149);
+    background: linear-gradient(
+      77deg,
+      rgb(77, 78, 79) 0%,
+      rgb(41, 43, 46) 31%,
+      rgb(23, 24, 24) 100%
+    );
     @include tablet {
       max-width: 900px;
       max-height: 532px;

@@ -127,7 +127,7 @@ export async function filmClicked(event) {
     checkWatchedORQueue(liElement.dataset.movieId);
     setTimeout(() => {
       openModal();
-    }, 100);
+    }, 1000);
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
   }

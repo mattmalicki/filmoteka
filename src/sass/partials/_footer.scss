@@ -4,60 +4,58 @@
 
 .footer {
   background-color: #f7f7f7;
+  width: 100vw;
+  height: 50px;
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  @include flex-center;
-  max-height: 100px;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  display: none;
+  color: #545454;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.72;
+  border-top: 1px solid black;
+  transition: bottom 500ms linear;
 
-  &.active {
-    max-height: 100px;
-    display: block;
-  }
-
-  @include tablet {
-    height: 79px;
-  }
-
-  @include desktop {
-    height: 77px;
+  &.hide {
+    bottom: -50;
+    transition: bottom 500ms linear;
   }
 
   &__container {
-    display: flex;
-    padding: 31.5px 0;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
+    @include flex-center;
+    gap: 5px;
 
-    & p {
-      color: #545454;
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0 3px;
-      line-height: 1.72;
-
-      @include tablet {
-        font-size: 16px;
-      }
-
-      @include desktop {
-        font-size: 16px;
-      }
+    @include tablet {
+      font-size: 16px;
     }
 
-    & p:first-child,
-    p:nth-child(2) {
-      border-right: 1px solid black;
-      padding-right: 5px;
+    @include desktop {
+      font-size: 16px;
     }
-
-    &--modal {
-      &:is(:hover, :focus) {
-        font-weight: bold;
+  }
+  &-modal {
+    &:is(:hover, :focus) {
+      font-weight: bold;
+    }
+  }
+  &__button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 20;
+    top: -30;
+    background-color: #f7f7f7;
+    border: 1px solid black;
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+    padding: 0;
+    &-icon {
+      fill: currentColor;
+      transition: transform 500ms linear;
+      &.flip {
+        transform: rotate(180deg);
+        transition: transform 500ms linear;
       }
     }
   }

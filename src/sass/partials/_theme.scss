@@ -5,8 +5,9 @@ body.dark {
   background: #292c35;
   .footer {
     background-color: #111;
-    &__container--modal {
-      color: #fff;
+    color: #fff;
+    &__button {
+      background-color: #111;
     }
   }
   .films__info-title {
@@ -75,7 +76,7 @@ body.dark {
 }
 .label {
   border: 0.5px solid white;
-  background-color: #272e34bc;
+  background-color: #272e34;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -86,11 +87,6 @@ body.dark {
   height: 16px;
   width: 35px;
   transform: scale(1.5);
-  @include tablet {
-    padding: 4px;
-    height: 18px;
-    width: 37px;
-  }
 }
 
 .label .orb {
@@ -101,11 +97,9 @@ body.dark {
   height: 16px;
   width: 16px;
   transform: translateX(0px);
-  transition: transform 0.2s linear;
-  @include tablet {
-    height: 18px;
-    width: 18px;
-  }
+  transition-property: transform, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
 }
 
 .checkbox:checked + .label .orb {
@@ -115,15 +109,9 @@ body.dark {
 .fa-moon {
   color: #d7dcc2;
   @include font($fs: 13px);
-  @include tablet {
-    @include font($fs: 14px);
-  }
 }
 
 .fa-sun {
   color: #f9ff86;
   @include font($fs: 11px);
-  @include tablet {
-    @include font($fs: 12px);
-  }
 }
