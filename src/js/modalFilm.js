@@ -125,9 +125,7 @@ export async function filmClicked(event) {
     }
     liElement.dataset.movieId ? fetchReturn(liElement.dataset.movieId) : fetchReturn(liElement.id);
     checkWatchedORQueue(liElement.dataset.movieId);
-    setTimeout(() => {
-      openModal();
-    }, 1000);
+    openModal();
   } catch (err) {
     console.log(`Error: ${err.toString()}`);
   }
